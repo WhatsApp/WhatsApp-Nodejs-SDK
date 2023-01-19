@@ -1,0 +1,36 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+#
+# This source code is licensed under the MIT license found in the
+# LICENSE file in the root directory of this source tree.
+
+name: "generate Docusaurus docs"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    types: [ closed, auto_merge_enabled ]
+
+
+jobs:
+  build-and-deploy:
+    if: github.event_name == 'push' || github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      - name: Install and Build
+        run: |
+          yarn
+          yarn build
+        working-directory: website/
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v4
+        with:
+          branch: gh-pages
+          folder: website/build
+          clean: true

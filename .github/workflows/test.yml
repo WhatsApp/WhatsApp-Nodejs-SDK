@@ -1,0 +1,34 @@
+name: Test
+
+on:
+  workflow_call:
+    inputs:
+      os:
+        required: true
+        type: string
+
+jobs:
+  build_and_test:
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [ 14.x, 16.x, 18.x, 19.x ]
+        shard: ['1/4', '2/4', '3/4', '4/4']
+    name: Node v${{ matrix.node-version }} on ${{ inputs.os }}
+    runs-on: ${{ inputs.os }}
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+      - name: install
+        run: yarn --immutable
+      - name: build
+        run: yarn build
+      - name: run tests using jest
+        run: yarn test --shard=${{ matrix.shard }}

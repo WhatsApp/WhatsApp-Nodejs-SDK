@@ -1,0 +1,51 @@
+// Copyright (c) Meta Platforms, Inc. and affiliates.
+// All rights reserved.
+//
+// This source code is licensed under the license found in the
+// LICENSE file in the root directory of this source tree.
+//
+
+{
+	"compilerOptions":
+	{
+		"baseUrl": "./",
+		"paths": {
+			"@/*": ["src/types/*"]
+		},
+		"outDir" : "build",
+		"allowJs" : true,
+		"target" : "ES2020",
+		"module" : "CommonJS",
+		"sourceMap": true,
+		"lib": ["ES2020"],
+		"checkJs" : true,
+		"alwaysStrict" : true,
+		"noImplicitAny" : true,
+		"noImplicitThis" : true,
+		"strict" : true,
+		"strictPropertyInitialization" : false,
+		"strictFunctionTypes" : true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"allowSyntheticDefaultImports": true,
+		"types" : [ "node", "jest" ],
+		"declaration" : true,
+		"incremental": true,
+		"pretty": true,
+		"typeRoots": ["node_modules/@types", "src/types"],
+    	"noImplicitReturns": true,
+    	"noFallthroughCasesInSwitch": true,
+		"esModuleInterop": false,
+		"moduleResolution": "node",
+		"isolatedModules": true,
+    	"skipLibCheck": false,
+		"resolveJsonModule": true
+	},
+	"include": [ "src/**/*" ],
+	"exclude": [
+		"node_modules",
+		"src/__tests__",
+		"build",
+		"coverage"
+	]
+}

@@ -16,7 +16,7 @@ Welcome to SDK for the [WhatsApp Business Platform](https://business.whatsapp.co
 [![generate docs](https://github.com/WhatsApp/WhatsApp-Nodejs-SDK/actions/workflows/docusaurus.yml/badge.svg)](https://github.com/WhatsApp/WhatsApp-Nodejs-SDK/blob/main/.github/workflows/docusaurus.yml)
 
 ## Getting started
-View the [quick start documentation](https://animated-garbanzo-y2rne5q.pages.github.io/) to learn how to use the SDK and get started.
+View the [quick start documentation](https://whatsapp.github.io/WhatsApp-Nodejs-SDK/) to learn how to use the SDK and get started.
 
 ## Installation
 Install the WhatsApp Business Platform SDK using yarn:

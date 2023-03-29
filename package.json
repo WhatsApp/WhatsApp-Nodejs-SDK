@@ -56,7 +56,7 @@
   "bugs": {
     "url": "https://github.com/WhatsApp/WhatsApp-Nodejs-SDK/issues"
   },
-  "homepage": "https://animated-garbanzo-y2rne5q.pages.github.io/",
+  "homepage": "https://whatsapp.github.io/WhatsApp-Nodejs-SDK/",
   "dependencies": {
     "@types/node": "~18.11.18",
     "babel-plugin-add-module-exports": "^1.0.4",

@@ -9,7 +9,7 @@ Send an existing approved and enabled message template. This request dynamically
 ## Example:
 Send a template message called "Subscribe" in the en_US language with a parameter to fill dynamic text in the body to the recipient `12345678901`.
 ```js
-const WhatsApp = require('whatsapp');
+import WhatsApp from 'whatsapp';
 
 const sender_number_1 = 12345678901234567890;
 const wa = new WhatsApp( sender_number_1 );

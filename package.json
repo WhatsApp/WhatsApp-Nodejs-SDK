@@ -1,6 +1,6 @@
 {
   "name": "whatsapp",
-  "version": "0.0.1-Alpha",
+  "version": "0.0.2-Alpha",
   "description": "SDK for interfacing with WhatsApp Business Platform in Typescript or Node.js using the Cloud API, hosted by Meta.",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -19,7 +19,7 @@
   "scripts": {
     "start": "ts-node -r tsconfig-paths/register ./src/WhatsApp.ts",
     "prebuild": "run-s create-version-file",
-    "build": "rimraf ./lib && tsc -p tsconfig.json",
+    "build": "rimraf ./build && tsc -p tsconfig.json && ./node_modules/.bin/babel build --out-dir build",
     "check-changelog": "node ./scripts/check_changelog.mjs",
     "check-copyright-headers": "node ./scripts/check_copyright_headers.mjs",
     "create-version-file": "node ./scripts/create_version_file.mjs",
@@ -59,18 +59,21 @@
   "homepage": "https://animated-garbanzo-y2rne5q.pages.github.io/",
   "dependencies": {
     "@types/node": "~18.11.18",
+    "babel-plugin-add-module-exports": "^1.0.4",
     "dotenv": "~16.0.3"
   },
   "devDependencies": {
-    "@babel/core": "~7.21.0",
-    "@babel/preset-env": "~7.20.2",
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.3",
+    "@babel/plugin-transform-modules-commonjs": "^7.21.2",
+    "@babel/preset-env": "^7.20.2",
     "@babel/preset-typescript": "~7.21.0",
     "@jest/globals": "~29.5.0",
     "@types/jest": "^29.4.1",
     "@types/module-alias": "~2.0.1",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
     "@typescript-eslint/parser": "^5.55.0",
-    "babel-jest": "~29.5.0",
+    "babel-jest": "^29.5.0",
     "cspell": "^6.26.3",
     "eslint": "~8.34.0",
     "eslint-config-prettier": "^8.6.0",

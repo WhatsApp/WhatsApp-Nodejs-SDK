@@ -7,7 +7,7 @@
  */
 
 import { WA_Config_Type } from '../types/config';
-import WhatsApp from '../WhatsApp';
+import WhatsApp from '../index';
 import { SDK_Version } from '../version';
 
 describe('WhatsApp SDK class', () => {

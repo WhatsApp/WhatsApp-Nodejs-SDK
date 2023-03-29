@@ -55,28 +55,10 @@ CLOUD_API_ACCESS_TOKEN=
 CLOUD_API_VERSION=v16.0
 ```
 
-## Configure
-Create a *.env* file in the root directory, add the values for the following variables, and save after you're done.
-1. **WA_PHONE_NUMBER_ID** - Your phone number Id, located in the App Dashboard in the *WhatsApp* dropdown menu > *Getting started* > *Phone number ID*.
-2. **CLOUD_API_ACCESS_TOKEN** - You can use the readily provided temporary access token or [system user access token](https://developers.facebook.com/docs/whatsapp/business-management-api/get-started/#system-user-access-tokens) for this exercise. This is also located in the App Dashboard in the *WhatsApp* dropdown menu > *Getting started* > *Temporary access token*.
-3. **CLOUD_API_VERSION** - Set this to the [latest version](https://developers.facebook.com/docs/graph-api/guides/versioning#latest) of the graph API.
-
-The *.env* file should look like
-```shell
-# Your WhatsApp phone number Id (sender).
-WA_PHONE_NUMBER_ID=
-
-# System user access token. Recommended: Do not use a temporary access token.
-CLOUD_API_ACCESS_TOKEN=
-
-# Cloud API version number.
-CLOUD_API_VERSION=v16.0
-```
-
 ## Code
 In your project directory, create a file named *start.js* with the following content with the sender number and recipient number:
 ```js
-const WhatsApp = require('whatsapp');
+import WhatsApp from 'whatsapp';
 
 // Your test sender phone number
 const wa = new WhatsApp( <<SENDER_NUMBER>> );

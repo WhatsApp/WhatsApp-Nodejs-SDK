@@ -5,8 +5,14 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.0.2-Alpha] - 2023-03-29
+
+### Added
+- Support transpiled code down to ES2015
+- Add babel fix for ES6 import without needing to specify default
+- Fix typos in docs and update module import description.
 
 ## [0.0.1-Alpha] - 2023-03-20
 
 ### Added
-- Messages, webhooks listener, phone number management APIs
+- Messages endpoints, webhooks listener w/ validation

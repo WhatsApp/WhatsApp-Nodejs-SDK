@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as nock from 'nock';
+import nock from 'nock';
 import { WA_Config_Type } from '@/config';
 import Messages_API from '../api/messages';
 import WhatsApp from '../WhatsApp';

@@ -12,7 +12,7 @@ Send an existing self-hosted or Meta hosted video file. Supported video formats:
 ## Example:
 Send a Meta-hosted message and then send an externally hosted video file to the phone number `12345678901`.
 ```js
-const WhatsApp = require('whatsapp');
+import WhatsApp from 'whatsapp';
 
 const sender_number_1 = 12345678901234567890;
 const wa = new WhatsApp( sender_number_1 );

@@ -9,7 +9,7 @@ Change the sender phone number Id. Should only input a value that is registered 
 ## Example:
 Change the sender number Id to `09876543210987654321`:
 ```js
-const WhatsApp = require('whatsapp');
+import WhatsApp from 'whatsapp';
 
 const sender_number_1 = 12345678901234567890;
 const sender_number_2 = 09876543210987654321;

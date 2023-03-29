@@ -6,12 +6,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as nock from 'nock';
+import nock from 'nock';
 import { WA_Config_Type } from '@/config';
 import { HTTP_Methods_Enum } from '../types/enums';
 
 // jest.mock('../https_client', () => require('../__mocks__/https_client'));
 import HTTPS_Client from '../https_client';
+import { NoParamCallback } from 'fs';
 
 describe('HTTPS client tests', () => {
 	const sdk_config: WA_Config_Type = (global as any).sdk_config;

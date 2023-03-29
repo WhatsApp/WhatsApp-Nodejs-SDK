@@ -10,7 +10,7 @@ Gets the status of the webhook web server.
 Start the web server and check if it's running after 5 seconds from application start.
 
 ```js
-const WhatsApp = require('whatsapp');
+import WhatsApp from 'whatsapp';
 
 const sender_number_1 = 12345678901234567890;
 const wa = new WhatsApp( sender_number_1 );

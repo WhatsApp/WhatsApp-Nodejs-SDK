@@ -98,7 +98,7 @@ const GENERIC_IGNORED_PATTERNS = [
 
 const CUSTOM_IGNORED_PATTERNS = [
 	'\\.(example|map)$',
-	'^lib/.*',
+	'^build/.*',
 	'^website/src/.*',
 	'^website/babel\\.config\\.js$',
 ].map(createRegExp);

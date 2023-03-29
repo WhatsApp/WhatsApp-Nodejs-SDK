@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as nock from 'nock';
+import nock from 'nock';
 import { WA_Config_Type } from '@/config';
 import { HTTP_Methods_Enum } from '../types/enums';
 

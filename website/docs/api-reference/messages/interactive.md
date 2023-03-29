@@ -15,7 +15,7 @@ Send an interactive message to prompt a recipient to select from provided option
 ### Reply button
 Send a message with two buttons to the phone number `12345678901`.
 ```js
-const WhatsApp = require('whatsapp');
+import WhatsApp from 'whatsapp';
 
 const sender_number_1 = 12345678901234567890;
 const wa = new WhatsApp( sender_number_1 );
@@ -53,7 +53,7 @@ wa.messages.interactive( reply_btn_message, 12345678901 );
 Send a list message with two sections and two products per section to the phone number `12345678901`.
 
 ```js
-const WhatsApp = require('whatsapp');
+import WhatsApp from 'whatsapp';
 
 const sender_number_1 = 12345678901234567890;
 const wa = new WhatsApp( sender_number_1 );
@@ -115,7 +115,7 @@ wa.messages.interactive( list_message, 12345678901 );
 Send a single product message to the phone number `12345678901`.
 
 ```js
-const WhatsApp = require('whatsapp');
+import WhatsApp from 'whatsapp';
 
 const sender_number_1 = 12345678901234567890;
 const wa = new WhatsApp( sender_number_1 );
@@ -143,7 +143,7 @@ wa.messages.interactive( prod_message, 12345678901 );
 Send a multi-product message with two sections and two products per section to the phone number `12345678901`.
 
 ```js
-const WhatsApp = require('whatsapp');
+import WhatsApp from 'whatsapp';
 
 const sender_number_1 = 12345678901234567890;
 const wa = new WhatsApp( sender_number_1 );

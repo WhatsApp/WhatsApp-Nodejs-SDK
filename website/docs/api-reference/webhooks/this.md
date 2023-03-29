@@ -10,7 +10,7 @@ This is the webhooks class that is instantiated by the WhatsApp class. The webho
 Start the web server and print out the response status code, request headers, and if it exists, the body.
 
 ```js
-const WhatsApp = require('whatsapp');
+import WhatsApp from 'whatsapp';
 
 const sender_number_1 = 12345678901234567890;
 const wa = new WhatsApp( sender_number_1 );

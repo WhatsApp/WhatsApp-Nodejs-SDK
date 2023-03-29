@@ -9,7 +9,7 @@ Change the request timeout period from what was originally provided via environm
 ## Example:
 Change the request timeout period to 1.5 seconds:
 ```js
-const WhatsApp = require('whatsapp');
+import WhatsApp from 'whatsapp';
 
 const sender_number_1 = 12345678901234567890;
 const wa = new WhatsApp( sender_number_1 );

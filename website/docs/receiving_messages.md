@@ -43,7 +43,7 @@ LISTENER_PORT=3000
 ## Code
 Create a new file called *listen.js* file and add the following code`:
 ```
-import WhatsApp from "./WhatsApp";
+import WhatsApp from "whatsapp";
 
 const wa = new WhatsApp();
 
@@ -72,7 +72,7 @@ wa.webhooks.start( custom_callback );
 ## Anatomy
 The code above has a custom callback function that receives an several parameters, including the response object to respond back to the Cloud API, and starts the webhook listener. From top to bottom:
 1. Creates a new instance of the WhatsApp SDK class.
-2 . Logs the status code of the request, the headers received, and the request body. You should see it print a status code of `200`.
+2. Logs the status code of the request, the headers received, and the request body. You should see it print a status code of `200`.
 3. After checking for the response body, it sends a `200` (success) back to the Cloud API for this request. This marks the message as delivered (not read) and the webhook service will not reattempt sending this message again.
 4. Any errors are logged.
 5. The webhooks listener is started. This accepts either a **GET** request or **POST**. Only post requests call the custom callback. GET requests are only for verifying subscription by the Cloud API.

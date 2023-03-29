@@ -10,7 +10,7 @@ This stops the web server listening the defined port for webhook events.
 Start the web server and then stop it if it's running.
 
 ```js
-const WhatsApp = require('whatsapp');
+import WhatsApp from 'whatsapp';
 
 const sender_number_1 = 12345678901234567890;
 const wa = new WhatsApp( sender_number_1 );

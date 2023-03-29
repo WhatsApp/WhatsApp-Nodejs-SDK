@@ -14,7 +14,7 @@ This starts the web server listening the defined port for webhook events. It han
 Start the web server and print out valid message webhook event bodies.
 
 ```js
-const WhatsApp = require('whatsapp');
+import WhatsApp from 'whatsapp';
 
 const sender_number_1 = 12345678901234567890;
 const wa = new WhatsApp( sender_number_1 );

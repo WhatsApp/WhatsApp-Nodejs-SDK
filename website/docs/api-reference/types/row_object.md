@@ -1,6 +1,6 @@
 ---
-id: row_object
-title: Row_Object
+id: RowObject
+title: RowObject
 ---
 
 # Row Object

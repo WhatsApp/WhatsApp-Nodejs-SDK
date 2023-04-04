@@ -1,6 +1,6 @@
 ---
-id: document_media_object
-title: Document_Media_Object
+id: DocumentMediaObject
+title: DocumentMediaObject
 ---
 
 # Document Media Object

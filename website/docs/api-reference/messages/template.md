@@ -11,8 +11,8 @@ Send a template message called "Subscribe" in the en_US language with a paramete
 ```js
 import WhatsApp from 'whatsapp';
 
-const sender_number_1 = 12345678901234567890;
-const wa = new WhatsApp( sender_number_1 );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
 const newsletter_subscription_body =
 {
@@ -40,9 +40,9 @@ await wa.messages.template( newsletter_subscription_body, 12345678901 );
 ```
 
 ## Arguments
-1. `body` : [Template_Object](../types/template_object) — the object describing the template to use and any components to dynamically fill the parameters with.
+1. `body` : [Template_Object](../types/TemplateObject) — the object describing the template to use and any components to dynamically fill the parameters with.
 2. `recipient` : number — the recipient's phone number with country code.
-3. `reply_message_id` : string (optional) — the received WhatsApp message Id to reply back to.
+3. `replyMessageId` : string (optional) — the received WhatsApp message Id to reply back to.
 
 ## Returns
 Promise — Server response object on success.

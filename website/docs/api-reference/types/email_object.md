@@ -1,6 +1,6 @@
 ---
-id: email_object
-title: Email_Object
+id: EmailObject
+title: EmailObject
 ---
 
 # Email Object

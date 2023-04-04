@@ -1,6 +1,6 @@
 ---
-id: phone_object
-title: Phone_Object
+id: PhoneObject
+title: PhoneObject
 ---
 
 # Phones Object

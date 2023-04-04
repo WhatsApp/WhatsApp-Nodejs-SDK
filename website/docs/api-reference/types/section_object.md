@@ -1,6 +1,6 @@
 ---
-id: section_object
-title: Section_Object
+id: SectionObject
+title: SectionObject
 ---
 
 # Section Object
@@ -27,7 +27,7 @@ The object describing individual sections for list messages and multi-product me
 ```
 
 ### Properties
-1. `rows` : [Row_Object](row_object) or undefined — array of *Row_Object* for list message.
+1. `rows` : [RowObject](RowObject) or undefined — array of *RowObject* for list message.
 2. `title` : string (optional) — contact's last name.
 
 ### Multi-product messages
@@ -43,5 +43,5 @@ The object describing individual sections for list messages and multi-product me
 ```
 
 ### Properties
-1. `product_items` : [Product_Object](product_object) or undefined — array of *Product_Object* for multi-product message.
+1. `product_items` : [ProductObject](ProductObject) or undefined — array of *ProductObject* for multi-product message.
 2. `title` : string (optional) — contact's last name.

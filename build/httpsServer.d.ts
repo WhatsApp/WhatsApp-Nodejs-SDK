@@ -6,16 +6,18 @@
  * LICENSE file in the root directory of this source tree.
  */
 /// <reference types="node" />
-import { IncomingMessage, ServerResponse } from 'http';
-import * as h from '@/https_server';
-export default class HTTP_Server implements h.HTTP_Server_Class {
-	private _sockets;
-	private _server;
-	private _listening;
+/// <reference types="node" />
+import { IncomingMessage, Server, ServerResponse } from 'http';
+import { Socket } from 'net';
+import * as h from '@/httpsServer';
+export default class Httpserver implements h.HttpserverClass {
+	sockets: Set<Socket>;
+	server: Server;
+	listening: boolean;
 	constructor(
 		port: number,
 		cb: (req: IncomingMessage, res: ServerResponse) => any,
 	);
-	is_listening(): boolean;
+	isListening(): boolean;
 	close(cb?: (err?: Error) => any): void;
 }

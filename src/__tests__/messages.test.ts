@@ -7,30 +7,29 @@
  */
 
 import nock from 'nock';
-import { WA_Config_Type } from '@/config';
-import Messages_API from '../api/messages';
+import { WAConfigType } from '@/config';
+import MessagesAPI from '../api/messages';
 import WhatsApp from '../WhatsApp';
 
 describe('WhatsApp Messages API', () => {
-	const recipient = 1234;
-	const sdk_config: WA_Config_Type = (global as any).sdk_config;
-	process.env.WA_BASE_URL = sdk_config.WA_BASE_URL;
-	process.env.M4D_APP_ID = sdk_config.M4D_APP_ID;
-	process.env.M4D_APP_SECRET = sdk_config.M4D_APP_SECRET;
-	process.env.WA_PHONE_NUMBER_ID = sdk_config.WA_PHONE_NUMBER_ID.toString();
-	process.env.WA_BUSINESS_ACCOUNT_ID = sdk_config.WA_BUSINESS_ACCOUNT_ID;
-	process.env.CLOUD_API_ACCESS_TOKEN = sdk_config.CLOUD_API_ACCESS_TOKEN;
-	process.env.CLOUD_API_VERSION = sdk_config.CLOUD_API_VERSION;
-	process.env.WEBHOOK_ENDPOINT = sdk_config.WEBHOOK_ENDPOINT;
-	process.env.WEBHOOK_VERIFICATION_TOKEN =
-		sdk_config.WEBHOOK_VERIFICATION_TOKEN;
-	process.env.LISTENER_PORT = sdk_config.LISTENER_PORT.toString();
-	process.env.DEBUG = sdk_config.DEBUG.toString();
-	process.env.REQUEST_TIMEOUT = sdk_config.REQUEST_TIMEOUT.toString();
+	const testRecipient = 1234;
+	const sdkConfig: WAConfigType = (global as any).sdkConfig;
+	process.env.WA_BASE_URL = sdkConfig.WA_BASE_URL;
+	process.env.M4D_APP_ID = sdkConfig.M4D_APP_ID;
+	process.env.M4D_APP_SECRET = sdkConfig.M4D_APP_SECRET;
+	process.env.WA_PHONE_NUMBER_ID = sdkConfig.WA_PHONE_NUMBER_ID.toString();
+	process.env.WA_BUSINESS_ACCOUNT_ID = sdkConfig.WA_BUSINESS_ACCOUNT_ID;
+	process.env.CLOUD_API_ACCESS_TOKEN = sdkConfig.CLOUD_API_ACCESS_TOKEN;
+	process.env.CLOUD_API_VERSION = sdkConfig.CLOUD_API_VERSION;
+	process.env.WEBHOOK_ENDPOINT = sdkConfig.WEBHOOK_ENDPOINT;
+	process.env.WEBHOOK_VERIFICATION_TOKEN = sdkConfig.WEBHOOK_VERIFICATION_TOKEN;
+	process.env.LISTENER_PORT = sdkConfig.LISTENER_PORT.toString();
+	process.env.DEBUG = sdkConfig.DEBUG.toString();
+	process.env.REQUEST_TIMEOUT = sdkConfig.REQUEST_TIMEOUT.toString();
 
 	const wa = new WhatsApp();
-	const base_path = `/${sdk_config.CLOUD_API_VERSION}/${sdk_config.WA_PHONE_NUMBER_ID}`;
-	const default_messages_response_body = {
+	const basePath = `/${sdkConfig.CLOUD_API_VERSION}/${sdkConfig.WA_PHONE_NUMBER_ID}`;
+	const defaultMessagesResponseBody = {
 		messaging_product: 'whatsapp',
 		contacts: [{ input: '16505076520', wa_id: '16505076520' }],
 		messages: [
@@ -49,32 +48,32 @@ describe('WhatsApp Messages API', () => {
 	});
 
 	it('messages class instance', () => {
-		expect(wa.messages).toBeInstanceOf(Messages_API);
+		expect(wa.messages).toBeInstanceOf(MessagesAPI);
 	});
 
 	it('Send text message', async () => {
-		scope = nock(`https://${sdk_config.WA_BASE_URL}`)
-			.post(`${base_path}/messages`)
+		scope = nock(`https://${sdkConfig.WA_BASE_URL}`)
+			.post(`${basePath}/messages`)
 			.delay(200)
 			.delayBody(200)
 			.delayConnection(200)
-			.reply(200, default_messages_response_body);
+			.reply(200, defaultMessagesResponseBody);
 
-		const response = await wa.messages.text({ body: 'test' }, recipient);
+		const response = await wa.messages.text({ body: 'test' }, testRecipient);
 
-		expect(await response.response_body_to_JSON()).toStrictEqual(
-			default_messages_response_body,
+		expect(await response.responseBodyToJSON()).toStrictEqual(
+			defaultMessagesResponseBody,
 		);
 		scope.isDone();
 	});
 
 	it('Send meta-hosted audio message', async () => {
-		scope = nock(`https://${sdk_config.WA_BASE_URL}`)
-			.post(`${base_path}/messages`)
+		scope = nock(`https://${sdkConfig.WA_BASE_URL}`)
+			.post(`${basePath}/messages`)
 			.delay(200)
 			.delayBody(200)
 			.delayConnection(200)
-			.reply(200, default_messages_response_body);
+			.reply(200, defaultMessagesResponseBody);
 
 		const meta_hosted_audio = {
 			id: '123456abcde',
@@ -82,32 +81,32 @@ describe('WhatsApp Messages API', () => {
 			filename: 'example.mp4',
 		};
 
-		const response = await wa.messages.audio(meta_hosted_audio, recipient);
+		const response = await wa.messages.audio(meta_hosted_audio, testRecipient);
 
-		expect(await response.response_body_to_JSON()).toStrictEqual(
-			default_messages_response_body,
+		expect(await response.responseBodyToJSON()).toStrictEqual(
+			defaultMessagesResponseBody,
 		);
 		scope.isDone();
 	});
 
 	it('Send self-hosted audio message', async () => {
-		scope = nock(`https://${sdk_config.WA_BASE_URL}`)
-			.post(`${base_path}/messages`)
+		scope = nock(`https://${sdkConfig.WA_BASE_URL}`)
+			.post(`${basePath}/messages`)
 			.delay(200)
 			.delayBody(200)
 			.delayConnection(200)
-			.reply(200, default_messages_response_body);
+			.reply(200, defaultMessagesResponseBody);
 
-		const self_hosted_audio = {
+		const selfHostedAudio = {
 			link: new URL('https://example.com/example_1234.mp4').href,
 			caption: 'My audio file',
 			filename: 'example.mp4',
 		};
 
-		const response = await wa.messages.audio(self_hosted_audio, recipient);
+		const response = await wa.messages.audio(selfHostedAudio, testRecipient);
 
-		expect(await response.response_body_to_JSON()).toStrictEqual(
-			default_messages_response_body,
+		expect(await response.responseBodyToJSON()).toStrictEqual(
+			defaultMessagesResponseBody,
 		);
 		scope.isDone();
 	});

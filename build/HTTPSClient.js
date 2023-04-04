@@ -42,26 +42,26 @@ var __importDefault = this && this.__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.HTTPS_Client_Response = void 0;
+exports.HttpsClientResponse = void 0;
 const https_1 = require("https");
 const logger_1 = __importDefault(require("./logger"));
 const enums_1 = require("./types/enums");
-const lib_name = 'HTTPS_CLIENT';
-const log_local = false;
-const logger = new logger_1.default(lib_name, process.env.DEBUG === 'true' || log_local);
-class HTTPS_Client {
+const LIB_NAME = 'HttpsClient';
+const LOG_LOCAL = false;
+const LOGGER = new logger_1.default(LIB_NAME, process.env.DEBUG === 'true' || LOG_LOCAL);
+class HttpsClient {
   constructor() {
-    this._agent = new https_1.Agent({
+    this.agent = new https_1.Agent({
       keepAlive: true
     });
   }
-  clear_sockets() {
-    this._agent.destroy();
+  clearSockets() {
+    this.agent.destroy();
     return true;
   }
-  send_request(hostname, port, path, method, headers, timeout, requestData) {
+  sendRequest(hostname, port, path, method, headers, timeout, requestData) {
     return __awaiter(this, void 0, void 0, function* () {
-      const agent = this._agent;
+      const agent = this.agent;
       return new Promise((resolve, reject) => {
         const req = (0, https_1.request)({
           hostname: hostname,
@@ -71,7 +71,7 @@ class HTTPS_Client {
           agent: agent,
           headers: headers
         });
-        logger.log({
+        LOGGER.log({
           hostname: hostname,
           port: port,
           path,
@@ -84,7 +84,7 @@ class HTTPS_Client {
           req.destroy();
         });
         req.on('response', resp => {
-          resolve(new HTTPS_Client_Response(resp));
+          resolve(new HttpsClientResponse(resp));
         });
         req.on('error', error => {
           reject(error);
@@ -92,12 +92,12 @@ class HTTPS_Client {
         req.once('socket', socket => {
           if (socket.connecting) {
             socket.once('secureConnect', () => {
-              logger.log(requestData);
-              if (method === enums_1.HTTP_Methods_Enum.Post || method == enums_1.HTTP_Methods_Enum.Put) req.write(requestData);
+              LOGGER.log(requestData);
+              if (method === enums_1.HttpMethodsEnum.Post || method == enums_1.HttpMethodsEnum.Put) req.write(requestData);
               req.end();
             });
           } else {
-            if (method === enums_1.HTTP_Methods_Enum.Post || method == enums_1.HTTP_Methods_Enum.Put) req.write(requestData);
+            if (method === enums_1.HttpMethodsEnum.Post || method == enums_1.HttpMethodsEnum.Put) req.write(requestData);
             req.end();
           }
         });
@@ -105,31 +105,31 @@ class HTTPS_Client {
     });
   }
 }
-exports.default = HTTPS_Client;
-class HTTPS_Client_Response {
+exports.default = HttpsClient;
+class HttpsClientResponse {
   constructor(resp) {
-    this._resp = resp;
-    this._status_code = resp.statusCode || 400;
-    this._headers = resp.headers || {};
+    this.resp = resp;
+    this.respStatusCode = resp.statusCode || 400;
+    this.respHeaders = resp.headers || {};
   }
-  status_code() {
-    return this._status_code;
+  statusCode() {
+    return this.respStatusCode;
   }
   headers() {
-    return this._headers;
+    return this.respHeaders;
   }
-  raw_response() {
-    return this._resp;
+  rawResponse() {
+    return this.resp;
   }
-  response_body_to_JSON() {
+  responseBodyToJSON() {
     return __awaiter(this, void 0, void 0, function* () {
       return new Promise((resolve, reject) => {
         let response = '';
-        this._resp.setEncoding('utf8');
-        this._resp.on('data', chunk => {
+        this.resp.setEncoding('utf8');
+        this.resp.on('data', chunk => {
           response += chunk.toString();
         });
-        this._resp.once('end', () => {
+        this.resp.once('end', () => {
           try {
             resolve(JSON.parse(response));
           } catch (err) {
@@ -140,4 +140,4 @@ class HTTPS_Client_Response {
     });
   }
 }
-exports.HTTPS_Client_Response = HTTPS_Client_Response;
+exports.HttpsClientResponse = HttpsClientResponse;

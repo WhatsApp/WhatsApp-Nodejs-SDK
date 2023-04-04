@@ -11,12 +11,12 @@ Create a new SDK client for the WhatsApp sender phone number Id `123456789012345
 ```js
 import WhatsApp from 'whatsapp';
 
-const sender_number_1 = 12345678901234567890;
-const wa = new WhatsApp( sender_number_1 );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 ```
 
 ## Arguments
-1. `sender_number_id` : number (optional) — The phone number Id of the sender registered in the Cloud API, including the country code (without any symbols). This is not required if `WA_PHONE_NUMBER_ID` is available as an environmental variable (e.g. set in your *.env* file), but is required if it is omitted there. This allows a single app to send using multiple registered numbers.
+1. `senderNumberId` : number (optional) — The phone number Id of the sender registered in the Cloud API, including the country code (without any symbols). This is not required if `WA_PHONE_NUMBER_ID` is available as an environmental variable (e.g. set in your *.env* file), but is required if it is omitted there. This allows a single app to send using multiple registered numbers.
 
 ## Returns
 Object — WhatsApp class instance.

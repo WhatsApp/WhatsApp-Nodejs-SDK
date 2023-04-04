@@ -1,6 +1,6 @@
 ---
-id: status_object
-title: Status_Object
+id: StatusObject
+title: StatusObject
 ---
 
 # Status Object

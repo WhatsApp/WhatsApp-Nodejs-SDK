@@ -1,6 +1,6 @@
 ---
-id: image_media_object
-title: Image_Media_Object
+id: ImageMediaObject
+title: ImageMediaObject
 ---
 
 # Image Media Object

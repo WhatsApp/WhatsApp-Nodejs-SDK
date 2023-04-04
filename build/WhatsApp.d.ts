@@ -5,19 +5,21 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import Messages_API from './api/messages';
-import { WhatsApp_Class } from '@/WhatsApp';
-import Webhooks_API from './api/webhooks';
-export default class WhatsApp implements WhatsApp_Class {
-	private _config;
-	private _version;
-	private _requester;
-	readonly messages: Messages_API;
-	readonly webhooks: Webhooks_API;
-	constructor(sender_number_id?: number);
+import { WAConfigType } from '@/config';
+import Requester from './requester';
+import MessagesAPI from './api/messages';
+import { WhatsAppClass } from '@/WhatsApp';
+import WebhooksAPI from './api/webhooks';
+export default class WhatsApp implements WhatsAppClass {
+	config: WAConfigType;
+	sdkVersion: Readonly<string>;
+	requester: Readonly<Requester>;
+	readonly messages: MessagesAPI;
+	readonly webhooks: WebhooksAPI;
+	constructor(senderNumberId?: number);
 	version(): string;
-	private user_agent;
-	update_timeout(ms: number): boolean;
-	update_sender_number_id(phone_number_id: number): boolean;
-	update_access_token(access_token: string): boolean;
+	private userAgent;
+	updateTimeout(ms: number): boolean;
+	updateSenderNumberId(phoneNumberId: number): boolean;
+	updateAccessToken(accessToken: string): boolean;
 }

@@ -76,7 +76,7 @@ const config: Config = {
 
 	// A set of global variables that need to be available in all test environments
 	globals: {
-		sdk_config: {
+		sdkConfig: {
 			WA_BASE_URL: `example.com`,
 			M4D_APP_ID: 'TEST_APP_ID',
 			M4D_APP_SECRET: 'TEST_APP_SECRET',

@@ -10,5 +10,5 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.SDK_Version = void 0;
-exports.SDK_Version = '0.0.2-Alpha';
+exports.SDKVersion = void 0;
+exports.SDKVersion = '0.0.3-Alpha';

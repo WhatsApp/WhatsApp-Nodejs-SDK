@@ -45,80 +45,80 @@ Object.defineProperty(exports, "__esModule", {
 const base_1 = __importDefault(require("./base"));
 const enums_1 = require("../types/enums");
 const logger_1 = __importDefault(require("../logger"));
-const lib_name = 'MESSAGES_API';
-const log_local = false;
-const logger = new logger_1.default(lib_name, process.env.DEBUG === 'true' || log_local);
-class Messages_API extends base_1.default {
+const LIB_NAME = 'MESSAGES_API';
+const LOG_LOCAL = false;
+const LOGGER = new logger_1.default(LIB_NAME, process.env.DEBUG === 'true' || LOG_LOCAL);
+class MessagesAPI extends base_1.default {
   constructor() {
     super(...arguments);
-    this._common_method = enums_1.HTTP_Methods_Enum.Post;
-    this._common_endpoint = 'messages';
+    this.commonMethod = enums_1.HttpMethodsEnum.Post;
+    this.commonEndpoint = 'messages';
   }
-  _body_builder(type, payload, to_number, reply_message_id) {
+  bodyBuilder(type, payload, toNumber, replyMessageId) {
     const body = {
       messaging_product: 'whatsapp',
       recipient_type: 'individual',
-      to: to_number,
+      to: toNumber,
       type: type,
       [type]: payload
     };
-    if (reply_message_id) body['context'] = {
-      message_id: reply_message_id
+    if (replyMessageId) body['context'] = {
+      message_id: replyMessageId
     };
     return body;
   }
-  _send(body) {
-    return this._client.send_CAPI_request(this._common_method, this._common_endpoint, this._config[enums_1.WA_Config_Enum.Request_Timeout], body);
+  send(body) {
+    return this.client.sendCAPIRequest(this.commonMethod, this.commonEndpoint, this.config[enums_1.WAConfigEnum.RequestTimeout], body);
   }
-  audio(body, recipient, reply_message_id) {
+  audio(body, recipient, replyMessageId) {
     return __awaiter(this, void 0, void 0, function* () {
-      return this._send(JSON.stringify(this._body_builder(enums_1.Message_Types_Enum.Audio, body, recipient.toString(), reply_message_id)));
+      return this.send(JSON.stringify(this.bodyBuilder(enums_1.MessageTypesEnum.Audio, body, recipient.toString(), replyMessageId)));
     });
   }
-  contacts(body, recipient, reply_message_id) {
+  contacts(body, recipient, replyMessageId) {
     return __awaiter(this, void 0, void 0, function* () {
-      return this._send(JSON.stringify(this._body_builder(enums_1.Message_Types_Enum.Contacts, body, recipient.toString(), reply_message_id)));
+      return this.send(JSON.stringify(this.bodyBuilder(enums_1.MessageTypesEnum.Contacts, body, recipient.toString(), replyMessageId)));
     });
   }
-  document(body, recipient, reply_message_id) {
+  document(body, recipient, replyMessageId) {
     return __awaiter(this, void 0, void 0, function* () {
-      return this._send(JSON.stringify(this._body_builder(enums_1.Message_Types_Enum.Document, body, recipient.toString(), reply_message_id)));
+      return this.send(JSON.stringify(this.bodyBuilder(enums_1.MessageTypesEnum.Document, body, recipient.toString(), replyMessageId)));
     });
   }
-  image(body, recipient, reply_message_id) {
+  image(body, recipient, replyMessageId) {
     return __awaiter(this, void 0, void 0, function* () {
-      return this._send(JSON.stringify(this._body_builder(enums_1.Message_Types_Enum.Image, body, recipient.toString(), reply_message_id)));
+      return this.send(JSON.stringify(this.bodyBuilder(enums_1.MessageTypesEnum.Image, body, recipient.toString(), replyMessageId)));
     });
   }
-  interactive(body, recipient, reply_message_id) {
+  interactive(body, recipient, replyMessageId) {
     return __awaiter(this, void 0, void 0, function* () {
-      return this._send(JSON.stringify(this._body_builder(enums_1.Message_Types_Enum.Interactive, body, recipient.toString(), reply_message_id)));
+      return this.send(JSON.stringify(this.bodyBuilder(enums_1.MessageTypesEnum.Interactive, body, recipient.toString(), replyMessageId)));
     });
   }
-  location(body, recipient, reply_message_id) {
+  location(body, recipient, replyMessageId) {
     return __awaiter(this, void 0, void 0, function* () {
-      return this._send(JSON.stringify(this._body_builder(enums_1.Message_Types_Enum.Location, body, recipient.toString(), reply_message_id)));
+      return this.send(JSON.stringify(this.bodyBuilder(enums_1.MessageTypesEnum.Location, body, recipient.toString(), replyMessageId)));
     });
   }
-  sticker(body, recipient, reply_message_id) {
+  sticker(body, recipient, replyMessageId) {
     return __awaiter(this, void 0, void 0, function* () {
-      return this._send(JSON.stringify(this._body_builder(enums_1.Message_Types_Enum.Sticker, body, recipient.toString(), reply_message_id)));
+      return this.send(JSON.stringify(this.bodyBuilder(enums_1.MessageTypesEnum.Sticker, body, recipient.toString(), replyMessageId)));
     });
   }
-  template(body, recipient, reply_message_id) {
+  template(body, recipient, replyMessageId) {
     return __awaiter(this, void 0, void 0, function* () {
-      return this._send(JSON.stringify(this._body_builder(enums_1.Message_Types_Enum.Template, body, recipient.toString(), reply_message_id)));
+      return this.send(JSON.stringify(this.bodyBuilder(enums_1.MessageTypesEnum.Template, body, recipient.toString(), replyMessageId)));
     });
   }
-  text(body, recipient, reply_message_id) {
+  text(body, recipient, replyMessageId) {
     return __awaiter(this, void 0, void 0, function* () {
-      logger.log(body);
-      return this._send(JSON.stringify(this._body_builder(enums_1.Message_Types_Enum.Text, body, recipient.toString(), reply_message_id)));
+      LOGGER.log(body);
+      return this.send(JSON.stringify(this.bodyBuilder(enums_1.MessageTypesEnum.Text, body, recipient.toString(), replyMessageId)));
     });
   }
-  video(body, recipient, reply_message_id) {
+  video(body, recipient, replyMessageId) {
     return __awaiter(this, void 0, void 0, function* () {
-      return this._send(JSON.stringify(this._body_builder(enums_1.Message_Types_Enum.Video, body, recipient.toString(), reply_message_id)));
+      return this.send(JSON.stringify(this.bodyBuilder(enums_1.MessageTypesEnum.Video, body, recipient.toString(), replyMessageId)));
     });
   }
   status(body) {
@@ -126,10 +126,10 @@ class Messages_API extends base_1.default {
       const mp = {
         messaging_product: 'whatsapp'
       };
-      const send_body = Object.assign(mp, body);
-      return this._send(JSON.stringify(send_body));
+      const bodyToSend = Object.assign(mp, body);
+      return this.send(JSON.stringify(bodyToSend));
     });
   }
 }
-exports.default = Messages_API;
+exports.default = MessagesAPI;
 module.exports = exports.default;

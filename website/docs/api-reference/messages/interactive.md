@@ -17,8 +17,8 @@ Send a message with two buttons to the phone number `12345678901`.
 ```js
 import WhatsApp from 'whatsapp';
 
-const sender_number_1 = 12345678901234567890;
-const wa = new WhatsApp( sender_number_1 );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
 const reply_btn_message =
 {
@@ -55,8 +55,8 @@ Send a list message with two sections and two products per section to the phone 
 ```js
 import WhatsApp from 'whatsapp';
 
-const sender_number_1 = 12345678901234567890;
-const wa = new WhatsApp( sender_number_1 );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
 const list_message =
 {
@@ -117,8 +117,8 @@ Send a single product message to the phone number `12345678901`.
 ```js
 import WhatsApp from 'whatsapp';
 
-const sender_number_1 = 12345678901234567890;
-const wa = new WhatsApp( sender_number_1 );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
 const prod_message =
 {
@@ -145,8 +145,8 @@ Send a multi-product message with two sections and two products per section to t
 ```js
 import WhatsApp from 'whatsapp';
 
-const sender_number_1 = 12345678901234567890;
-const wa = new WhatsApp( sender_number_1 );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
 const multi_prod_message =
 {
@@ -188,9 +188,9 @@ wa.messages.interactive( multi_prod_message, 12345678901 );
 ```
 
 ## Arguments
-1. `body` : [Interactive_Object](../types/interactive_object) — the object describing the interactive message to send.
+1. `body` : [InteractiveObject](../types/InteractiveObject) — the object describing the interactive message to send.
 2. `recipient` : number — the recipient's phone number with country code.
-3. `reply_message_id` : string (optional) — the received WhatsApp message Id to reply back to.
+3. `replyMessageId` : string (optional) — the received WhatsApp message Id to reply back to.
 
 ## Returns
 Promise — Server response object on success.

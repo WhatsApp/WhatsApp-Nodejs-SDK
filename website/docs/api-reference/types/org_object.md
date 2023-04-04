@@ -1,6 +1,6 @@
 ---
-id: org_object
-title: Org_Object
+id: OrgObject
+title: OrgObject
 ---
 
 # Org Object

@@ -1,6 +1,6 @@
 ---
-id: text_object
-title: Text_Object
+id: TextObject
+title: TextObject
 ---
 
 # Text Object

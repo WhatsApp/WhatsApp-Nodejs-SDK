@@ -1,6 +1,6 @@
 ---
-id: product_object
-title: Product_Object
+id: ProductObject
+title: ProductObject
 ---
 
 # Product Object

@@ -6,246 +6,243 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { Requester_Response_Interface } from '@/requester';
-import Base_API from './base';
+import { RequesterResponseInterface } from '@/requester';
+import BaseAPI from './base';
 import {
-	Component_Types_Enum,
-	HTTP_Methods_Enum,
-	Message_Types_Enum,
-	WA_Config_Enum,
+	ComponentTypesEnum,
+	HttpMethodsEnum,
+	MessageTypesEnum,
+	WAConfigEnum,
 } from '../types/enums';
-import { Request_Data } from '@/https_client';
+import { RequestData } from '@/HttpsClient';
 import * as m from '@/messages';
 import Logger from '../logger';
 
-const lib_name = 'MESSAGES_API';
-const log_local = false;
-const logger = new Logger(lib_name, process.env.DEBUG === 'true' || log_local);
+const LIB_NAME = 'MESSAGES_API';
+const LOG_LOCAL = false;
+const LOGGER = new Logger(LIB_NAME, process.env.DEBUG === 'true' || LOG_LOCAL);
 
-export default class Messages_API extends Base_API implements m.Messages_Class {
-	private readonly _common_method = HTTP_Methods_Enum.Post;
-	private readonly _common_endpoint = 'messages';
+export default class MessagesAPI extends BaseAPI implements m.MessagesClass {
+	private readonly commonMethod = HttpMethodsEnum.Post;
+	private readonly commonEndpoint = 'messages';
 
-	private _body_builder<
-		T extends Message_Types_Enum,
-		C extends Component_Types_Enum,
-	>(
+	bodyBuilder<T extends MessageTypesEnum, C extends ComponentTypesEnum>(
 		type: T,
 		payload:
-			| m.Audio_Media_Object
-			| [m.Contact_Object]
-			| m.Document_Media_Object
-			| m.Image_Media_Object
-			| m.Interactive_Object
-			| m.Location_Object
-			| m.Message_Template_Object<C>
-			| m.Sticker_Media_Object
-			| m.Text_Object
-			| m.Video_Media_Object,
-		to_number: string,
-		reply_message_id?: string,
+			| m.AudioMediaObject
+			| [m.ContactObject]
+			| m.DocumentMediaObject
+			| m.ImageMediaObject
+			| m.InteractiveObject
+			| m.LocationObject
+			| m.MessageTemplateObject<C>
+			| m.StickerMediaObject
+			| m.TextObject
+			| m.VideoMediaObject,
+		toNumber: string,
+		replyMessageId?: string,
 	) {
-		const body: m.Message_Request_Body<T> = {
+		const body: m.MessageRequestBody<T> = {
 			messaging_product: 'whatsapp',
 			recipient_type: 'individual',
-			to: to_number,
+			to: toNumber,
 			type: type,
 			[type]: payload,
 		};
 
-		if (reply_message_id) body['context'] = { message_id: reply_message_id };
+		if (replyMessageId) body['context'] = { message_id: replyMessageId };
 
 		return body;
 	}
 
-	private _send(
-		body: Request_Data,
-	): Promise<Requester_Response_Interface<m.Messages_Response>> {
-		return this._client.send_CAPI_request(
-			this._common_method,
-			this._common_endpoint,
-			this._config[WA_Config_Enum.Request_Timeout],
+	send(
+		body: RequestData,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+		return this.client.sendCAPIRequest(
+			this.commonMethod,
+			this.commonEndpoint,
+			this.config[WAConfigEnum.RequestTimeout],
 			body,
 		);
 	}
 
 	async audio(
-		body: m.Audio_Media_Object,
+		body: m.AudioMediaObject,
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>> {
-		return this._send(
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+		return this.send(
 			JSON.stringify(
-				this._body_builder(
-					Message_Types_Enum.Audio,
+				this.bodyBuilder(
+					MessageTypesEnum.Audio,
 					body,
 					recipient.toString(),
-					reply_message_id,
+					replyMessageId,
 				),
 			),
 		);
 	}
 
 	async contacts(
-		body: [m.Contact_Object],
+		body: [m.ContactObject],
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>> {
-		return this._send(
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+		return this.send(
 			JSON.stringify(
-				this._body_builder(
-					Message_Types_Enum.Contacts,
+				this.bodyBuilder(
+					MessageTypesEnum.Contacts,
 					body,
 					recipient.toString(),
-					reply_message_id,
+					replyMessageId,
 				),
 			),
 		);
 	}
 
 	async document(
-		body: m.Document_Media_Object,
+		body: m.DocumentMediaObject,
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>> {
-		return this._send(
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+		return this.send(
 			JSON.stringify(
-				this._body_builder(
-					Message_Types_Enum.Document,
+				this.bodyBuilder(
+					MessageTypesEnum.Document,
 					body,
 					recipient.toString(),
-					reply_message_id,
+					replyMessageId,
 				),
 			),
 		);
 	}
 
 	async image(
-		body: m.Image_Media_Object,
+		body: m.ImageMediaObject,
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>> {
-		return this._send(
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+		return this.send(
 			JSON.stringify(
-				this._body_builder(
-					Message_Types_Enum.Image,
+				this.bodyBuilder(
+					MessageTypesEnum.Image,
 					body,
 					recipient.toString(),
-					reply_message_id,
+					replyMessageId,
 				),
 			),
 		);
 	}
 
 	async interactive(
-		body: m.Interactive_Object,
+		body: m.InteractiveObject,
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>> {
-		return this._send(
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+		return this.send(
 			JSON.stringify(
-				this._body_builder(
-					Message_Types_Enum.Interactive,
+				this.bodyBuilder(
+					MessageTypesEnum.Interactive,
 					body,
 					recipient.toString(),
-					reply_message_id,
+					replyMessageId,
 				),
 			),
 		);
 	}
 
 	async location(
-		body: m.Location_Object,
+		body: m.LocationObject,
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>> {
-		return this._send(
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+		return this.send(
 			JSON.stringify(
-				this._body_builder(
-					Message_Types_Enum.Location,
+				this.bodyBuilder(
+					MessageTypesEnum.Location,
 					body,
 					recipient.toString(),
-					reply_message_id,
+					replyMessageId,
 				),
 			),
 		);
 	}
 
 	async sticker(
-		body: m.Sticker_Media_Object,
+		body: m.StickerMediaObject,
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>> {
-		return this._send(
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+		return this.send(
 			JSON.stringify(
-				this._body_builder(
-					Message_Types_Enum.Sticker,
+				this.bodyBuilder(
+					MessageTypesEnum.Sticker,
 					body,
 					recipient.toString(),
-					reply_message_id,
+					replyMessageId,
 				),
 			),
 		);
 	}
 
 	async template(
-		body: m.Message_Template_Object<Component_Types_Enum>,
+		body: m.MessageTemplateObject<ComponentTypesEnum>,
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>> {
-		return this._send(
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+		return this.send(
 			JSON.stringify(
-				this._body_builder(
-					Message_Types_Enum.Template,
+				this.bodyBuilder(
+					MessageTypesEnum.Template,
 					body,
 					recipient.toString(),
-					reply_message_id,
+					replyMessageId,
 				),
 			),
 		);
 	}
 
 	async text(
-		body: m.Text_Object,
+		body: m.TextObject,
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>> {
-		logger.log(body);
-		return this._send(
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+		LOGGER.log(body);
+		return this.send(
 			JSON.stringify(
-				this._body_builder(
-					Message_Types_Enum.Text,
+				this.bodyBuilder(
+					MessageTypesEnum.Text,
 					body,
 					recipient.toString(),
-					reply_message_id,
+					replyMessageId,
 				),
 			),
 		);
 	}
 
 	async video(
-		body: m.Video_Media_Object,
+		body: m.VideoMediaObject,
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>> {
-		return this._send(
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+		return this.send(
 			JSON.stringify(
-				this._body_builder(
-					Message_Types_Enum.Video,
+				this.bodyBuilder(
+					MessageTypesEnum.Video,
 					body,
 					recipient.toString(),
-					reply_message_id,
+					replyMessageId,
 				),
 			),
 		);
 	}
 
 	async status(
-		body: m.Status_Object,
-	): Promise<Requester_Response_Interface<m.Messages_Response>> {
-		const mp: m.General_Message_Body = { messaging_product: 'whatsapp' };
-		const send_body: m.Status_Request_Body = Object.assign(mp, body);
+		body: m.StatusObject,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+		const mp: m.GeneralMessageBody = { messaging_product: 'whatsapp' };
+		const bodyToSend: m.StatusRequestBody = Object.assign(mp, body);
 
-		return this._send(JSON.stringify(send_body));
+		return this.send(JSON.stringify(bodyToSend));
 	}
 }

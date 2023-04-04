@@ -46,52 +46,52 @@ var __importDefault = this && this.__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.generate_x_hub_256_sig = exports.import_config = void 0;
+exports.generateXHub256Sig = exports.importConfig = void 0;
 const crypto = __importStar(require("crypto"));
 const enums_1 = require("./types/enums");
 const logger_1 = __importDefault(require("./logger"));
-const lib_name = 'UTILS';
-const log_local = false;
-const logger = new logger_1.default(lib_name, process.env.DEBUG === 'true' || log_local);
-const default_base_url = 'graph.facebook.com';
-const default_listener_port = 3000;
-const default_max_retries_after_wait = 30;
-const default_request_timeout = 20000;
-const empty_config_checker = sender_number_id => {
-  if ((process.env.WA_PHONE_NUMBER_ID === undefined || process.env.WA_PHONE_NUMBER_ID === '') && sender_number_id == undefined) {
-    logger.log(`Environmental variable: WA_PHONE_NUMBER_ID and/or sender phone number id arguement is undefined.`);
+const LIB_NAME = 'UTILS';
+const LOG_LOCAL = false;
+const LOGGER = new logger_1.default(LIB_NAME, process.env.DEBUG === 'true' || LOG_LOCAL);
+const DEFAULT_BASE_URL = 'graph.facebook.com';
+const DEFAULT_LISTENER_PORT = 3000;
+const DEFAULT_MAX_RETRIES_AFTER_WAIT = 30;
+const DEFAULT_REQUEST_TIMEOUT = 20000;
+const emptyConfigChecker = senderNumberId => {
+  if ((process.env.WA_PHONE_NUMBER_ID === undefined || process.env.WA_PHONE_NUMBER_ID === '') && senderNumberId == undefined) {
+    LOGGER.log(`Environmental variable: WA_PHONE_NUMBER_ID and/or sender phone number id arguement is undefined.`);
     throw new Error('Missing WhatsApp sender phone number Id.');
   }
-  for (const value of Object.values(enums_1.WA_Required_Config_Enum)) {
-    logger.log(value + ' ---- ' + process.env[`${value}`]);
+  for (const value of Object.values(enums_1.WARequiredConfigEnum)) {
+    LOGGER.log(value + ' ---- ' + process.env[`${value}`]);
     if (process.env[`${value}`] === undefined || process.env[`${value}`] === '') {
-      logger.log(`Environmental variable: ${value} is undefined`);
+      LOGGER.log(`Environmental variable: ${value} is undefined`);
       throw new Error('Invalid configuration.');
     }
   }
 };
-const import_config = sender_number_id => {
-  empty_config_checker(sender_number_id);
+const importConfig = senderNumberId => {
+  emptyConfigChecker(senderNumberId);
   const config = {
-    [enums_1.WA_Config_Enum.Base_URL]: process.env.WA_BASE_URL || default_base_url,
-    [enums_1.WA_Config_Enum.App_Id]: process.env.M4D_APP_ID || '',
-    [enums_1.WA_Config_Enum.App_Secret]: process.env.M4D_APP_SECRET || '',
-    [enums_1.WA_Config_Enum.Phone_Number_Id]: sender_number_id || parseInt(process.env.WA_PHONE_NUMBER_ID || ''),
-    [enums_1.WA_Config_Enum.Business_Acct_Id]: process.env.WA_BUSINESS_ACCOUNT_ID || '',
-    [enums_1.WA_Config_Enum.API_Version]: process.env.CLOUD_API_VERSION || '',
-    [enums_1.WA_Config_Enum.Access_Token]: process.env.CLOUD_API_ACCESS_TOKEN || '',
-    [enums_1.WA_Config_Enum.Webhook_Endpoint]: process.env.WEBHOOK_ENDPOINT || '',
-    [enums_1.WA_Config_Enum.Webhook_Verification_Token]: process.env.WEBHOOK_VERIFICATION_TOKEN || '',
-    [enums_1.WA_Config_Enum.Listener_Port]: parseInt(process.env.LISTENER_PORT || '') || default_listener_port,
-    [enums_1.WA_Config_Enum.Max_Retries_After_Wait]: parseInt(process.env.MAX_RETRIES_AFTER_WAIT || '') || default_max_retries_after_wait,
-    [enums_1.WA_Config_Enum.Request_Timeout]: parseInt(process.env.REQUEST_TIMEOUT || '') || default_request_timeout,
-    [enums_1.WA_Config_Enum.Debug]: process.env.DEBUG === 'true'
+    [enums_1.WAConfigEnum.BaseURL]: process.env.WA_BASE_URL || DEFAULT_BASE_URL,
+    [enums_1.WAConfigEnum.AppId]: process.env.M4D_APP_ID || '',
+    [enums_1.WAConfigEnum.AppSecret]: process.env.M4D_APP_SECRET || '',
+    [enums_1.WAConfigEnum.PhoneNumberId]: senderNumberId || parseInt(process.env.WA_PHONE_NUMBER_ID || ''),
+    [enums_1.WAConfigEnum.BusinessAcctId]: process.env.WA_BUSINESS_ACCOUNT_ID || '',
+    [enums_1.WAConfigEnum.APIVersion]: process.env.CLOUD_API_VERSION || '',
+    [enums_1.WAConfigEnum.AccessToken]: process.env.CLOUD_API_ACCESS_TOKEN || '',
+    [enums_1.WAConfigEnum.WebhookEndpoint]: process.env.WEBHOOK_ENDPOINT || '',
+    [enums_1.WAConfigEnum.WebhookVerificationToken]: process.env.WEBHOOK_VERIFICATION_TOKEN || '',
+    [enums_1.WAConfigEnum.ListenerPort]: parseInt(process.env.LISTENER_PORT || '') || DEFAULT_LISTENER_PORT,
+    [enums_1.WAConfigEnum.MaxRetriesAfterWait]: parseInt(process.env.MAX_RETRIES_AFTER_WAIT || '') || DEFAULT_MAX_RETRIES_AFTER_WAIT,
+    [enums_1.WAConfigEnum.RequestTimeout]: parseInt(process.env.REQUEST_TIMEOUT || '') || DEFAULT_REQUEST_TIMEOUT,
+    [enums_1.WAConfigEnum.Debug]: process.env.DEBUG === 'true'
   };
-  logger.log(`Configuration loaded for App Id ${config[enums_1.WA_Config_Enum.App_Id]}`);
+  LOGGER.log(`Configuration loaded for App Id ${config[enums_1.WAConfigEnum.AppId]}`);
   return config;
 };
-exports.import_config = import_config;
-const generate_x_hub_256_sig = (body, app_secret) => {
-  return crypto.createHmac('sha256', app_secret).update(body, 'utf-8').digest('hex');
+exports.importConfig = importConfig;
+const generateXHub256Sig = (body, appSecret) => {
+  return crypto.createHmac('sha256', appSecret).update(body, 'utf-8').digest('hex');
 };
-exports.generate_x_hub_256_sig = generate_x_hub_256_sig;
+exports.generateXHub256Sig = generateXHub256Sig;

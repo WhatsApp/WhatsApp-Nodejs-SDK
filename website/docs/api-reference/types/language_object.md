@@ -1,6 +1,6 @@
 ---
 id: language_object
-title: Language_Object
+title: LanguageObject
 ---
 
 # Language Object

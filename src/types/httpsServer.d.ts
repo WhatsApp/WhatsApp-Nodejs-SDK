@@ -8,11 +8,11 @@
 
 import http from 'http';
 
-export declare class HTTP_Server_Class {
+export declare class HttpserverClass {
 	constructor(
 		port: number,
 		cb: (req: http.IncomingMessage, res: http.ServerResponse) => any,
 	);
-	is_listening: () => boolean;
+	isListening: () => boolean;
 	close: (cb: (err?: Error) => any) => void;
 }

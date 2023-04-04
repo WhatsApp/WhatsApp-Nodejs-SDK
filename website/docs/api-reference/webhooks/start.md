@@ -16,14 +16,14 @@ Start the web server and print out valid message webhook event bodies.
 ```js
 import WhatsApp from 'whatsapp';
 
-const sender_number_1 = 12345678901234567890;
-const wa = new WhatsApp( sender_number_1 );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
-async function webhook_callback_function( status_code, req_headers, body, resp, err )
+async function webhook_callback_function( statusCode, reqHeaders, body, resp, err )
 {
     console.log(
-        `Incoming webhook response status code: ${ status_code }\n\nHeaders:
-        ${ JSON.stringify( req_headers ) }`
+        `Incoming webhook response status code: ${ statusCode }\n\nHeaders:
+        ${ JSON.stringify( reqHeaders ) }`
     );
 
     if( resp )
@@ -32,7 +32,7 @@ async function webhook_callback_function( status_code, req_headers, body, resp, 
             console.log( `Messages Object: ${ JSON.stringify( body.entry[ 0 ].changes[ 0 ].value.messages ) }` );
 
         // Send a 200 so the webhooks service knows you received the message
-        resp.writeHead( status_code );
+        resp.writeHead( statusCode );
         resp.end();
     }
 
@@ -47,7 +47,7 @@ wa.webhooks.start( webhook_callback_function );
 ```
 
 ## Arguments
-1. `webhook_callback_function` : [Webhook_Callback_Function](../types/webhook_callback_function) — The callback that gets called during POST requests made to the webhook listener endpoint.
+1. `webhook_callback_function` : [WebhookCallbackFunction](../types/webhook_callback_function) — The callback that gets called during POST requests made to the webhook listener endpoint.
 
 ## Returns
 boolean — the HTTP server running state.

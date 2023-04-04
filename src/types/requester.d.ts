@@ -7,15 +7,15 @@
  */
 
 import {
-	Request_Headers,
-	HTTPS_Client_Response_Class,
-	Response_JSON_Body,
-} from '@/https_client';
-import { HTTP_Methods_Enum } from './enums';
+	RequestHeaders,
+	HttpsClientResponseClass,
+	ResponseJSONBody,
+} from '@/HttpsClient';
+import { HttpMethodsEnum } from './enums';
 
-export declare type General_Request_Body = Record<string, any>;
+export declare type GeneralRequestBody = Record<string, any>;
 
-export declare interface General_Header_Interface extends Request_Headers {
+export declare interface GeneralHeaderInterface extends RequestHeaders {
 	/**
 	 * Authorization token. This is required for all HTTP requests made to the graph API.
 	 * @default 'Bearer '
@@ -36,25 +36,24 @@ export declare interface General_Header_Interface extends Request_Headers {
 	'User-Agent': string;
 }
 
-export declare interface Requester_Response_Interface<
-	T extends Response_JSON_Body,
-> extends HTTPS_Client_Response_Class {
-	response_body_to_JSON: () => Promise<T>;
+export declare interface RequesterResponseInterface<T extends ResponseJSONBody>
+	extends HttpsClientResponseClass {
+	responseBodyToJSON: () => Promise<T>;
 }
 
-export declare class Requester_Class {
+export declare class RequesterClass {
 	constructor(
 		host: string,
-		api_version: string,
-		phone_number_id: number,
-		access_token: string,
-		business_acct_id: string,
-		user_agent: string,
+		apiVersion: string,
+		phoneNumberId: number,
+		accessToken: string,
+		businessAcctId: string,
+		userAgent: string,
 	);
-	send_CAPI_request: (
-		method: HTTP_Methods_Enum,
+	sendCAPIRequest: (
+		method: HttpMethodsEnum,
 		path: string,
 		timeout: number,
 		body?: any,
-	) => Promise<Requester_Response_Interface<any>>;
+	) => Promise<RequesterResponseInterface<any>>;
 }

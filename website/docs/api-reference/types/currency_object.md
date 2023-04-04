@@ -1,6 +1,6 @@
 ---
 id: currency_object
-title: Currency_Object
+title: CurrencyObject
 ---
 
 # Currency Object

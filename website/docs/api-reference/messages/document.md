@@ -20,8 +20,8 @@ Send a Meta-hosted message and then send an externally hosted document to the ph
 ```js
 import WhatsApp from 'whatsapp';
 
-const sender_number_1 = 12345678901234567890;
-const wa = new WhatsApp( sender_number_1 );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
 const meta_hosted_document =
 {
@@ -42,9 +42,9 @@ wa.messages.document( self_hosted_document, 12345678901 );
 ```
 
 ## Arguments
-1. `body` : [Document_Media_Object](../types/document_media_object) — the object describing the document to send.
+1. `body` : [DocumentMediaObject](../types/DocumentMediaObject) — the object describing the document to send.
 2. `recipient` : number — the recipient's phone number with country code.
-3. `reply_message_id` : string (optional) — the received WhatsApp message Id to reply back to.
+3. `replyMessageId` : string (optional) — the received WhatsApp message Id to reply back to.
 
 ## Returns
 Promise — Server response object on success.

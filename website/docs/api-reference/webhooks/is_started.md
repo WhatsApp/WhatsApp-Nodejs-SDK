@@ -1,9 +1,9 @@
 ---
-id: is_started
-title: .is_started
+id: isStarted
+title: .isStarted
 ---
 
-# WhatsApp.webhooks.is_started()
+# WhatsApp.webhooks.isStarted()
 Gets the status of the webhook web server.
 
 ## Example:
@@ -12,14 +12,14 @@ Start the web server and check if it's running after 5 seconds from application 
 ```js
 import WhatsApp from 'whatsapp';
 
-const sender_number_1 = 12345678901234567890;
-const wa = new WhatsApp( sender_number_1 );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
-async function webhook_callback_function( status_code, req_headers, body, resp, err )
+async function webhook_callback_function( statusCode, reqHeaders, body, resp, err )
 {
     console.log(
-        `Incoming webhook response status code: ${ status_code }\n\nHeaders:
-        ${ JSON.stringify( req_headers ) }`
+        `Incoming webhook response status code: ${ statusCode }\n\nHeaders:
+        ${ JSON.stringify( reqHeaders ) }`
     );
 }
 
@@ -27,7 +27,7 @@ async function check_status()
 {
     setTimeout( () =>
     {
-        console.log( `Webhook listener is running - ${ wa.webhooks.is_started() }` );
+        console.log( `Webhook listener is running - ${ wa.webhooks.isStarted() }` );
     }, 5000 );
 }
 

@@ -6,10 +6,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export declare class WhatsApp_Class {
-	constructor(sender_number_id?: number);
+export declare class WhatsAppClass {
+	constructor(senderNumberId?: number);
 	version: () => string;
-	update_timeout(ms: number): boolean;
-	update_sender_number_id(phone_number_id: number): boolean;
-	update_access_token(access_token: string): boolean;
+	updateTimeout(ms: number): boolean;
+	updateSenderNumberId(phoneNumberId: number): boolean;
+	updateAccessToken(accessToken: string): boolean;
 }

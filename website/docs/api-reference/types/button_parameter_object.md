@@ -1,6 +1,6 @@
 ---
 id: button_parameter_object
-title: Button_Parameter_Object
+title: ButtonParameterObject
 ---
 
 # Button Parameter Object

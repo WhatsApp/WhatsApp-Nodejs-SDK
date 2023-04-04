@@ -6,9 +6,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { Requester_Class } from '@/requester';
-import { WA_Config_Type } from '@/config';
+import { RequesterClass } from '@/requester';
+import { WAConfigType } from '@/config';
 
-export declare class Base_Class {
-	constructor(config: WA_Config_Type, HTTPS_Client?: Requester_Class);
+export declare class BaseClass {
+	constructor(config: WAConfigType, HttpsClient?: RequesterClass);
 }

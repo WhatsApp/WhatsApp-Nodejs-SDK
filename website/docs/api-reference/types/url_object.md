@@ -1,6 +1,6 @@
 ---
-id: url_object
-title: URL_Object
+id: URLObject
+title: URLObject
 ---
 
 # URL Object

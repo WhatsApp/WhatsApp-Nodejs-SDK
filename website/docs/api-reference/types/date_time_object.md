@@ -1,6 +1,6 @@
 ---
 id: date_time_object
-title: Date_Time_Object
+title: DateTimeObject
 ---
 
 # Date Time Object

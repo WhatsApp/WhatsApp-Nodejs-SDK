@@ -1,6 +1,6 @@
 ---
-id: contact_object
-title: Contact_Object
+id: ContactObject
+title: ContactObject
 ---
 
 # Contact Object
@@ -53,10 +53,10 @@ The object required for sharing contact(s) information.
 ```
 
 ## Properties
-1. `addresses` : [Addresses_Object](addresses_object)[] (optional) — array of the contact's addresses.
+1. `addresses` : [AddressesObject](addresses_object)[] (optional) — array of the contact's addresses.
 2. `birthday` : string (optional) — birthday in YYYY-MM-DD format.
-3. `emails` : [Email_Object](email_object)[] (optional) — array of the contact's emails.
-4. `name` : [Name_Object](name_object) — contact's name.
-5. `org` : [Org_Object](org_object) (optional) — the contact's organization.
-6. `phones` : [Phone_Object](phone_object)[] (optional) — array of the contact's phone numbers.
-7. `urls`[] : [URL_Object](url_object)[] (optional) — array of the contact's URLs.
+3. `emails` : [EmailObject](EmailObject)[] (optional) — array of the contact's emails.
+4. `name` : [NameObject](NameObject) — contact's name.
+5. `org` : [OrgObject](OrgObject) (optional) — the contact's organization.
+6. `phones` : [PhoneObject](PhoneObject)[] (optional) — array of the contact's phone numbers.
+7. `urls`[] : [URLObject](URLObject)[] (optional) — array of the contact's URLs.

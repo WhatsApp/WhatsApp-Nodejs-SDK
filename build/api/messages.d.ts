@@ -5,66 +5,84 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import { Requester_Response_Interface } from '@/requester';
-import Base_API from './base';
-import { Component_Types_Enum } from '../types/enums';
+import { RequesterResponseInterface } from '@/requester';
+import BaseAPI from './base';
+import { ComponentTypesEnum, MessageTypesEnum } from '../types/enums';
+import { RequestData } from '@/HttpsClient';
 import * as m from '@/messages';
-export default class Messages_API extends Base_API implements m.Messages_Class {
-	private readonly _common_method;
-	private readonly _common_endpoint;
-	private _body_builder;
-	private _send;
+export default class MessagesAPI extends BaseAPI implements m.MessagesClass {
+	private readonly commonMethod;
+	private readonly commonEndpoint;
+	bodyBuilder<T extends MessageTypesEnum, C extends ComponentTypesEnum>(
+		type: T,
+		payload:
+			| m.AudioMediaObject
+			| [m.ContactObject]
+			| m.DocumentMediaObject
+			| m.ImageMediaObject
+			| m.InteractiveObject
+			| m.LocationObject
+			| m.MessageTemplateObject<C>
+			| m.StickerMediaObject
+			| m.TextObject
+			| m.VideoMediaObject,
+		toNumber: string,
+		replyMessageId?: string,
+	): m.MessageRequestBody<T>;
+	send(
+		body: RequestData,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>>;
 	audio(
-		body: m.Audio_Media_Object,
+		body: m.AudioMediaObject,
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>>;
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>>;
 	contacts(
-		body: [m.Contact_Object],
+		body: [m.ContactObject],
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>>;
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>>;
 	document(
-		body: m.Document_Media_Object,
+		body: m.DocumentMediaObject,
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>>;
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>>;
 	image(
-		body: m.Image_Media_Object,
+		body: m.ImageMediaObject,
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>>;
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>>;
 	interactive(
-		body: m.Interactive_Object,
+		body: m.InteractiveObject,
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>>;
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>>;
 	location(
-		body: m.Location_Object,
+		body: m.LocationObject,
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>>;
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>>;
 	sticker(
-		body: m.Sticker_Media_Object,
+		body: m.StickerMediaObject,
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>>;
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>>;
 	template(
-		body: m.Message_Template_Object<Component_Types_Enum>,
+		body: m.MessageTemplateObject<ComponentTypesEnum>,
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>>;
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>>;
 	text(
-		body: m.Text_Object,
+		body: m.TextObject,
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>>;
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>>;
 	video(
-		body: m.Video_Media_Object,
+		body: m.VideoMediaObject,
 		recipient: number,
-		reply_message_id?: string,
-	): Promise<Requester_Response_Interface<m.Messages_Response>>;
+		replyMessageId?: string,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>>;
 	status(
-		body: m.Status_Object,
-	): Promise<Requester_Response_Interface<m.Messages_Response>>;
+		body: m.StatusObject,
+	): Promise<RequesterResponseInterface<m.MessagesResponse>>;
 }

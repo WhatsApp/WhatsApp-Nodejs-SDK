@@ -14,74 +14,74 @@ if (
 	dotenv.config();
 }
 
-import { WA_Config_Type } from '@/config';
-import { import_config } from './utils';
-import { SDK_Version } from './version';
+import { WAConfigType } from '@/config';
+import { importConfig } from './utils';
+import { SDKVersion } from './version';
 import Logger from './logger';
 import Requester from './requester';
-import Messages_API from './api/messages';
-import { WhatsApp_Class } from '@/WhatsApp';
-import Webhooks_API from './api/webhooks';
-import { WA_Config_Enum } from './types/enums';
+import MessagesAPI from './api/messages';
+import { WhatsAppClass } from '@/WhatsApp';
+import WebhooksAPI from './api/webhooks';
+import { WAConfigEnum } from './types/enums';
 
-const lib_name = 'WHATSAPP';
-const log_local = false;
-const logger = new Logger(lib_name, process.env.DEBUG === 'true' || log_local);
+const LIB_NAME = 'WHATSAPP';
+const LOG_LOCAL = false;
+const LOGGER = new Logger(LIB_NAME, process.env.DEBUG === 'true' || LOG_LOCAL);
 
-const header_prefix = 'WA_SDK';
+const headerPrefix = 'WA_SDK';
 
-export default class WhatsApp implements WhatsApp_Class {
-	private _config: WA_Config_Type;
-	private _version: Readonly<string>;
-	private _requester: Readonly<Requester>;
+export default class WhatsApp implements WhatsAppClass {
+	config: WAConfigType;
+	sdkVersion: Readonly<string>;
+	requester: Readonly<Requester>;
 
-	readonly messages: Messages_API;
-	readonly webhooks: Webhooks_API;
+	readonly messages: MessagesAPI;
+	readonly webhooks: WebhooksAPI;
 
-	constructor(sender_number_id?: number) {
-		this._version = SDK_Version;
-		this._config = import_config(sender_number_id);
-		this._requester = new Requester(
-			this._config[WA_Config_Enum.Base_URL],
-			this._config[WA_Config_Enum.API_Version],
-			this._config[WA_Config_Enum.Phone_Number_Id],
-			this._config[WA_Config_Enum.Access_Token],
-			this._config[WA_Config_Enum.Business_Acct_Id],
-			this.user_agent(),
+	constructor(senderNumberId?: number) {
+		this.sdkVersion = SDKVersion;
+		this.config = importConfig(senderNumberId);
+		this.requester = new Requester(
+			this.config[WAConfigEnum.BaseURL],
+			this.config[WAConfigEnum.APIVersion],
+			this.config[WAConfigEnum.PhoneNumberId],
+			this.config[WAConfigEnum.AccessToken],
+			this.config[WAConfigEnum.BusinessAcctId],
+			this.userAgent(),
 		);
 
-		this.messages = new Messages_API(this._config, this._requester);
-		this.webhooks = new Webhooks_API(this._config, this.user_agent());
+		this.messages = new MessagesAPI(this.config, this.requester);
+		this.webhooks = new WebhooksAPI(this.config, this.userAgent());
 
-		logger.log('WhatsApp Node.js SDK instantiated!');
+		LOGGER.log('WhatsApp Node.js SDK instantiated!');
 	}
 
 	version(): string {
-		return this._version;
+		return this.sdkVersion;
 	}
 
-	private user_agent(): string {
-		const user_agent_string = `${header_prefix}/${this.version()} (Node.js ${
+	private userAgent(): string {
+		const userAgentString = `${headerPrefix}/${this.version()} (Node.js ${
 			process.version
 		})`;
-		return user_agent_string;
+		return userAgentString;
 	}
 
-	update_timeout(ms: number): boolean {
-		this._config[WA_Config_Enum.Request_Timeout] = ms;
-		logger.log(`Updated request timeout to ${ms}ms`);
+	updateTimeout(ms: number): boolean {
+		this.config[WAConfigEnum.RequestTimeout] = ms;
+		LOGGER.log(`Updated request timeout to ${ms}ms`);
 		return true;
 	}
 
-	update_sender_number_id(phone_number_id: number): boolean {
-		this._config[WA_Config_Enum.Phone_Number_Id] = phone_number_id;
-		logger.log(`Updated sender phone number id to ${phone_number_id}`);
+	updateSenderNumberId(phoneNumberId: number): boolean {
+		this.config[WAConfigEnum.PhoneNumberId] = phoneNumberId;
+		LOGGER.log(`Updated sender phone number id to ${phoneNumberId}`);
 		return true;
 	}
 
-	update_access_token(access_token: string): boolean {
-		this._config[WA_Config_Enum.Access_Token] = access_token;
-		logger.log(`Updated access token`);
+	updateAccessToken(accessToken: string): boolean {
+		this.config[WAConfigEnum.AccessToken] = accessToken;
+		LOGGER.log(`Updated access token`);
 		return true;
 	}
 }

@@ -57,39 +57,39 @@ const requester_1 = __importDefault(require("./requester"));
 const messages_1 = __importDefault(require("./api/messages"));
 const webhooks_1 = __importDefault(require("./api/webhooks"));
 const enums_1 = require("./types/enums");
-const lib_name = 'WHATSAPP';
-const log_local = false;
-const logger = new logger_1.default(lib_name, process.env.DEBUG === 'true' || log_local);
-const header_prefix = 'WA_SDK';
+const LIB_NAME = 'WHATSAPP';
+const LOG_LOCAL = false;
+const LOGGER = new logger_1.default(LIB_NAME, process.env.DEBUG === 'true' || LOG_LOCAL);
+const headerPrefix = 'WA_SDK';
 class WhatsApp {
-  constructor(sender_number_id) {
-    this._version = version_1.SDK_Version;
-    this._config = (0, utils_1.import_config)(sender_number_id);
-    this._requester = new requester_1.default(this._config[enums_1.WA_Config_Enum.Base_URL], this._config[enums_1.WA_Config_Enum.API_Version], this._config[enums_1.WA_Config_Enum.Phone_Number_Id], this._config[enums_1.WA_Config_Enum.Access_Token], this._config[enums_1.WA_Config_Enum.Business_Acct_Id], this.user_agent());
-    this.messages = new messages_1.default(this._config, this._requester);
-    this.webhooks = new webhooks_1.default(this._config, this.user_agent());
-    logger.log('WhatsApp Node.js SDK instantiated!');
+  constructor(senderNumberId) {
+    this.sdkVersion = version_1.SDKVersion;
+    this.config = (0, utils_1.importConfig)(senderNumberId);
+    this.requester = new requester_1.default(this.config[enums_1.WAConfigEnum.BaseURL], this.config[enums_1.WAConfigEnum.APIVersion], this.config[enums_1.WAConfigEnum.PhoneNumberId], this.config[enums_1.WAConfigEnum.AccessToken], this.config[enums_1.WAConfigEnum.BusinessAcctId], this.userAgent());
+    this.messages = new messages_1.default(this.config, this.requester);
+    this.webhooks = new webhooks_1.default(this.config, this.userAgent());
+    LOGGER.log('WhatsApp Node.js SDK instantiated!');
   }
   version() {
-    return this._version;
+    return this.sdkVersion;
   }
-  user_agent() {
-    const user_agent_string = `${header_prefix}/${this.version()} (Node.js ${process.version})`;
-    return user_agent_string;
+  userAgent() {
+    const userAgentString = `${headerPrefix}/${this.version()} (Node.js ${process.version})`;
+    return userAgentString;
   }
-  update_timeout(ms) {
-    this._config[enums_1.WA_Config_Enum.Request_Timeout] = ms;
-    logger.log(`Updated request timeout to ${ms}ms`);
+  updateTimeout(ms) {
+    this.config[enums_1.WAConfigEnum.RequestTimeout] = ms;
+    LOGGER.log(`Updated request timeout to ${ms}ms`);
     return true;
   }
-  update_sender_number_id(phone_number_id) {
-    this._config[enums_1.WA_Config_Enum.Phone_Number_Id] = phone_number_id;
-    logger.log(`Updated sender phone number id to ${phone_number_id}`);
+  updateSenderNumberId(phoneNumberId) {
+    this.config[enums_1.WAConfigEnum.PhoneNumberId] = phoneNumberId;
+    LOGGER.log(`Updated sender phone number id to ${phoneNumberId}`);
     return true;
   }
-  update_access_token(access_token) {
-    this._config[enums_1.WA_Config_Enum.Access_Token] = access_token;
-    logger.log(`Updated access token`);
+  updateAccessToken(accessToken) {
+    this.config[enums_1.WAConfigEnum.AccessToken] = accessToken;
+    LOGGER.log(`Updated access token`);
     return true;
   }
 }

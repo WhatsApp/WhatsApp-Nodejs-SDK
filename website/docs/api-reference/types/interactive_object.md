@@ -1,6 +1,6 @@
 ---
-id: interactive_object
-title: Interactive_Object
+id: InteractiveObject
+title: InteractiveObject
 ---
 
 # Interactive Object
@@ -63,10 +63,10 @@ The object describing a list message interactive object.
 
 ### Properties
 1. `type` : "list" — interactive object type of *list*.
-2. `body` : [Simple_Text_Object](simple_text_object) — content of the message. Emojis and markdown are supported. Maximum length: 1024 characters.
-3. `footer` : [Simple_Text_Object](simple_text_object) (optional) — footer content. Emojis, markdown, and links are supported. Maximum length: 60 characters.
-4. `header` : [Header_Object](header_object) (optional) — header content displayed on top of a message.
-5. `action` : [Action_Object](action_object#reply-button) — action you want the user to perform after reading the message.
+2. `body` : [SimpleTextObject](SimpleTextObject) — content of the message. Emojis and markdown are supported. Maximum length: 1024 characters.
+3. `footer` : [SimpleTextObject](SimpleTextObject) (optional) — footer content. Emojis, markdown, and links are supported. Maximum length: 60 characters.
+4. `header` : [HeaderObject](HeaderObject) (optional) — header content displayed on top of a message.
+5. `action` : [ActionObject](ActionObject#reply-button) — action you want the user to perform after reading the message.
 
 ## Multi-product
 The object describing a multi-product interactive object.
@@ -109,10 +109,10 @@ The object describing a multi-product interactive object.
 
 ### Properties
 1. `type` : "product_list" — interactive object type of *product_list*.
-2. `body` : [Simple_Text_Object](simple_text_object) — content of the message. Emojis and markdown are supported. Maximum length: 1024 characters.
-3. `footer` : [Simple_Text_Object](simple_text_object) (optional) — footer content. Emojis, markdown, and links are supported. Maximum length: 60 characters.
-4. `header` : [Header_Object](header_object) — header content displayed on top of a message.
-5. `action` : [Action_Object](action_object#reply-button) — action you want the user to perform after reading the message.
+2. `body` : [SimpleTextObject](SimpleTextObject) — content of the message. Emojis and markdown are supported. Maximum length: 1024 characters.
+3. `footer` : [SimpleTextObject](SimpleTextObject) (optional) — footer content. Emojis, markdown, and links are supported. Maximum length: 60 characters.
+4. `header` : [HeaderObject](HeaderObject) — header content displayed on top of a message.
+5. `action` : [ActionObject](ActionObject#reply-button) — action you want the user to perform after reading the message.
 
 ## Single product
 The object describing a single product interactive object.
@@ -136,10 +136,10 @@ The object describing a single product interactive object.
 
 ### Properties
 1. `type` : "product" — interactive object type of *product*.
-2. `body` : [Simple_Text_Object](simple_text_object) (optional) — content of the message. Emojis and markdown are supported. Maximum length: 1024 characters.
-3. `footer` : [Simple_Text_Object](simple_text_object) (optional) — footer content. Emojis, markdown, and links are supported. Maximum length: 60 characters.
-4. `header` : [Header_Object](header_object) (optional) — header content displayed on top of a message.
-5. `action` : [Action_Object](action_object#reply-button) — action you want the user to perform after reading the message.
+2. `body` : [SimpleTextObject](SimpleTextObject) (optional) — content of the message. Emojis and markdown are supported. Maximum length: 1024 characters.
+3. `footer` : [SimpleTextObject](SimpleTextObject) (optional) — footer content. Emojis, markdown, and links are supported. Maximum length: 60 characters.
+4. `header` : [HeaderObject](HeaderObject) (optional) — header content displayed on top of a message.
+5. `action` : [ActionObject](ActionObject#reply-button) — action you want the user to perform after reading the message.
 
 ## Reply button
 The object describing a reply button interactive object.
@@ -174,7 +174,7 @@ The object describing a reply button interactive object.
 
 ### Properties
 1. `type` : "button" — interactive object type of *button*.
-2. `body` : [Simple_Text_Object](simple_text_object) — content of the message. Emojis and markdown are supported. Maximum length: 1024 characters.
-3. `footer` : [Simple_Text_Object](simple_text_object) (optional) — footer content. Emojis, markdown, and links are supported. Maximum length: 60 characters.
-4. `header` : [Header_Object](header_object) (optional) — header content displayed on top of a message.
-5. `action` : [Action_Object](action_object#reply-button) — action you want the user to perform after reading the message.
+2. `body` : [SimpleTextObject](SimpleTextObject) — content of the message. Emojis and markdown are supported. Maximum length: 1024 characters.
+3. `footer` : [SimpleTextObject](SimpleTextObject) (optional) — footer content. Emojis, markdown, and links are supported. Maximum length: 60 characters.
+4. `header` : [HeaderObject](HeaderObject) (optional) — header content displayed on top of a message.
+5. `action` : [ActionObject](ActionObject#reply-button) — action you want the user to perform after reading the message.

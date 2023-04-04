@@ -1,6 +1,6 @@
 ---
-id: name_object
-title: Name_Object
+id: NameObject
+title: NameObject
 ---
 
 # Name Object

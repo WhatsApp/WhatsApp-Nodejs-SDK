@@ -1,6 +1,6 @@
 ---
-id: wa_config_type
-title: WA_Config_Type
+id: WAConfigType
+title: WAConfigType
 ---
 
 # SDK Configuration Type

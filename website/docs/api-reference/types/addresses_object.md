@@ -1,6 +1,6 @@
 ---
 id: addresses_object
-title: Addresses_Object
+title: AddressesObject
 ---
 
 # Addresses Object

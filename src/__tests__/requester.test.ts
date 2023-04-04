@@ -7,20 +7,20 @@
  */
 
 import nock from 'nock';
-import { WA_Config_Type } from '@/config';
-import { HTTP_Methods_Enum } from '../types/enums';
+import { WAConfigType } from '@/config';
+import { HttpMethodsEnum } from '../types/enums';
 
 import requester from '../requester';
 
 describe('HTTP requester tests', () => {
-	const sdk_config: WA_Config_Type = (global as any).sdk_config;
-	const base_path = `/${sdk_config.CLOUD_API_VERSION}/${sdk_config.WA_PHONE_NUMBER_ID}`;
+	const sdkConfig: WAConfigType = (global as any).sdkConfig;
+	const basePath = `/${sdkConfig.CLOUD_API_VERSION}/${sdkConfig.WA_PHONE_NUMBER_ID}`;
 	const request = new requester(
-		sdk_config.WA_BASE_URL,
-		sdk_config.CLOUD_API_VERSION,
-		sdk_config.WA_PHONE_NUMBER_ID,
-		sdk_config.CLOUD_API_ACCESS_TOKEN,
-		sdk_config.WA_BUSINESS_ACCOUNT_ID,
+		sdkConfig.WA_BASE_URL,
+		sdkConfig.CLOUD_API_VERSION,
+		sdkConfig.WA_PHONE_NUMBER_ID,
+		sdkConfig.CLOUD_API_ACCESS_TOKEN,
+		sdkConfig.WA_BUSINESS_ACCOUNT_ID,
 		'test-user-agent',
 	);
 
@@ -35,22 +35,22 @@ describe('HTTP requester tests', () => {
 	});
 
 	it('Send a unsupported endpoint request', async () => {
-		scope = nock(`https://${sdk_config.WA_BASE_URL}`)
+		scope = nock(`https://${sdkConfig.WA_BASE_URL}`)
 			.get(/.*/)
 			.delay(200)
 			.delayBody(200)
 			.delayConnection(200)
 			.reply(400, default_response_body);
 
-		const response = await request.send_CAPI_request(
-			HTTP_Methods_Enum.Get,
-			`${base_path}/test`,
-			sdk_config.REQUEST_TIMEOUT,
+		const response = await request.sendCAPIRequest(
+			HttpMethodsEnum.Get,
+			`${basePath}/test`,
+			sdkConfig.REQUEST_TIMEOUT,
 		);
 
-		expect(response.status_code()).toStrictEqual(400);
-		const resp_body = await response.response_body_to_JSON();
-		expect(resp_body).toStrictEqual(default_response_body);
+		expect(response.statusCode()).toStrictEqual(400);
+		const respBody = await response.responseBodyToJSON();
+		expect(respBody).toStrictEqual(default_response_body);
 		scope.isDone();
 	});
 });

@@ -1,6 +1,6 @@
 ---
-id: audio_media_object
-title: Audio_Media_Object
+id: AudioMediaObject
+title: AudioMediaObject
 ---
 
 # Audio Media Object

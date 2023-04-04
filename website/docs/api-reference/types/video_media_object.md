@@ -1,6 +1,6 @@
 ---
-id: video_media_object
-title: Video_Media_Object
+id: VideoMediaObject
+title: VideoMediaObject
 ---
 
 # Video Media Object

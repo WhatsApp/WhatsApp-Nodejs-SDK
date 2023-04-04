@@ -1,6 +1,6 @@
 ---
-id: location_object
-title: Location_Object
+id: LocationObject
+title: LocationObject
 ---
 
 # Location Object

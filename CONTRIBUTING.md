@@ -33,6 +33,7 @@ outlined on that page and do not file a public issue.
 * Tabs, not spaces.
 * 80 character line length
 * Spaces between special characters to improve readability.
+* Follows the unofficial [Typescript styling guide](https://google.github.io/styleguide/tsguide.html#identifiers) except when not possible, for the name "WhatsApp," or other circumstances.
 
 ## License
 By contributing to the Cloud API SDK for WhatsApp Business Platform, you agree

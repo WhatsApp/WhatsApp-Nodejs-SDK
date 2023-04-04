@@ -8,68 +8,68 @@
 
 import { ServerResponse } from 'http';
 import { IncomingHttpHeaders } from 'http';
-import { WA_Config_Type } from '@/config';
+import { WAConfigType } from '@/config';
 import {
-	Conversation_Types_Enum,
-	Currency_Codes_Enum,
-	Status_Enum,
-	Video_Media_Types_Enum,
-	Referral_Source_Types_Enum,
-	Sticker_Media_Types_Enum,
-	Webhook_Types_Enum,
-	System_Change_Types_Enum,
-	Image_Media_Types_Enum,
-	Document_Media_Types_Enum,
+	ConversationTypesEnum,
+	CurrencyCodesEnum,
+	StatusEnum,
+	VideoMediaTypesEnum,
+	ReferralSourceTypesEnum,
+	StickerMediaTypesEnum,
+	WebhookTypesEnum,
+	SystemChangeTypesEnum,
+	ImageMediaTypesEnum,
+	DocumentMediaTypesEnum,
 } from './enums';
-import { Base_Class } from '@/base';
+import { BaseClass } from '@/base';
 
-declare type Pricing_Object = {
-	category: Conversation_Types_Enum;
+declare type PricingObject = {
+	category: ConversationTypesEnum;
 	pricing_model: 'CBP';
 };
 
-declare type Origin_Object = {
-	type: Conversation_Types_Enum;
+declare type OriginObject = {
+	type: ConversationTypesEnum;
 };
 
-declare type Conversation_Object = {
+declare type ConversationObject = {
 	id: string;
-	origin: Origin_Object;
+	origin: OriginObject;
 	expiration_timestamp: string;
 };
 
-declare type Error_Data_Object = {
+declare type ErrorDataObject = {
 	details: string;
 };
 
-declare type Error_Object = {
+declare type ErrorObject = {
 	code: number;
 	title: string;
 	message: string;
-	error_data: Error_Data_Object;
+	error_data: ErrorDataObject;
 };
 
-export declare type Statuses_Object = {
-	conversation: Conversation_Object;
-	errors: Error_Object[];
+export declare type StatusesObject = {
+	conversation: ConversationObject;
+	errors: ErrorObject[];
 	id: string;
-	pricing: Pricing_Object;
+	pricing: PricingObject;
 	recipient_id: string;
-	status: Status_Enum;
+	status: StatusEnum;
 	timestamp: string;
 };
 
-declare type Audio_Object = {
+declare type AudioObject = {
 	id: string;
 	mime_type: string;
 };
 
-declare type Button_Object = {
+declare type ButtonObject = {
 	payload: string;
 	text: string;
 };
 
-declare type Context_Object = {
+declare type ConTextObject = {
 	forwarded: boolean;
 	frequently_forwarded: boolean;
 	from: string;
@@ -80,35 +80,35 @@ declare type Context_Object = {
 	};
 };
 
-declare type Document_Object = {
+declare type DocumentObject = {
 	caption: string;
 	filename: string;
 	sha256: string;
-	mime_type: Document_Media_Types_Enum;
+	mime_type: DocumentMediaTypesEnum;
 	id: string;
 };
 
-declare type Identity_Object = {
+declare type IdentityObject = {
 	acknowledged: string;
 	created_timestamp: string;
 	hash: string;
 };
 
-declare type Image_Object = {
+declare type ImageObject = {
 	caption: string;
 	sha256: string;
 	id: string;
-	mime_type: Image_Media_Types_Enum;
+	mime_type: ImageMediaTypesEnum;
 };
 
-declare type Button_Reply_Object = {
+declare type ButtonReplyObject = {
 	button_reply: {
 		id: string;
 		title: string;
 	};
 };
 
-declare type List_Reply_Object = {
+declare type ListReplyObject = {
 	list_reply: {
 		id: string;
 		title: string;
@@ -116,121 +116,121 @@ declare type List_Reply_Object = {
 	};
 };
 
-declare type Interactive_Object = {
-	type: Button_Reply_Object | List_Reply_Object;
+declare type InteractiveObject = {
+	type: ButtonReplyObject | ListReplyObject;
 };
 
-declare type Product_Items_Object = {
+declare type ProductItemsObject = {
 	product_retailer_id: string;
 	quantity: string;
 	item_price: string;
-	currency: Currency_Codes_Enum;
+	currency: CurrencyCodesEnum;
 };
 
 declare type Order_Object = {
 	catalog_id: string;
 	text: string;
-	product_items: Product_Items_Object;
+	product_items: ProductItemsObject;
 };
 
-declare type Referral_Object = {
+declare type ReferralObject = {
 	source_url: URL;
-	source_type: Referral_Source_Types_Enum;
+	source_type: ReferralSourceTypesEnum;
 	source_id: string;
 	headline: string;
 	body: string;
-	media_type: Image_Media_Types_Enum | Video_Media_Types_Enum;
+	media_type: ImageMediaTypesEnum | VideoMediaTypesEnum;
 	image_url: URL;
 	video_url: URL;
 	thumbnail_url: URL;
 };
 
-declare type Sticker_Object = {
-	mime_type: Sticker_Media_Types_Enum;
+declare type StickerObject = {
+	mime_type: StickerMediaTypesEnum;
 	sha256: string;
 	id: string;
 	animated: boolean;
 };
 
-declare type System_Object = {
+declare type SystemObject = {
 	body: string;
 	identity: string;
 	wa_id: string;
-	type: System_Change_Types_Enum;
+	type: SystemChangeTypesEnum;
 	customer: string;
 };
 
-declare type Text_Object = {
+declare type TextObject = {
 	body: string;
 };
 
-declare type Video_Object = {
+declare type VideoObject = {
 	caption: string;
 	filename: string;
 	sha256: string;
 	id: string;
-	mime_type: Video_Media_Types_Enum;
+	mime_type: VideoMediaTypesEnum;
 };
 
-export declare type Messages_Object = {
-	audio?: Audio_Object;
-	button?: Button_Object;
-	context?: Context_Object;
-	document?: Document_Object;
-	errors: Error_Object[];
+export declare type MessagesObject = {
+	audio?: AudioObject;
+	button?: ButtonObject;
+	context?: ConTextObject;
+	document?: DocumentObject;
+	errors: ErrorObject[];
 	from: string;
 	id: string;
-	identity?: Identity_Object;
-	image?: Image_Object;
-	interactive?: Interactive_Object;
+	identity?: IdentityObject;
+	image?: ImageObject;
+	interactive?: InteractiveObject;
 	order?: Order_Object;
-	referral: Referral_Object;
-	system?: System_Object;
-	text?: Text_Object;
+	referral: ReferralObject;
+	system?: SystemObject;
+	text?: TextObject;
 	timestamp: string;
-	type: Webhook_Types_Enum;
-	video?: Video_Object;
+	type: WebhookTypesEnum;
+	video?: VideoObject;
 };
 
-declare type Profile_Object = {
+declare type ProfileObject = {
 	name: string;
 };
 
-declare type Contact_Object = {
+declare type ContactObject = {
 	wa_id: string;
-	profile: Profile_Object;
+	profile: ProfileObject;
 };
 
-declare type Metadata_Object = {
+declare type MetadataObject = {
 	display_phone_number: string;
-	phone_number_id: string;
+	phoneNumberId: string;
 };
 
-export declare type Value_Object = {
+export declare type ValueObject = {
 	messaging_product: 'whatsapp';
-	contacts: Contact_Object[];
-	errors: Error_Object[];
-	messages: Messages_Object[];
-	metadata: Metadata_Object[];
-	statuses: Statuses_Object[];
+	contacts: ContactObject[];
+	errors: ErrorObject[];
+	messages: MessagesObject[];
+	metadata: MetadataObject[];
+	statuses: StatusesObject[];
 };
 
-declare type Changes_Object = {
+declare type ChangesObject = {
 	field: string;
-	value: Value_Object;
+	value: ValueObject;
 };
 
 declare type Entry_Object = {
 	id: string;
-	changes: Changes_Object[];
+	changes: ChangesObject[];
 };
 
-export declare type Webhook_Object = {
+export declare type WebhookObject = {
 	object: 'whatsapp_business_account';
 	entry: Entry_Object[];
 };
 
-export declare type Webhook_Subscribe_Query = {
+export declare type WebhookSubscribeQuery = {
 	hub: {
 		mode: 'subscribe';
 		challenge: string;
@@ -238,17 +238,17 @@ export declare type Webhook_Subscribe_Query = {
 	};
 };
 
-export declare type Webhook_Callback = (
-	status_code: number,
+export declare type WebhookCallback = (
+	statusCode: number,
 	headers: IncomingHttpHeaders,
-	body?: Webhook_Object,
+	body?: WebhookObject,
 	response?: ServerResponse,
 	error?: Error,
 ) => any;
 
-export declare class Webhooks_Class extends Base_Class {
-	constructor(config: WA_Config_Type, user_agent: string);
-	start(cb: Webhook_Callback): boolean;
-	is_started(): boolean;
+export declare class WebhooksClass extends BaseClass {
+	constructor(config: WAConfigType, userAgent: string);
+	start(cb: WebhookCallback): boolean;
+	isStarted(): boolean;
 	stop(cb: (err?: Error) => any): boolean;
 }

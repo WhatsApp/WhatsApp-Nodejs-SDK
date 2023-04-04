@@ -6,13 +6,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 import * as w from '@/webhooks';
-import { WA_Config_Type } from '@/config';
-import Base_API from './base';
-export default class Webhooks_API extends Base_API implements w.Webhooks_Class {
-	private _user_agent;
-	private _server;
-	constructor(config: WA_Config_Type, user_agent: string);
-	start(cb: w.Webhook_Callback): boolean;
-	is_started(): boolean;
+import { WAConfigType } from '@/config';
+import HttpsServer from '../httpsServer';
+import BaseAPI from './base';
+export default class WebhooksAPI extends BaseAPI implements w.WebhooksClass {
+	userAgent: string;
+	server: HttpsServer;
+	constructor(config: WAConfigType, userAgent: string);
+	start(cb: w.WebhookCallback): boolean;
+	isStarted(): boolean;
 	stop(cb: (err?: Error) => any): boolean;
 }

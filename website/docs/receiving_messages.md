@@ -47,10 +47,10 @@ import WhatsApp from "whatsapp";
 
 const wa = new WhatsApp();
 
-function custom_callback ( err, status_code, headers, body, resp )
+function custom_callback ( err, statusCode, headers, body, resp )
 {
     console.log(
-        `Incoming webhook status code: ${ status_code }\n\nHeaders:
+        `Incoming webhook status code: ${ statusCode }\n\nHeaders:
         ${ JSON.stringify( headers ) }\n\nBody: ${ JSON.stringify( body ) }`
     );
 

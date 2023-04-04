@@ -13,8 +13,8 @@ Send a Meta-hosted message and then send an externally hosted sticker to the pho
 ```js
 import WhatsApp from 'whatsapp';
 
-const sender_number_1 = 12345678901234567890;
-const wa = new WhatsApp( sender_number_1 );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
 const meta_hosted_sticker =
 {
@@ -31,9 +31,9 @@ wa.messages.sticker( self_hosted_sticker, 12345678901 );
 ```
 
 ## Arguments
-1. `body` : [Sticker_Media_Object](../types/sticker_media_object) — the object describing the sticker to send.
+1. `body` : [StickerMediaObject](../types/StickerMediaObject) — the object describing the sticker to send.
 2. `recipient` : number — the recipient's phone number with country code.
-3. `reply_message_id` : string (optional) — the received WhatsApp message Id to reply back to.
+3. `replyMessageId` : string (optional) — the received WhatsApp message Id to reply back to.
 
 ## Returns
 Promise — Server response object on success.

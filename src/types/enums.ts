@@ -6,14 +6,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export const enum HTTP_Methods_Enum {
+export const enum HttpMethodsEnum {
 	Get = 'GET',
 	Post = 'POST',
 	Put = 'PUT',
 	Delete = 'DELETE',
 }
 
-export const enum Message_Types_Enum {
+export const enum MessageTypesEnum {
 	Audio = 'audio', // for audio messages.
 	Contacts = 'contacts', // for contact messages.
 	Document = 'document', // for document messages.
@@ -27,9 +27,9 @@ export const enum Message_Types_Enum {
 	Video = 'video', // for video messages
 }
 
-export const enum Parameters_Types_Enum {
+export const enum ParametersTypesEnum {
 	Currency = 'currency',
-	Date_time = 'date_time',
+	DateTime = 'date_time',
 	Document = 'document',
 	Image = 'image',
 	Text = 'text',
@@ -37,89 +37,89 @@ export const enum Parameters_Types_Enum {
 	Payload = 'payload',
 }
 
-export const enum Interactive_Types_Enum {
+export const enum InteractiveTypesEnum {
 	Button = 'button',
 	List = 'list',
 	Product = 'product',
-	Product_list = 'product_list',
+	ProductList = 'product_list',
 }
 
-export const enum Button_Types_Enum {
-	Quick_reply = 'quick_reply',
+export const enum ButtonTypesEnum {
+	QuickReply = 'quick_reply',
 	URL = 'url',
 }
 
-export const enum Button_Position_Enum {
+export const enum ButtonPositionEnum {
 	First,
 	Second,
 	Third,
 }
 
-export const enum Component_Types_Enum {
+export const enum ComponentTypesEnum {
 	Header = 'header',
 	Body = 'body',
 	Button = 'button',
 }
 
-export enum WA_Config_Enum {
-	Base_URL = 'WA_BASE_URL',
-	App_Id = 'M4D_APP_ID',
-	App_Secret = 'M4D_APP_SECRET',
-	Phone_Number_Id = 'WA_PHONE_NUMBER_ID',
-	Business_Acct_Id = 'WA_BUSINESS_ACCOUNT_ID',
-	API_Version = 'CLOUD_API_VERSION',
-	Access_Token = 'CLOUD_API_ACCESS_TOKEN',
-	Webhook_Endpoint = 'WEBHOOK_ENDPOINT',
-	Webhook_Verification_Token = 'WEBHOOK_VERIFICATION_TOKEN',
-	Listener_Port = 'LISTENER_PORT',
-	Max_Retries_After_Wait = 'MAX_RETRIES_AFTER_WAIT',
-	Request_Timeout = 'REQUEST_TIMEOUT',
+export enum WAConfigEnum {
+	BaseURL = 'WA_BASE_URL',
+	AppId = 'M4D_APP_ID',
+	AppSecret = 'M4D_APP_SECRET',
+	PhoneNumberId = 'WA_PHONE_NUMBER_ID',
+	BusinessAcctId = 'WA_BUSINESS_ACCOUNT_ID',
+	APIVersion = 'CLOUD_API_VERSION',
+	AccessToken = 'CLOUD_API_ACCESS_TOKEN',
+	WebhookEndpoint = 'WEBHOOK_ENDPOINT',
+	WebhookVerificationToken = 'WEBHOOK_VERIFICATION_TOKEN',
+	ListenerPort = 'LISTENER_PORT',
+	MaxRetriesAfterWait = 'MAX_RETRIES_AFTER_WAIT',
+	RequestTimeout = 'REQUEST_TIMEOUT',
 	Debug = 'DEBUG',
 }
 
-export enum WA_Required_Config_Enum {
-	API_Version = 'CLOUD_API_VERSION',
-	Access_Token = 'CLOUD_API_ACCESS_TOKEN',
+export enum WARequiredConfigEnum {
+	APIVersion = 'CLOUD_API_VERSION',
+	AccessToken = 'CLOUD_API_ACCESS_TOKEN',
 }
 
-export const enum Conversation_Types_Enum {
-	Business_initiated = 'business_initiated',
-	Customer_initiated = 'customer_initiated',
-	Referral_conversion = 'referral_conversion',
+export const enum ConversationTypesEnum {
+	BusinessInitiated = 'business_initiated',
+	CustomerInitiated = 'customer_initiated',
+	ReferralConversion = 'referral_conversion',
 }
 
-export const enum Status_Enum {
+export const enum StatusEnum {
 	Delivered = 'delivered',
 	Read = 'read',
 	Sent = 'sent',
 }
 
-export const enum Video_Media_Types_Enum {
+export const enum VideoMediaTypesEnum {
 	Mp4 = 'video/mp4',
 	Threegp = 'video/3gp',
 }
 
-export const enum Sticker_Media_Types_Enum {
+export const enum StickerMediaTypesEnum {
 	Webp = 'image/webp',
 }
 
-export const enum Image_Media_Types_Enum {
+export const enum ImageMediaTypesEnum {
 	Jpeg = 'image/jpeg',
 	Png = 'image/png',
 }
 
-export const enum Document_Media_Types_Enum {
+export const enum DocumentMediaTypesEnum {
 	Text = 'text/plain',
 	Pdf = 'application/pdf',
 	Ppt = 'application/vnd.ms-powerpoint',
 	Word = 'application/msword',
 	Excel = 'application/vnd.ms-excel',
-	Open_Doc = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-	Open_Pres = 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-	Open_Sheet = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+	OpenDoc = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+	OpenPres = 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+	OpenSheet = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 }
 
-export const enum Audio_Media_Types_Enum {
+export const enum AudioMediaTypesEnum {
 	Aac = 'audio/aac',
 	Mp4 = 'audio/mp4',
 	Mpeg = 'audio/mpeg',
@@ -127,7 +127,7 @@ export const enum Audio_Media_Types_Enum {
 	Ogg = 'audio/ogg',
 }
 
-export const enum Webhook_Types_Enum {
+export const enum WebhookTypesEnum {
 	Audio = 'audio',
 	Button = 'button',
 	Document = 'document',
@@ -141,17 +141,17 @@ export const enum Webhook_Types_Enum {
 	Video = 'video',
 }
 
-export const enum System_Change_Types_Enum {
-	Customer_changed_number = 'customer_changed_number',
-	Customer_identity_changed = 'customer_identity_changed',
+export const enum SystemChangeTypesEnum {
+	CustomerChangedNumber = 'customer_changed_number',
+	CustomerIdentityChanged = 'customer_identity_changed',
 }
 
-export const enum Referral_Source_Types_Enum {
+export const enum ReferralSourceTypesEnum {
 	Ad = 'ad',
 	Post = 'post',
 }
 
-export const enum Languages_Enum {
+export const enum LanguagesEnum {
 	Afrikaans = 'af',
 	Albanian = 'sq',
 	Arabic = 'ar',
@@ -225,7 +225,7 @@ export const enum Languages_Enum {
 	Zulu = 'zu',
 }
 
-export const enum Currency_Codes_Enum {
+export const enum CurrencyCodesEnum {
 	AFN = 'AFN',
 	EUR = 'EUR',
 	ALL = 'ALL',

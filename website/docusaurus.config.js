@@ -78,7 +78,7 @@ const config = {
         },
         items: [
           {
-            href: 'https://github.com/WhatsApp/Cloud-API-SDK-Nodejs',
+            href: 'https://github.com/WhatsApp/WhatsApp-Nodejs-SDK',
             label: 'GitHub',
             position: 'right',
           },
@@ -118,7 +118,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/WhatsApp/Cloud-API-SDK-Nodejs',
+                href: 'https://github.com/WhatsApp/WhatsApp-Nodejs-SDK',
               },
             ],
           },

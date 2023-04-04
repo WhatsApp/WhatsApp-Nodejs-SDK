@@ -6,25 +6,25 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { Base_Class } from '@/base';
-import { Requester_Class } from '@/requester';
-import { WA_Config_Type } from '@/config';
+import { BaseClass } from '@/base';
+import { RequesterClass } from '@/requester';
+import { WAConfigType } from '@/config';
 import Logger from '../logger';
 
-const lib_name = 'BASE_API';
-const log_local = false;
-const logger = new Logger(lib_name, process.env.DEBUG === 'true' || log_local);
+const LIB_NAME = 'BaseAPI';
+const LOG_LOCAL = false;
+const LOGGER = new Logger(LIB_NAME, process.env.DEBUG === 'true' || LOG_LOCAL);
 
-export default class Base_API implements Base_Class {
-	protected _client: Requester_Class;
-	protected _config: WA_Config_Type;
+export default class BaseAPI implements BaseClass {
+	protected client: RequesterClass;
+	protected config: WAConfigType;
 
-	constructor(config: WA_Config_Type, HTTPS_Client?: Requester_Class) {
-		if (HTTPS_Client) this._client = HTTPS_Client;
-		this._config = config;
+	constructor(config: WAConfigType, HttpsClient?: RequesterClass) {
+		if (HttpsClient) this.client = HttpsClient;
+		this.config = config;
 
-		logger.log(
-			`Initialized with HTTPS_Client: ${HTTPS_Client ? 'true' : 'false'}`,
+		LOGGER.log(
+			`Initialized with HTTPSClient: ${HttpsClient ? 'true' : 'false'}`,
 		);
 	}
 }

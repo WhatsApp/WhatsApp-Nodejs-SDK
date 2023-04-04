@@ -73,7 +73,7 @@ async function send_message()
 
         await sent_text_message.then( ( res ) =>
         {
-            console.log( res.raw_response() );
+            console.log( res.rawResponse() );
         } );
     }
     catch( e )
@@ -99,5 +99,5 @@ npm start.js
 ```
 
 :::note
-Verify that the test recipient has received the message and the Cloud API shows a *status_code* of `200` response. If you received a `200` from the Cloud API, but did not receive the message in WhatsApp, your conversation may have gone beyond the 24-hour user-initiated conversation session. Simply resend a message from the recipient WhatsApp app and then restart your quickstart app to send a new message to the recipient.
+Verify that the test recipient has received the message and the Cloud API shows a *statusCode* of `200` response. If you received a `200` from the Cloud API, but did not receive the message in WhatsApp, your conversation may have gone beyond the 24-hour user-initiated conversation session. Simply resend a message from the recipient WhatsApp app and then restart your quickstart app to send a new message to the recipient.
 :::

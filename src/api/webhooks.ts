@@ -8,66 +8,66 @@
 
 import { IncomingMessage, ServerResponse } from 'http';
 import * as w from '@/webhooks';
-import { WA_Config_Type } from '@/config';
-import { WA_Config_Enum } from '../types/enums';
-import { generate_x_hub_256_sig } from '../utils';
-import HTTPS_Server from '../https_server';
-import Base_API from './base';
+import { WAConfigType } from '@/config';
+import { WAConfigEnum } from '../types/enums';
+import { generateXHub256Sig } from '../utils';
+import HttpsServer from '../httpsServer';
+import BaseAPI from './base';
 import Logger from '../logger';
 
-const lib_name = 'WEBHOOKS';
-const log_local = true;
-const logger = new Logger(lib_name, process.env.DEBUG === 'true' || log_local);
+const LIB_NAME = 'WEBHOOKS';
+const LOG_LOCAL = true;
+const LOGGER = new Logger(LIB_NAME, process.env.DEBUG === 'true' || LOG_LOCAL);
 
-export default class Webhooks_API extends Base_API implements w.Webhooks_Class {
-	private _user_agent: string;
-	private _server: HTTPS_Server;
+export default class WebhooksAPI extends BaseAPI implements w.WebhooksClass {
+	userAgent: string;
+	server: HttpsServer;
 
-	constructor(config: WA_Config_Type, user_agent: string) {
+	constructor(config: WAConfigType, userAgent: string) {
 		super(config);
-		this._user_agent = user_agent;
+		this.userAgent = userAgent;
 	}
 
-	start(cb: w.Webhook_Callback): boolean {
-		this._server = new HTTPS_Server(
-			this._config[WA_Config_Enum.Listener_Port],
+	start(cb: w.WebhookCallback): boolean {
+		this.server = new HttpsServer(
+			this.config[WAConfigEnum.ListenerPort],
 			(req: IncomingMessage, res: ServerResponse) => {
-				res.setHeader('User-Agent', this._user_agent);
+				res.setHeader('User-Agent', this.userAgent);
 
 				if (req.url) {
-					const request_path = new URL(req.url, `https://${req.headers.host}`);
-					logger.log(
-						`received request (method: ${req.method}) for URL ${request_path}`,
+					const requestPath = new URL(req.url, `https://${req.headers.host}`);
+					LOGGER.log(
+						`received request (method: ${req.method}) for URL ${requestPath}`,
 					);
 
 					if (
-						request_path.pathname ==
-						`/${this._config[WA_Config_Enum.Webhook_Endpoint]}`
+						requestPath.pathname ==
+						`/${this.config[WAConfigEnum.WebhookEndpoint]}`
 					) {
 						if (req.method === 'GET') {
 							if (
-								request_path.searchParams.get('hub.mode') == 'subscribe' &&
-								request_path.searchParams.get('hub.verify_token') ==
-									this._config[WA_Config_Enum.Webhook_Verification_Token]
+								requestPath.searchParams.get('hub.mode') == 'subscribe' &&
+								requestPath.searchParams.get('hub.verify_token') ==
+									this.config[WAConfigEnum.WebhookVerificationToken]
 							) {
-								res.write(request_path.searchParams.get('hub.challenge'));
+								res.write(requestPath.searchParams.get('hub.challenge'));
 								res.end();
-								logger.log(
-									`webhook subscription request from ${request_path.href} successfully verified`,
+								LOGGER.log(
+									`webhook subscription request from ${requestPath.href} successfully verified`,
 								);
 							} else {
-								const error_message = `webhook subscription request from ${request_path.href} has either missing or non-matching verify token`;
-								const response_status = 401;
+								const errorMessage = `webhook subscription request from ${requestPath.href} has either missing or non-matching verify token`;
+								const responseStatus = 401;
 
-								logger.log(error_message);
-								res.writeHead(response_status);
+								LOGGER.log(errorMessage);
+								res.writeHead(responseStatus);
 								res.end();
 								cb(
-									response_status,
+									responseStatus,
 									req.headers,
 									undefined,
 									undefined,
-									new Error(error_message),
+									new Error(errorMessage),
 								);
 							}
 						} else if (
@@ -79,50 +79,50 @@ export default class Webhooks_API extends Base_API implements w.Webhooks_Class {
 								.toString()
 								.replace('sha256=', '');
 
-							let body_buf: Buffer[] = [];
+							let bodyBuf: Buffer[] = [];
 							req.on('data', (chunk) => {
-								body_buf = body_buf + chunk; // linter bug where push() and "+=" throws an error
+								bodyBuf = bodyBuf + chunk; // linter bug where push() and "+=" throws an error
 
-								if (body_buf.length > 1e6) req.destroy(); // close connection if payload is larger than 1MB for some reason
+								if (bodyBuf.length > 1e6) req.destroy(); // close connection if payload is larger than 1MB for some reason
 							});
 
 							req.on('end', () => {
-								const body = Buffer.concat(body_buf).toString();
+								const body = Buffer.concat(bodyBuf).toString();
 
-								const generated_signature = generate_x_hub_256_sig(
+								const generatedSignature = generateXHub256Sig(
 									body,
-									this._config[WA_Config_Enum.App_Secret],
+									this.config[WAConfigEnum.AppSecret],
 								);
 
-								const cb_body: w.Webhook_Object = JSON.parse(body);
+								const cbBody: w.WebhookObject = JSON.parse(body);
 
-								if (generated_signature == xHubSignature) {
-									const response_status = 200;
-									logger.log(
+								if (generatedSignature == xHubSignature) {
+									const responseStatus = 200;
+									LOGGER.log(
 										'x-hub-signature-256 header matches generated signature',
 									);
-									cb(response_status, req.headers, cb_body, res, undefined);
+									cb(responseStatus, req.headers, cbBody, res, undefined);
 								} else {
-									const error_message = "error: x-hub signature doesn't match";
-									const response_status = 401;
+									const errorMessage = "error: x-hub signature doesn't match";
+									const responseStatus = 401;
 
-									logger.log(error_message);
-									res.writeHead(response_status);
-									res.end(error_message);
+									LOGGER.log(errorMessage);
+									res.writeHead(responseStatus);
+									res.end(errorMessage);
 
 									cb(
-										response_status,
+										responseStatus,
 										req.headers,
-										cb_body,
+										cbBody,
 										undefined,
-										new Error(error_message),
+										new Error(errorMessage),
 									);
 								}
 							});
 
 							req.on('error', (err) => {
-								const response_status = 500;
-								cb(response_status, req.headers, undefined, res, err);
+								const responseStatus = 500;
+								cb(responseStatus, req.headers, undefined, res, err);
 							});
 						}
 					}
@@ -130,15 +130,15 @@ export default class Webhooks_API extends Base_API implements w.Webhooks_Class {
 			},
 		);
 
-		return this.is_started();
+		return this.isStarted();
 	}
 
-	is_started(): boolean {
-		return this._server.is_listening();
+	isStarted(): boolean {
+		return this.server.isListening();
 	}
 
 	stop(cb: (err?: Error) => any): boolean {
-		this._server.close(cb);
-		return this.is_started();
+		this.server.close(cb);
+		return this.isStarted();
 	}
 }

@@ -43,38 +43,38 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 const logger_1 = __importDefault(require("./logger"));
-const https_client_1 = __importDefault(require("./https_client"));
-const lib_name = 'REQUESTER';
-const log_local = false;
-const logger = new logger_1.default(lib_name, process.env.DEBUG === 'true' || log_local);
+const HttpsClient_1 = __importDefault(require("./HttpsClient"));
+const LIB_NAME = 'REQUESTER';
+const LOG_LOCAL = false;
+const LOGGER = new logger_1.default(LIB_NAME, process.env.DEBUG === 'true' || LOG_LOCAL);
 class Requester {
-  constructor(host, api_version, phone_number_id, access_token, business_acct_id, user_agent) {
-    this._protocol = 'https:';
-    this._port = 443;
-    this._client = new https_client_1.default();
-    this._host = host;
-    this._api_version = api_version;
-    this._phone_number_id = phone_number_id;
-    this._access_token = access_token;
-    this._business_acct_id = business_acct_id;
-    this._user_agent = user_agent;
+  constructor(host, apiVersion, phoneNumberId, accessToken, businessAcctId, userAgent) {
+    this.protocol = 'https:';
+    this.port = 443;
+    this.client = new HttpsClient_1.default();
+    this.host = host;
+    this.apiVersion = apiVersion;
+    this.phoneNumberId = phoneNumberId;
+    this.accessToken = accessToken;
+    this.businessAcctId = businessAcctId;
+    this.userAgent = userAgent;
   }
-  _build_header(content_type) {
+  buildHeader(contentType) {
     const headers = {
-      'Content-Type': content_type,
-      'Authorization': `Bearer ${this._access_token}`,
-      'User-Agent': this._user_agent
+      'Content-Type': contentType,
+      'Authorization': `Bearer ${this.accessToken}`,
+      'User-Agent': this.userAgent
     };
     return headers;
   }
-  _build_CAPI_path(endpoint) {
-    return `/${this._api_version}/${this._phone_number_id}/${endpoint}`;
+  buildCAPIPath(endpoint) {
+    return `/${this.apiVersion}/${this.phoneNumberId}/${endpoint}`;
   }
-  send_CAPI_request(method, endpoint, timeout, body) {
+  sendCAPIRequest(method, endpoint, timeout, body) {
     return __awaiter(this, void 0, void 0, function* () {
-      const content_type = 'application/json';
-      logger.log(`${method} : ${this._protocol.toLowerCase()}//${this._host}:${this._port}/${this._build_CAPI_path(endpoint)}`);
-      return yield this._client.send_request(this._host, this._port, this._build_CAPI_path(endpoint), method, this._build_header(content_type), timeout, method == 'POST' || method == 'PUT' ? body : undefined);
+      const contentType = 'application/json';
+      LOGGER.log(`${method} : ${this.protocol.toLowerCase()}//${this.host}:${this.port}/${this.buildCAPIPath(endpoint)}`);
+      return yield this.client.sendRequest(this.host, this.port, this.buildCAPIPath(endpoint), method, this.buildHeader(contentType), timeout, method == 'POST' || method == 'PUT' ? body : undefined);
     });
   }
 }

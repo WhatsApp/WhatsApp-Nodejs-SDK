@@ -1,6 +1,6 @@
 ---
-id: sticker_media_object
-title: Sticker_Media_Object
+id: StickerMediaObject
+title: StickerMediaObject
 ---
 
 # Sticker Media Object

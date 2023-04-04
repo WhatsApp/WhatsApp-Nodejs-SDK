@@ -1,6 +1,6 @@
 ---
-id: action_object
-title: Action_Object
+id: ActionObject
+title: ActionObject
 ---
 
 # Action Object
@@ -50,7 +50,7 @@ The object describing a actions taken for different types interactive messages. 
 
 ## Properties
 1. `catalog_id` : string — unique identifier of the Facebook catalog linked to your WhatsApp Business Account. Required for single product messages and multi-product messages.
-2. `sections` : [Sections_Object](section_object)[] — array of sections for list message or multi-product messages. Minimum of 1, maximum of 10. See section object.
+2. `sections` : [Sections_Object](SectionObject)[] — array of sections for list message or multi-product messages. Minimum of 1, maximum of 10. See section object.
 
 ## List message
 ### Example
@@ -94,7 +94,7 @@ The object describing a actions taken for different types interactive messages. 
 
 ## Properties
 1. `button` : string — button content. It cannot be an empty string and must be unique within the message. Emojis are supported, markdown is not.
-2. `sections` : [Sections_Object](section_object)[] — array of sections for list message or multi-product messages. Minimum of 1, maximum of 10.
+2. `sections` : [Sections_Object](SectionObject)[] — array of sections for list message or multi-product messages. Minimum of 1, maximum of 10.
 
 ## Reply button
 ### Example
@@ -121,4 +121,4 @@ The object describing a actions taken for different types interactive messages. 
 
 ## Properties
 1. `button` : string — button content. It cannot be an empty string and must be unique within the message. Emojis are supported, markdown is not.
-2. `buttons` : [Reply_Buttons_Object](reply_buttons_object)[] — array of reply buttons (maximum of 3, minimum of 1).
+2. `buttons` : [ReplyButtonObject](ReplyButtonObject)[] — array of reply buttons (maximum of 3, minimum of 1).

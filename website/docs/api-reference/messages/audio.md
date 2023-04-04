@@ -17,8 +17,8 @@ Send a Meta-hosted message and then send an externally hosted audio file to the 
 ```js
 import WhatsApp from 'whatsapp';
 
-const sender_number_1 = 12345678901234567890;
-const wa = new WhatsApp( sender_number_1 );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
 const meta_hosted_audio =
 {
@@ -27,7 +27,7 @@ const meta_hosted_audio =
     "filename" : "example.mp4"
 };
 
-const self_hosted_audio =
+const selfHostedAudio =
 {
     "link" : new URL( "https://example.com/example_1234.mp4" ).href,
     "caption" : "My audio file",
@@ -35,13 +35,13 @@ const self_hosted_audio =
 };
 
 await wa.messages.audio( meta_hosted_audio, 12345678901 );
-wa.messages.audio( self_hosted_audio, 12345678901 );
+wa.messages.audio( selfHostedAudio, 12345678901 );
 ```
 
 ## Arguments
-1. `body` : [Audio_Media_Object](../types/audio_media_object) — the object describing the audio file to send.
+1. `body` : [AudioMediaObject](../types/AudioMediaObject) — the object describing the audio file to send.
 2. `recipient` : number — the recipient's phone number with country code.
-3. `reply_message_id` : string (optional) — the received WhatsApp message Id to reply back to.
+3. `replyMessageId` : string (optional) — the received WhatsApp message Id to reply back to.
 
 ## Returns
 Promise — Server response object on success.

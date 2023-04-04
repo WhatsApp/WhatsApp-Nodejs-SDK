@@ -16,15 +16,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 const logger_1 = __importDefault(require("../logger"));
-const lib_name = 'BASE_API';
-const log_local = false;
-const logger = new logger_1.default(lib_name, process.env.DEBUG === 'true' || log_local);
-class Base_API {
-  constructor(config, HTTPS_Client) {
-    if (HTTPS_Client) this._client = HTTPS_Client;
-    this._config = config;
-    logger.log(`Initialized with HTTPS_Client: ${HTTPS_Client ? 'true' : 'false'}`);
+const LIB_NAME = 'BaseAPI';
+const LOG_LOCAL = false;
+const LOGGER = new logger_1.default(LIB_NAME, process.env.DEBUG === 'true' || LOG_LOCAL);
+class BaseAPI {
+  constructor(config, HttpsClient) {
+    if (HttpsClient) this.client = HttpsClient;
+    this.config = config;
+    LOGGER.log(`Initialized with HTTPSClient: ${HttpsClient ? 'true' : 'false'}`);
   }
 }
-exports.default = Base_API;
+exports.default = BaseAPI;
 module.exports = exports.default;

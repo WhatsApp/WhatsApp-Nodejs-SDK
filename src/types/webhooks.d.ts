@@ -23,33 +23,33 @@ import {
 } from './enums';
 import { BaseClass } from '@/base';
 
-declare type PricingObject = {
+type PricingObject = {
 	category: ConversationTypesEnum;
 	pricing_model: 'CBP';
 };
 
-declare type OriginObject = {
+type OriginObject = {
 	type: ConversationTypesEnum;
 };
 
-declare type ConversationObject = {
+type ConversationObject = {
 	id: string;
 	origin: OriginObject;
 	expiration_timestamp: string;
 };
 
-declare type ErrorDataObject = {
+type ErrorDataObject = {
 	details: string;
 };
 
-declare type ErrorObject = {
+type ErrorObject = {
 	code: number;
 	title: string;
 	message: string;
 	error_data: ErrorDataObject;
 };
 
-export declare type StatusesObject = {
+export type StatusesObject = {
 	conversation: ConversationObject;
 	errors: ErrorObject[];
 	id: string;
@@ -59,17 +59,17 @@ export declare type StatusesObject = {
 	timestamp: string;
 };
 
-declare type AudioObject = {
+type AudioObject = {
 	id: string;
 	mime_type: string;
 };
 
-declare type ButtonObject = {
+type ButtonObject = {
 	payload: string;
 	text: string;
 };
 
-declare type ConTextObject = {
+type ConTextObject = {
 	forwarded: boolean;
 	frequently_forwarded: boolean;
 	from: string;
@@ -80,7 +80,7 @@ declare type ConTextObject = {
 	};
 };
 
-declare type DocumentObject = {
+type DocumentObject = {
 	caption: string;
 	filename: string;
 	sha256: string;
@@ -88,27 +88,27 @@ declare type DocumentObject = {
 	id: string;
 };
 
-declare type IdentityObject = {
+type IdentityObject = {
 	acknowledged: string;
 	created_timestamp: string;
 	hash: string;
 };
 
-declare type ImageObject = {
+type ImageObject = {
 	caption: string;
 	sha256: string;
 	id: string;
 	mime_type: ImageMediaTypesEnum;
 };
 
-declare type ButtonReplyObject = {
+type ButtonReplyObject = {
 	button_reply: {
 		id: string;
 		title: string;
 	};
 };
 
-declare type ListReplyObject = {
+type ListReplyObject = {
 	list_reply: {
 		id: string;
 		title: string;
@@ -116,24 +116,24 @@ declare type ListReplyObject = {
 	};
 };
 
-declare type InteractiveObject = {
+type InteractiveObject = {
 	type: ButtonReplyObject | ListReplyObject;
 };
 
-declare type ProductItemsObject = {
+type ProductItemsObject = {
 	product_retailer_id: string;
 	quantity: string;
 	item_price: string;
 	currency: CurrencyCodesEnum;
 };
 
-declare type Order_Object = {
+type Order_Object = {
 	catalog_id: string;
 	text: string;
 	product_items: ProductItemsObject;
 };
 
-declare type ReferralObject = {
+type ReferralObject = {
 	source_url: URL;
 	source_type: ReferralSourceTypesEnum;
 	source_id: string;
@@ -145,14 +145,14 @@ declare type ReferralObject = {
 	thumbnail_url: URL;
 };
 
-declare type StickerObject = {
+type StickerObject = {
 	mime_type: StickerMediaTypesEnum;
 	sha256: string;
 	id: string;
 	animated: boolean;
 };
 
-declare type SystemObject = {
+type SystemObject = {
 	body: string;
 	identity: string;
 	wa_id: string;
@@ -160,11 +160,11 @@ declare type SystemObject = {
 	customer: string;
 };
 
-declare type TextObject = {
+type TextObject = {
 	body: string;
 };
 
-declare type VideoObject = {
+type VideoObject = {
 	caption: string;
 	filename: string;
 	sha256: string;
@@ -172,7 +172,7 @@ declare type VideoObject = {
 	mime_type: VideoMediaTypesEnum;
 };
 
-export declare type MessagesObject = {
+export type MessagesObject = {
 	audio?: AudioObject;
 	button?: ButtonObject;
 	context?: ConTextObject;
@@ -192,21 +192,21 @@ export declare type MessagesObject = {
 	video?: VideoObject;
 };
 
-declare type ProfileObject = {
+type ProfileObject = {
 	name: string;
 };
 
-declare type ContactObject = {
+type ContactObject = {
 	wa_id: string;
 	profile: ProfileObject;
 };
 
-declare type MetadataObject = {
+type MetadataObject = {
 	display_phone_number: string;
 	phoneNumberId: string;
 };
 
-export declare type ValueObject = {
+export type ValueObject = {
 	messaging_product: 'whatsapp';
 	contacts: ContactObject[];
 	errors: ErrorObject[];
@@ -215,22 +215,22 @@ export declare type ValueObject = {
 	statuses: StatusesObject[];
 };
 
-declare type ChangesObject = {
+type ChangesObject = {
 	field: string;
 	value: ValueObject;
 };
 
-declare type Entry_Object = {
+type Entry_Object = {
 	id: string;
 	changes: ChangesObject[];
 };
 
-export declare type WebhookObject = {
+export type WebhookObject = {
 	object: 'whatsapp_business_account';
 	entry: Entry_Object[];
 };
 
-export declare type WebhookSubscribeQuery = {
+export type WebhookSubscribeQuery = {
 	hub: {
 		mode: 'subscribe';
 		challenge: string;
@@ -238,7 +238,7 @@ export declare type WebhookSubscribeQuery = {
 	};
 };
 
-export declare type WebhookCallback = (
+export type WebhookCallback = (
 	statusCode: number,
 	headers: IncomingHttpHeaders,
 	body?: WebhookObject,

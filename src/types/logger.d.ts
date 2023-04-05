@@ -6,6 +6,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export declare interface LoggerInterface {
+export interface LoggerInterface {
 	log(...data: any[]): void;
 }

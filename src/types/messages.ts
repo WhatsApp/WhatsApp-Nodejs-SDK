@@ -133,7 +133,9 @@ type HostedDocumentMediaObject = {
 	filename?: string;
 };
 
-type DocumentMediaObject = MetaDocumentMediaObject | HostedDocumentMediaObject;
+export type DocumentMediaObject =
+	| MetaDocumentMediaObject
+	| HostedDocumentMediaObject;
 
 export type DocumentMessageRequestBody =
 	MessageRequestBody<MessageTypesEnum.Document> & {
@@ -152,7 +154,7 @@ type HostedImageMediaObject = {
 	caption?: string;
 };
 
-type ImageMediaObject = MetaImageMediaObject | HostedImageMediaObject;
+export type ImageMediaObject = MetaImageMediaObject | HostedImageMediaObject;
 
 export type ImageMessageRequestBody =
 	MessageRequestBody<MessageTypesEnum.Image> & {
@@ -245,7 +247,7 @@ type ProductListInteractiveObject = {
 	action: ActionObject;
 };
 
-type InteractiveObject = {
+export type InteractiveObject = {
 	[MessageTypesEnum.Interactive]:
 		| ButtonInteractiveObject
 		| ListInteractiveObject
@@ -305,7 +307,9 @@ type SelfHostedVideoMediaObject = {
 	caption?: string;
 };
 
-type VideoMediaObject = MetaHostedVideoMediaObject | SelfHostedVideoMediaObject;
+export type VideoMediaObject =
+	| MetaHostedVideoMediaObject
+	| SelfHostedVideoMediaObject;
 
 export type VideoMessageRequestBody =
 	MessageRequestBody<MessageTypesEnum.Video> & {

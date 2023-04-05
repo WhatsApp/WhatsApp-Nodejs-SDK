@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { RequesterResponseInterface } from '@/requester';
+import { RequesterResponseInterface } from '../types/requester';
 import BaseAPI from './base';
 import {
 	ComponentTypesEnum,
@@ -14,8 +14,8 @@ import {
 	MessageTypesEnum,
 	WAConfigEnum,
 } from '../types/enums';
-import { RequestData } from '@/httpsClient';
-import * as m from '@/messages';
+import { RequestData } from '../types/httpsClient';
+import * as m from '../types/messages';
 import Logger from '../logger';
 
 const LIB_NAME = 'MESSAGES_API';

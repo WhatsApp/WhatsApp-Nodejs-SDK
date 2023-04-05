@@ -9,9 +9,6 @@
 	"compilerOptions":
 	{
 		"baseUrl": "./",
-		"paths": {
-			"@/*": ["src/types/*"]
-		},
 		"outDir" : "build",
 		"allowJs" : true,
 		"target" : "ES2015",

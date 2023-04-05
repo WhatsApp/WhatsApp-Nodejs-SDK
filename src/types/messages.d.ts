@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { BaseClass } from '@/base';
+import { BaseClass } from './base';
 import {
 	MessageTypesEnum,
 	ComponentTypesEnum,

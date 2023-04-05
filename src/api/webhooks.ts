@@ -7,8 +7,8 @@
  */
 
 import { IncomingMessage, ServerResponse } from 'http';
-import * as w from '@/webhooks';
-import { WAConfigType } from '@/config';
+import * as w from '../types/webhooks';
+import { WAConfigType } from '../types/config';
 import { WAConfigEnum } from '../types/enums';
 import { generateXHub256Sig } from '../utils';
 import HttpsServer from '../httpsServer';

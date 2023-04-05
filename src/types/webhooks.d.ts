@@ -8,7 +8,7 @@
 
 import { ServerResponse } from 'http';
 import { IncomingHttpHeaders } from 'http';
-import { WAConfigType } from '@/config';
+import { WAConfigType } from './config';
 import {
 	ConversationTypesEnum,
 	CurrencyCodesEnum,
@@ -21,7 +21,7 @@ import {
 	ImageMediaTypesEnum,
 	DocumentMediaTypesEnum,
 } from './enums';
-import { BaseClass } from '@/base';
+import { BaseClass } from './base';
 
 type PricingObject = {
 	category: ConversationTypesEnum;

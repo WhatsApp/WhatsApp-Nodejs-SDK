@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { WAConfigType } from '@/config';
+import { WAConfigType } from '../types/config';
 import * as u from '../utils';
 
 describe('Helper utilities', () => {

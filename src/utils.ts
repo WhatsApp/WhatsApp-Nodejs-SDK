@@ -7,7 +7,7 @@
  */
 
 import * as crypto from 'crypto';
-import { WAConfigType } from '@/config';
+import { WAConfigType } from './types/config';
 import { WARequiredConfigEnum, WAConfigEnum } from './types/enums';
 import Logger from './logger';
 

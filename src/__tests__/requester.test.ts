@@ -7,7 +7,7 @@
  */
 
 import nock from 'nock';
-import { WAConfigType } from '@/config';
+import { WAConfigType } from '../types/config';
 import { HttpMethodsEnum } from '../types/enums';
 
 import requester from '../requester';

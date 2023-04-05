@@ -6,9 +6,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { BaseClass } from '@/base';
-import { RequesterClass } from '@/requester';
-import { WAConfigType } from '@/config';
+import { BaseClass } from '../types/base';
+import { RequesterClass } from '../types/requester';
+import { WAConfigType } from '../types/config';
 import Logger from '../logger';
 
 const LIB_NAME = 'BaseAPI';

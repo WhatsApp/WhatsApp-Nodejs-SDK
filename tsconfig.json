@@ -37,8 +37,9 @@
 		"esModuleInterop": true,
 		"moduleResolution": "node",
 		"isolatedModules": true,
-		"skipLibCheck": false,
-		"resolveJsonModule": true
+    "skipLibCheck": false,
+		"resolveJsonModule": true,
+		"forceConsistentCasingInFileNames": true
 	},
 	"include": ["src/**/*"],
 	"exclude": ["node_modules", "src/__tests__", "build", "coverage"]

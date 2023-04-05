@@ -26,7 +26,7 @@
 		"test": "run-s build test:*",
 		"test:spelling": "cspell \"{README.md,.github/*.md,website/docs/**/*.md}\"",
 		"test:prettier": "run-s prettier-format",
-		"test:lint": "eslint . --ext .ts",
+		"test:lint": "eslint .",
 		"test:jest": "jest",
 		"prettier-format": "prettier . --write",
 		"prettier-watch": "run-script-os",

@@ -7,7 +7,7 @@
  */
 
 import Logger from './logger';
-import HttpsClient from './HttpsClient';
+import HttpsClient from './httpsClient';
 import { HttpMethodsEnum } from './types/enums';
 import { RequesterClass, GeneralHeaderInterface } from '@/requester';
 

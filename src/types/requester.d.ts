@@ -10,7 +10,7 @@ import {
 	RequestHeaders,
 	HttpsClientResponseClass,
 	ResponseJSONBody,
-} from '@/HttpsClient';
+} from '@/httpsClient';
 import { HttpMethodsEnum } from './enums';
 
 export declare type GeneralRequestBody = Record<string, any>;

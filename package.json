@@ -28,6 +28,7 @@
     "test:prettier": "run-s prettier-format",
     "test:lint": "eslint . --ext .ts",
     "test:jest": "jest",
+    "test:typecheck": "tsc --noEmit",
     "prettier-format": "run-script-os",
     "prettier-format:win32": "prettier --config .prettierrc \"./**/*.ts\" \"scripts/*.mjs\" --write",
     "prettier-format:darwin:linux": "prettier --config .prettierrc './**/*.ts' 'scripts/*.mjs' --write",

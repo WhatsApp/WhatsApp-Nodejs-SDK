@@ -51,7 +51,11 @@ export default class WhatsApp implements WhatsAppClass {
 		);
 
 		this.messages = new MessagesAPI(this.config, this.requester);
-		this.webhooks = new WebhooksAPI(this.config, this.userAgent());
+		this.webhooks = new WebhooksAPI(
+			this.config,
+			this.requester,
+			this.userAgent(),
+		);
 
 		LOGGER.log('WhatsApp Node.js SDK instantiated!');
 	}

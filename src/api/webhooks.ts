@@ -8,6 +8,7 @@
 
 import { IncomingMessage, ServerResponse } from 'http';
 import * as w from '../types/webhooks';
+import { RequesterClass } from '../types/requester';
 import { WAConfigType } from '../types/config';
 import { WAConfigEnum } from '../types/enums';
 import { generateXHub256Sig } from '../utils';
@@ -21,10 +22,14 @@ const LOGGER = new Logger(LIB_NAME, process.env.DEBUG === 'true' || LOG_LOCAL);
 
 export default class WebhooksAPI extends BaseAPI implements w.WebhooksClass {
 	userAgent: string;
-	server: HttpsServer;
+	server?: HttpsServer;
 
-	constructor(config: WAConfigType, userAgent: string) {
-		super(config);
+	constructor(
+		config: WAConfigType,
+		HttpsClient: RequesterClass,
+		userAgent: string,
+	) {
+		super(config, HttpsClient);
 		this.userAgent = userAgent;
 	}
 
@@ -134,10 +139,13 @@ export default class WebhooksAPI extends BaseAPI implements w.WebhooksClass {
 	}
 
 	isStarted(): boolean {
-		return this.server.isListening();
+		return this.server != null && this.server.isListening();
 	}
 
 	stop(cb: (err?: Error) => any): boolean {
+		if (!this.server) {
+			throw new Error('Server not started');
+		}
 		this.server.close(cb);
 		return this.isStarted();
 	}

@@ -8,6 +8,7 @@
 
 import { IncomingMessage, ServerResponse } from 'http';
 import * as w from '../types/webhooks';
+import { RequesterClass } from '../types/requester';
 import { WAConfigType } from '../types/config';
 import { WAConfigEnum } from '../types/enums';
 import { generateXHub256Sig } from '../utils';
@@ -23,8 +24,12 @@ export default class WebhooksAPI extends BaseAPI implements w.WebhooksClass {
 	userAgent: string;
 	server?: HttpsServer;
 
-	constructor(config: WAConfigType, userAgent: string) {
-		super(config);
+	constructor(
+		config: WAConfigType,
+		HttpsClient: RequesterClass,
+		userAgent: string,
+	) {
+		super(config, HttpsClient);
 		this.userAgent = userAgent;
 	}
 

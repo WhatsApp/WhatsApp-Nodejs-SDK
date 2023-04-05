@@ -58,9 +58,6 @@ export default class MessagesAPI extends BaseAPI implements m.MessagesClass {
 	send(
 		body: RequestData,
 	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
-		if (!this.client) {
-			throw new Error('No client initialized');
-		}
 		return this.client.sendCAPIRequest(
 			this.commonMethod,
 			this.commonEndpoint,

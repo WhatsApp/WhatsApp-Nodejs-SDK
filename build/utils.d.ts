@@ -7,7 +7,4 @@
  */
 import { WAConfigType } from '@/config';
 export declare const importConfig: (senderNumberId?: number) => WAConfigType;
-export declare const generateXHub256Sig: (
-	body: string,
-	appSecret: string,
-) => string;
+export declare const generateXHub256Sig: (body: string, appSecret: string) => string;

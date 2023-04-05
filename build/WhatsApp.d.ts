@@ -11,15 +11,15 @@ import MessagesAPI from './api/messages';
 import { WhatsAppClass } from '@/WhatsApp';
 import WebhooksAPI from './api/webhooks';
 export default class WhatsApp implements WhatsAppClass {
-	config: WAConfigType;
-	sdkVersion: Readonly<string>;
-	requester: Readonly<Requester>;
-	readonly messages: MessagesAPI;
-	readonly webhooks: WebhooksAPI;
-	constructor(senderNumberId?: number);
-	version(): string;
-	private userAgent;
-	updateTimeout(ms: number): boolean;
-	updateSenderNumberId(phoneNumberId: number): boolean;
-	updateAccessToken(accessToken: string): boolean;
+    config: WAConfigType;
+    sdkVersion: Readonly<string>;
+    requester: Readonly<Requester>;
+    readonly messages: MessagesAPI;
+    readonly webhooks: WebhooksAPI;
+    constructor(senderNumberId?: number);
+    version(): string;
+    private userAgent;
+    updateTimeout(ms: number): boolean;
+    updateSenderNumberId(phoneNumberId: number): boolean;
+    updateAccessToken(accessToken: string): boolean;
 }

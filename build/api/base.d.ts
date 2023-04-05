@@ -9,7 +9,7 @@ import { BaseClass } from '@/base';
 import { RequesterClass } from '@/requester';
 import { WAConfigType } from '@/config';
 export default class BaseAPI implements BaseClass {
-	protected client: RequesterClass;
-	protected config: WAConfigType;
-	constructor(config: WAConfigType, HttpsClient?: RequesterClass);
+    protected client: RequesterClass;
+    protected config: WAConfigType;
+    constructor(config: WAConfigType, HttpsClient?: RequesterClass);
 }

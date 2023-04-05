@@ -11,13 +11,10 @@ import { IncomingMessage, Server, ServerResponse } from 'http';
 import { Socket } from 'net';
 import * as h from '@/httpsServer';
 export default class Httpserver implements h.HttpserverClass {
-	sockets: Set<Socket>;
-	server: Server;
-	listening: boolean;
-	constructor(
-		port: number,
-		cb: (req: IncomingMessage, res: ServerResponse) => any,
-	);
-	isListening(): boolean;
-	close(cb?: (err?: Error) => any): void;
+    sockets: Set<Socket>;
+    server: Server;
+    listening: boolean;
+    constructor(port: number, cb: (req: IncomingMessage, res: ServerResponse) => any);
+    isListening(): boolean;
+    close(cb?: (err?: Error) => any): void;
 }

@@ -7,8 +7,8 @@
  */
 import { LoggerInterface } from '@/logger';
 export default class Logger implements LoggerInterface {
-	private name;
-	private debug;
-	constructor(name: string, debug?: boolean);
-	log(...data: any[]): void;
+    private name;
+    private debug;
+    constructor(name: string, debug?: boolean);
+    log(...data: any[]): void;
 }

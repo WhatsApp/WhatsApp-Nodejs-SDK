@@ -14,7 +14,7 @@ import {
 	MessageTypesEnum,
 	WAConfigEnum,
 } from '../types/enums';
-import { RequestData } from '@/HttpsClient';
+import { RequestData } from '@/httpsClient';
 import * as m from '@/messages';
 import Logger from '../logger';
 

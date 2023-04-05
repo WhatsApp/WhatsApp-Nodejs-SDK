@@ -39,7 +39,8 @@
 		"moduleResolution": "node",
 		"isolatedModules": true,
     	"skipLibCheck": false,
-		"resolveJsonModule": true
+		"resolveJsonModule": true,
+		"forceConsistentCasingInFileNames": true,
 	},
 	"include": [ "src/**/*" ],
 	"exclude": [

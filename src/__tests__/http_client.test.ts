@@ -10,7 +10,7 @@ import nock from 'nock';
 import { WAConfigType } from '@/config';
 import { HttpMethodsEnum } from '../types/enums';
 
-import HttpsClient from '../HttpsClient';
+import HttpsClient from '../httpsClient';
 import { NoParamCallback } from 'fs';
 
 describe('HTTPS client tests', () => {

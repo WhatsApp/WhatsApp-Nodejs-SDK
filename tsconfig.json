@@ -6,46 +6,40 @@
 //
 
 {
-	"compilerOptions":
-	{
+	"compilerOptions": {
 		"baseUrl": "./",
 		"paths": {
 			"@/*": ["src/types/*"]
 		},
-		"outDir" : "build",
-		"allowJs" : true,
-		"target" : "ES2015",
-		"module" : "CommonJS",
+		"outDir": "build",
+		"allowJs": true,
+		"target": "ES2015",
+		"module": "CommonJS",
 		"sourceMap": true,
 		"lib": ["es2015"],
-		"checkJs" : true,
-		"alwaysStrict" : true,
-		"noImplicitAny" : true,
-		"noImplicitThis" : true,
-		"strict" : true,
-		"strictPropertyInitialization" : false,
-		"strictFunctionTypes" : true,
+		"checkJs": true,
+		"alwaysStrict": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"strict": true,
+		"strictPropertyInitialization": false,
+		"strictFunctionTypes": true,
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
 		"allowSyntheticDefaultImports": true,
-		"types" : [ "node", "jest" ],
-		"declaration" : true,
+		"types": ["node", "jest"],
+		"declaration": true,
 		"incremental": true,
 		"pretty": true,
 		"typeRoots": ["node_modules/@types", "src/types"],
-    	"noImplicitReturns": true,
-    	"noFallthroughCasesInSwitch": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
 		"esModuleInterop": true,
 		"moduleResolution": "node",
 		"isolatedModules": true,
-    	"skipLibCheck": false,
+		"skipLibCheck": false,
 		"resolveJsonModule": true
 	},
-	"include": [ "src/**/*" ],
-	"exclude": [
-		"node_modules",
-		"src/__tests__",
-		"build",
-		"coverage"
-	]
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "src/__tests__", "build", "coverage"]
 }

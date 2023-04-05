@@ -7,25 +7,26 @@
  */
 
 {
-  "presets":
-  [
-    [
-      "@babel/preset-env",
-      {
-        "targets":
-        {
-          "node": "current"
-        },
-        "modules": "cjs"
-      }
-    ],
-    "@babel/preset-typescript"
-  ],
-  "plugins": [
-    "add-module-exports",
-    ["@babel/plugin-transform-modules-commonjs", {
-      "allowTopLevelThis": true,
-      "importInterop":"node"
-    }]
-  ]
+	"presets": [
+		[
+			"@babel/preset-env",
+			{
+				"targets": {
+					"node": "current"
+				},
+				"modules": "cjs"
+			}
+		],
+		"@babel/preset-typescript"
+	],
+	"plugins": [
+		"add-module-exports",
+		[
+			"@babel/plugin-transform-modules-commonjs",
+			{
+				"allowTopLevelThis": true,
+				"importInterop": "node"
+			}
+		]
+	]
 }

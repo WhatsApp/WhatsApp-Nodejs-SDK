@@ -1,0 +1,4 @@
+website/
+build/
+coverage/
+*.md

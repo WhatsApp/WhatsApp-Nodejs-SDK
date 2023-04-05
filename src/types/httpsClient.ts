@@ -9,17 +9,17 @@
 import { HttpMethodsEnum } from './enums';
 import { IncomingMessage } from 'http';
 
-export declare type ResponseHeaderValue = string | string[] | undefined;
+export type ResponseHeaderValue = string | string[] | undefined;
 
-export declare type RequestHeaders = Record<string, string | number | string[]>;
+export type RequestHeaders = Record<string, string | number | string[]>;
 
-export declare type ResponseHeaders = Record<string, ResponseHeaderValue>;
+export type ResponseHeaders = Record<string, ResponseHeaderValue>;
 
-export declare type ResponseJSONBody = Record<string, unknown>;
+export type ResponseJSONBody = Record<string, unknown>;
 
-export declare type RequestData = Record<string, unknown> | string;
+export type RequestData = Record<string, unknown> | string;
 
-export declare type TimeoutError = TypeError & { code?: string };
+export type TimeoutError = TypeError & { code?: string };
 
 export declare class HttpsClientResponseClass {
 	constructor(resp: IncomingMessage);

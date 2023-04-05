@@ -9,7 +9,7 @@
 import Logger from './logger';
 import HttpsClient from './httpsClient';
 import { HttpMethodsEnum } from './types/enums';
-import { RequesterClass, GeneralHeaderInterface } from '@/requester';
+import { RequesterClass, GeneralHeaderInterface } from './types/requester';
 
 const LIB_NAME = 'REQUESTER';
 const LOG_LOCAL = false;

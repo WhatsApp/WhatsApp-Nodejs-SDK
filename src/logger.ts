@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { LoggerInterface } from '@/logger';
+import { LoggerInterface } from './types/logger';
 
 export default class Logger implements LoggerInterface {
 	private name: string;

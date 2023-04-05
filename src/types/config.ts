@@ -7,7 +7,7 @@
  */
 import { WAConfigEnum } from './enums';
 
-export declare type WAConfigType = {
+export type WAConfigType = {
 	/**
 	 * That base URL of the Cloud API, hosted by Meta.
 	 * @default 'graph.facebook.com/'

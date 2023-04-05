@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { BaseClass } from '@/base';
+import { BaseClass } from './base';
 import {
 	MessageTypesEnum,
 	ComponentTypesEnum,
@@ -19,7 +19,7 @@ import {
 } from './enums';
 import { GeneralRequestBody, RequesterResponseInterface } from './requester';
 
-export declare type GeneralMessageBody = GeneralRequestBody & {
+export type GeneralMessageBody = GeneralRequestBody & {
 	/**
 	 * The Meta messaging product name.
 	 * @default 'whatsapp'
@@ -27,18 +27,18 @@ export declare type GeneralMessageBody = GeneralRequestBody & {
 	messaging_product: 'whatsapp';
 };
 
-export declare type StatusObject = {
+export type StatusObject = {
 	status: 'read';
 	message_id: string;
 };
 
-export declare type StatusRequestBody = GeneralMessageBody & StatusObject;
+export type StatusRequestBody = GeneralMessageBody & StatusObject;
 
-declare type ConTextObject = {
+type ConTextObject = {
 	message_id: string;
 };
 
-export declare type MessageRequestBody<T extends MessageTypesEnum> =
+export type MessageRequestBody<T extends MessageTypesEnum> =
 	GeneralMessageBody & {
 		recipient_type?: string;
 		to: string;
@@ -46,26 +46,24 @@ export declare type MessageRequestBody<T extends MessageTypesEnum> =
 		type?: T;
 	};
 
-declare type MetaAudioMediaObject = {
+type MetaAudioMediaObject = {
 	id: string;
 	link?: never;
 };
 
-declare type HostedAudioMediaObject = {
+type HostedAudioMediaObject = {
 	id?: never;
 	link: string;
 };
 
-export declare type AudioMediaObject =
-	| MetaAudioMediaObject
-	| HostedAudioMediaObject;
+export type AudioMediaObject = MetaAudioMediaObject | HostedAudioMediaObject;
 
-export declare type AudioMessageRequestBody =
+export type AudioMessageRequestBody =
 	MessageRequestBody<MessageTypesEnum.Audio> & {
 		[MessageTypesEnum.Audio]: [AudioMediaObject];
 	};
 
-declare type AddressesObject = {
+type AddressesObject = {
 	street?: string;
 	city?: string;
 	state?: string;
@@ -75,12 +73,12 @@ declare type AddressesObject = {
 	type?: 'HOME' | 'WORK' | string;
 };
 
-declare type EmailObject = {
+type EmailObject = {
 	email?: string;
 	type?: 'HOME' | 'WORK' | string;
 };
 
-declare type NameObject = {
+type NameObject = {
 	formatted_name: string;
 	first_name?: string;
 	last_name?: string;
@@ -89,24 +87,24 @@ declare type NameObject = {
 	prefix?: string;
 };
 
-declare type OrgObject = {
+type OrgObject = {
 	company?: string;
 	department?: string;
 	title?: string;
 };
 
-declare type PhoneObject = {
+type PhoneObject = {
 	phone?: 'PHONE_NUMBER';
 	type?: 'CELL' | 'MAIN' | 'IPHONE' | 'HOME' | 'WORK' | string;
 	wa_id?: string;
 };
 
-declare type URLObject = {
+type URLObject = {
 	url?: string;
 	type?: 'HOME' | 'WORK' | string;
 };
 
-export declare type ContactObject = {
+export type ContactObject = {
 	addresses?: AddressesObject[];
 	birthday?: `${number}${number}${number}${number}-${number}${number}-${number}${number}`;
 	emails?: EmailObject[];
@@ -116,92 +114,92 @@ export declare type ContactObject = {
 	urls?: URLObject[];
 };
 
-export declare type ContactsMessageRequestBody =
+export type ContactsMessageRequestBody =
 	MessageRequestBody<MessageTypesEnum.Contacts> & {
 		[MessageTypesEnum.Contacts]: [ContactObject];
 	};
 
-declare type MetaDocumentMediaObject = {
+type MetaDocumentMediaObject = {
 	id: string;
 	link?: never;
 	caption?: string;
 	filename?: string;
 };
 
-declare type HostedDocumentMediaObject = {
+type HostedDocumentMediaObject = {
 	id?: never;
 	link: string;
 	caption?: string;
 	filename?: string;
 };
 
-declare type DocumentMediaObject =
+export type DocumentMediaObject =
 	| MetaDocumentMediaObject
 	| HostedDocumentMediaObject;
 
-export declare type DocumentMessageRequestBody =
+export type DocumentMessageRequestBody =
 	MessageRequestBody<MessageTypesEnum.Document> & {
 		[MessageTypesEnum.Document]: [DocumentMediaObject];
 	};
 
-declare type MetaImageMediaObject = {
+type MetaImageMediaObject = {
 	id: string;
 	link?: never;
 	caption?: string;
 };
 
-declare type HostedImageMediaObject = {
+type HostedImageMediaObject = {
 	id?: never;
 	link: string;
 	caption?: string;
 };
 
-declare type ImageMediaObject = MetaImageMediaObject | HostedImageMediaObject;
+export type ImageMediaObject = MetaImageMediaObject | HostedImageMediaObject;
 
-export declare type ImageMessageRequestBody =
+export type ImageMessageRequestBody =
 	MessageRequestBody<MessageTypesEnum.Image> & {
 		[MessageTypesEnum.Image]: [ImageMediaObject];
 	};
 
-declare type ProductObject = {
+type ProductObject = {
 	product_retailer_id: string;
 };
 
-declare type SimpleTextObject = {
+type SimpleTextObject = {
 	text: string;
 };
 
-declare type RowObject = {
+type RowObject = {
 	id: string;
 	title: string;
 	description?: string;
 };
 
-declare type MultiProductSectionObject = {
+type MultiProductSectionObject = {
 	product_items: ProductObject[];
 	rows?: never;
 	title?: string;
 };
 
-declare type ListSectionObject = {
+type ListSectionObject = {
 	product_items?: never;
 	rows: RowObject[];
 	title?: string;
 };
 
-declare type SectionObject = MultiProductSectionObject | ListSectionObject;
+type SectionObject = MultiProductSectionObject | ListSectionObject;
 
-declare type ButtonObject = {
+type ButtonObject = {
 	title: string;
 	id: string;
 };
 
-declare type ReplyButtonObject = {
+type ReplyButtonObject = {
 	type: 'reply';
 	reply: ButtonObject;
 };
 
-declare type ActionObject = {
+type ActionObject = {
 	button?: string;
 	buttons?: ReplyButtonObject[];
 	catalog_id?: string;
@@ -209,7 +207,7 @@ declare type ActionObject = {
 	sections?: SectionObject;
 };
 
-declare type HeaderObject = {
+type HeaderObject = {
 	type: 'document' | 'image' | 'text' | 'video';
 	document?: DocumentMediaObject;
 	image?: ImageMediaObject;
@@ -217,7 +215,7 @@ declare type HeaderObject = {
 	video?: VideoMediaObject;
 };
 
-declare type ButtonInteractiveObject = {
+type ButtonInteractiveObject = {
 	type: InteractiveTypesEnum.Button;
 	body: SimpleTextObject;
 	footer?: SimpleTextObject;
@@ -225,7 +223,7 @@ declare type ButtonInteractiveObject = {
 	action: ActionObject;
 };
 
-declare type ListInteractiveObject = {
+type ListInteractiveObject = {
 	type: InteractiveTypesEnum.List;
 	body: SimpleTextObject;
 	footer?: SimpleTextObject;
@@ -233,7 +231,7 @@ declare type ListInteractiveObject = {
 	action: ActionObject;
 };
 
-declare type ProductInteractiveObject = {
+type ProductInteractiveObject = {
 	type: InteractiveTypesEnum.Product;
 	body?: SimpleTextObject;
 	footer?: SimpleTextObject;
@@ -241,7 +239,7 @@ declare type ProductInteractiveObject = {
 	action: ActionObject;
 };
 
-declare type ProductListInteractiveObject = {
+type ProductListInteractiveObject = {
 	type: InteractiveTypesEnum.ProductList;
 	body: SimpleTextObject;
 	footer?: SimpleTextObject;
@@ -249,7 +247,7 @@ declare type ProductListInteractiveObject = {
 	action: ActionObject;
 };
 
-declare type InteractiveObject = {
+export type InteractiveObject = {
 	[MessageTypesEnum.Interactive]:
 		| ButtonInteractiveObject
 		| ListInteractiveObject
@@ -257,122 +255,122 @@ declare type InteractiveObject = {
 		| ProductListInteractiveObject;
 };
 
-export declare type InteractiveMessageRequestBody =
+export type InteractiveMessageRequestBody =
 	MessageRequestBody<MessageTypesEnum.Interactive> & InteractiveObject;
 
-declare type MetaStickerMediaObject = {
+type MetaStickerMediaObject = {
 	id: string;
 	link?: never;
 };
 
-declare type HostedStickerMediaObject = {
+type HostedStickerMediaObject = {
 	id?: never;
 	link: string;
 };
 
-export declare type StickerMediaObject =
+export type StickerMediaObject =
 	| MetaStickerMediaObject
 	| HostedStickerMediaObject;
 
-export declare type StickerMessageRequestBody =
+export type StickerMessageRequestBody =
 	MessageRequestBody<MessageTypesEnum.Sticker> & {
 		[MessageTypesEnum.Sticker]: [StickerMediaObject];
 	};
 
-declare type ReActionObject = {
+type ReActionObject = {
 	message_id: string;
 	emoji: string;
 };
 
-export declare type ReactionMessageRequestBody =
+export type ReactionMessageRequestBody =
 	MessageRequestBody<MessageTypesEnum.Reaction> & ReActionObject;
 
-export declare type TextObject = {
+export type TextObject = {
 	body: string;
 	preview_url?: boolean;
 };
 
-export declare type TextMessageRequestBody =
+export type TextMessageRequestBody =
 	MessageRequestBody<MessageTypesEnum.Text> & {
 		[MessageTypesEnum.Text]: [TextObject];
 	};
 
-declare type MetaHostedVideoMediaObject = {
+type MetaHostedVideoMediaObject = {
 	id: string;
 	link?: never;
 	caption?: string;
 };
 
-declare type SelfHostedVideoMediaObject = {
+type SelfHostedVideoMediaObject = {
 	id?: never;
 	link: string;
 	caption?: string;
 };
 
-declare type VideoMediaObject =
+export type VideoMediaObject =
 	| MetaHostedVideoMediaObject
 	| SelfHostedVideoMediaObject;
 
-export declare type VideoMessageRequestBody =
+export type VideoMessageRequestBody =
 	MessageRequestBody<MessageTypesEnum.Video> & {
 		[MessageTypesEnum.Video]: [VideoMediaObject];
 	};
 
-declare type LanguageObject = {
+type LanguageObject = {
 	policystring: 'deterministic';
 	code: LanguagesEnum;
 };
 
-declare type ParametersObject<T extends ParametersTypesEnum> = {
+type ParametersObject<T extends ParametersTypesEnum> = {
 	type: T;
 };
 
-declare type TextParametersObject = ParametersObject<ParametersTypesEnum.Text> &
+type TextParametersObject = ParametersObject<ParametersTypesEnum.Text> &
 	SimpleTextObject;
 
-declare type CurrencyObject = {
+type CurrencyObject = {
 	fallback_value: string;
 	code: CurrencyCodesEnum;
 	amount_1000: number;
 };
 
-declare type CurrencyParametersObject =
+type CurrencyParametersObject =
 	ParametersObject<ParametersTypesEnum.Currency> & {
 		currency: CurrencyObject;
 	};
 
-declare type DateTimeObject = {
+type DateTimeObject = {
 	fallback_value: string;
 };
 
-declare type DateTimeParametersObject =
+type DateTimeParametersObject =
 	ParametersObject<ParametersTypesEnum.Currency> & {
 		date_time: CurrencyObject;
 	};
 
-declare type DocumentParametersObject =
-	ParametersObject<ParametersTypesEnum.Document> & DocumentMediaObject;
+type DocumentParametersObject = ParametersObject<ParametersTypesEnum.Document> &
+	DocumentMediaObject;
 
-declare type ImageParametersObject =
-	ParametersObject<ParametersTypesEnum.Image> & ImageMediaObject;
+type ImageParametersObject = ParametersObject<ParametersTypesEnum.Image> &
+	ImageMediaObject;
 
-declare type VideoParametersObject =
-	ParametersObject<ParametersTypesEnum.Video> & VideoMediaObject;
+type VideoParametersObject = ParametersObject<ParametersTypesEnum.Video> &
+	VideoMediaObject;
 
-declare type QuickReplyButtonParametersObject = {
+type QuickReplyButtonParametersObject = {
 	type: ParametersTypesEnum.Payload;
 	payload: string;
 };
 
-declare type URLButtonParametersObject = SimpleTextObject & {
+type URLButtonParametersObject = SimpleTextObject & {
 	type: ParametersTypesEnum.Text;
 };
 
-declare type ButtonParameterObject =
+type ButtonParameterObject =
 	| QuickReplyButtonParametersObject
 	| URLButtonParametersObject;
 
-declare type ComponentObject<T extends ComponentTypesEnum> = {
+type ComponentObject<T extends ComponentTypesEnum> = {
 	type: T;
 	parameters: (
 		| CurrencyParametersObject
@@ -384,35 +382,34 @@ declare type ComponentObject<T extends ComponentTypesEnum> = {
 	)[];
 };
 
-declare type ButtonComponentObject =
-	ComponentObject<ComponentTypesEnum.Button> & {
-		parameters: ButtonParameterObject;
-		sub_type: ButtonTypesEnum;
-		index: ButtonPositionEnum;
-	};
+type ButtonComponentObject = ComponentObject<ComponentTypesEnum.Button> & {
+	parameters: ButtonParameterObject;
+	sub_type: ButtonTypesEnum;
+	index: ButtonPositionEnum;
+};
 
-export declare type MessageTemplateObject<T extends ComponentTypesEnum> = {
+export type MessageTemplateObject<T extends ComponentTypesEnum> = {
 	name: string;
 	language: LanguageObject;
 	components?: (ComponentObject<T> | ButtonComponentObject)[];
 };
 
-export declare type MessageTemplateRequestBody<T extends ComponentTypesEnum> =
+export type MessageTemplateRequestBody<T extends ComponentTypesEnum> =
 	MessageRequestBody<MessageTypesEnum.Template> & MessageTemplateObject<T>;
 
-export declare type LocationObject = {
+export type LocationObject = {
 	longitude: number;
 	latitude: number;
 	name?: string;
 	address?: string;
 };
 
-export declare type LocationMessageRequestBody =
+export type LocationMessageRequestBody =
 	MessageRequestBody<MessageTypesEnum.Location> & {
 		[MessageTypesEnum.Location]: [LocationObject];
 	};
 
-export declare type MessagesResponse = GeneralMessageBody & {
+export type MessagesResponse = GeneralMessageBody & {
 	contacts: [
 		{
 			input: string;

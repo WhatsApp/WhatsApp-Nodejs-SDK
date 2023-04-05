@@ -15,7 +15,7 @@ import {
 	RequestData,
 	ResponseHeaders,
 	ResponseJSONBody,
-} from '@/httpsClient';
+} from './types/httpsClient';
 import Logger from './logger';
 import { HttpMethodsEnum } from './types/enums';
 

@@ -14,13 +14,13 @@ if (
 	dotenv.config();
 }
 
-import { WAConfigType } from '@/config';
+import { WAConfigType } from './types/config';
 import { importConfig } from './utils';
 import { SDKVersion } from './version';
 import Logger from './logger';
 import Requester from './requester';
 import MessagesAPI from './api/messages';
-import { WhatsAppClass } from '@/WhatsApp';
+import { WhatsAppClass } from './types/WhatsApp';
 import WebhooksAPI from './api/webhooks';
 import { WAConfigEnum } from './types/enums';
 

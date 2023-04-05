@@ -8,7 +8,7 @@
 
 import { createServer, IncomingMessage, Server, ServerResponse } from 'http';
 import { Socket } from 'net';
-import * as h from '@/httpsServer';
+import * as h from './types/httpsServer';
 
 export default class Httpserver implements h.HttpserverClass {
 	sockets: Set<Socket>;

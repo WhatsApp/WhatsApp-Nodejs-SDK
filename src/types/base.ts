@@ -6,6 +6,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export declare interface LoggerInterface {
-	log(...data: any[]): void;
+import { RequesterClass } from './requester';
+import { WAConfigType } from './config';
+
+export declare class BaseClass {
+	constructor(config: WAConfigType, HttpsClient?: RequesterClass);
 }

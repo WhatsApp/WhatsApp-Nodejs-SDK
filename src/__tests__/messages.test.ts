@@ -7,7 +7,7 @@
  */
 
 import nock from 'nock';
-import { WAConfigType } from '@/config';
+import { WAConfigType } from '../types/config';
 import MessagesAPI from '../api/messages';
 import WhatsApp from '../WhatsApp';
 

@@ -5,6 +5,18 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.0.4-Alpha] - 2023-04-05
+
+### Added
+- Prettier covers everything, including docs website.
+- Update dev dependencies.
+- Expand lint coverage.
+
+### Removed
+- Support for Node 14.x.
+- Build directory from repository.
+- Erroneous or duplicate options from TSC config.
+
 ## [0.0.3-Alpha] - 2023-04-03
 
 ### Added

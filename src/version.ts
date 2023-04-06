@@ -6,4 +6,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export const SDKVersion = '0.0.3-Alpha';
+export const SDKVersion = '0.0.4-Alpha';

@@ -6,12 +6,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as dotenv from 'dotenv';
 if (
 	process.env.NODE_ENV !== 'production' ||
 	process.env.TS_NODE_DEV === 'true'
 ) {
-	dotenv.config();
+	import('dotenv').then((dotenv) => dotenv.config());
 }
 
 import { WAConfigType } from './types/config';

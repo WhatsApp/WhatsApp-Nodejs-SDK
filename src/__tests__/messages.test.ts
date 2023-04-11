@@ -10,7 +10,6 @@ import nock from 'nock';
 import { WAConfigType } from '../types/config';
 import MessagesAPI from '../api/messages';
 import WhatsApp from '../WhatsApp';
-import { MessagesResponseObject } from '../types/messages';
 
 describe('WhatsApp Messages API', () => {
 	const testRecipient = 1234;
@@ -30,7 +29,7 @@ describe('WhatsApp Messages API', () => {
 
 	const wa = new WhatsApp();
 	const basePath = `/${sdkConfig.CLOUD_API_VERSION}/${sdkConfig.WA_PHONE_NUMBER_ID}`;
-	const defaultMessagesResponseObjectBody: MessagesResponseObject = {
+	const defaultMessagesResponseBody = {
 		messaging_product: 'whatsapp',
 		contacts: [{ input: '16505076520', wa_id: '16505076520' }],
 		messages: [
@@ -58,12 +57,12 @@ describe('WhatsApp Messages API', () => {
 			.delay(200)
 			.delayBody(200)
 			.delayConnection(200)
-			.reply(200, defaultMessagesResponseObjectBody);
+			.reply(200, defaultMessagesResponseBody);
 
 		const response = await wa.messages.text({ body: 'test' }, testRecipient);
 
 		expect(await response.responseBodyToJSON()).toStrictEqual(
-			defaultMessagesResponseObjectBody,
+			defaultMessagesResponseBody,
 		);
 		scope.isDone();
 	});
@@ -74,7 +73,7 @@ describe('WhatsApp Messages API', () => {
 			.delay(200)
 			.delayBody(200)
 			.delayConnection(200)
-			.reply(200, defaultMessagesResponseObjectBody);
+			.reply(200, defaultMessagesResponseBody);
 
 		const meta_hosted_audio = {
 			id: '123456abcde',
@@ -85,7 +84,7 @@ describe('WhatsApp Messages API', () => {
 		const response = await wa.messages.audio(meta_hosted_audio, testRecipient);
 
 		expect(await response.responseBodyToJSON()).toStrictEqual(
-			defaultMessagesResponseObjectBody,
+			defaultMessagesResponseBody,
 		);
 		scope.isDone();
 	});
@@ -96,7 +95,7 @@ describe('WhatsApp Messages API', () => {
 			.delay(200)
 			.delayBody(200)
 			.delayConnection(200)
-			.reply(200, defaultMessagesResponseObjectBody);
+			.reply(200, defaultMessagesResponseBody);
 
 		const selfHostedAudio = {
 			link: new URL('https://example.com/example_1234.mp4').href,
@@ -107,7 +106,7 @@ describe('WhatsApp Messages API', () => {
 		const response = await wa.messages.audio(selfHostedAudio, testRecipient);
 
 		expect(await response.responseBodyToJSON()).toStrictEqual(
-			defaultMessagesResponseObjectBody,
+			defaultMessagesResponseBody,
 		);
 		scope.isDone();
 	});

@@ -7,12 +7,12 @@ title: .template
 Send an existing approved and enabled message template. This request dynamically fills out a message template with provided component parameters.
 
 ## Example:
-Send a template message called "Subscribe" in the en_US language with a parameter to fill dynamic text in the body to the recipient `17815754340`.
+Send a template message called "Subscribe" in the en_US language with a parameter to fill dynamic text in the body to the recipient `12345678901`.
 ```js
 import WhatsApp from 'whatsapp';
 
-const senderNumberId = 12345678901234567890;
-const wa = new WhatsApp( senderNumberId );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
 const newsletter_subscription_body =
 {
@@ -36,7 +36,7 @@ const newsletter_subscription_body =
     ]
 };
 
-await wa.messages.template( newsletter_subscription_body, 17815754340 );
+await wa.messages.template( newsletter_subscription_body, 12345678901 );
 ```
 
 ## Arguments
@@ -45,4 +45,4 @@ await wa.messages.template( newsletter_subscription_body, 17815754340 );
 3. `replyMessageId` : string (optional) — the received WhatsApp message Id to reply back to.
 
 ## Returns
-Promise — Server response object on success. A successful response body JSON will be of type [MessagesResponseObject](../types/MessagesResponseObject).
+Promise — Server response object on success.

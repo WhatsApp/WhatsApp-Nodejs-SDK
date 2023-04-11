@@ -12,8 +12,8 @@ Listen for incoming message webhook events and mark as message as read once rece
 ```js
 import WhatsApp from 'whatsapp';
 
-const senderNumberId = 12345678901234567890;
-const wa = new WhatsApp( senderNumberId );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
 async function custom_callback( statusCode, reqHeaders, body, resp, err )
 {
@@ -38,4 +38,4 @@ wa.webhooks.start( custom_callback );
 1. `body` : [StatusObject](../types/StatusObject) — the object describing the message status update.
 
 ## Returns
-Promise — Server response object on success. A successful response body JSON will be of type [MessagesResponseObject](../types/MessagesResponseObject).
+Promise — Server response object on success.

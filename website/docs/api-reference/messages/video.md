@@ -10,12 +10,12 @@ Send an existing self-hosted or Meta hosted video file. Supported video formats:
 - 3GP
 
 ## Example:
-Send a Meta-hosted message and then send an externally hosted video file to the phone number `17815754340`.
+Send a Meta-hosted message and then send an externally hosted video file to the phone number `12345678901`.
 ```js
 import WhatsApp from 'whatsapp';
 
-const senderNumberId = 12345678901234567890;
-const wa = new WhatsApp( senderNumberId );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
 const meta_hosted_video =
 {
@@ -31,8 +31,8 @@ const self_hosted_video =
     "filename" : "example.mp4"
 };
 
-await wa.messages.video( meta_hosted_video, 17815754340 );
-wa.messages.video( self_hosted_video, 17815754340 );
+await wa.messages.video( meta_hosted_video, 12345678901 );
+wa.messages.video( self_hosted_video, 12345678901 );
 ```
 
 ## Arguments
@@ -41,4 +41,4 @@ wa.messages.video( self_hosted_video, 17815754340 );
 3. `replyMessageId` : string (optional) — the received WhatsApp message Id to reply back to.
 
 ## Returns
-Promise — Server response object on success. A successful response body JSON will be of type [MessagesResponseObject](../types/MessagesResponseObject).
+Promise — Server response object on success.

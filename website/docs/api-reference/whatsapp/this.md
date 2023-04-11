@@ -11,8 +11,8 @@ Create a new SDK client for the WhatsApp sender phone number Id `123456789012345
 ```js
 import WhatsApp from 'whatsapp';
 
-const senderNumberId = 12345678901234567890;
-const wa = new WhatsApp( senderNumberId );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 ```
 
 ## Arguments

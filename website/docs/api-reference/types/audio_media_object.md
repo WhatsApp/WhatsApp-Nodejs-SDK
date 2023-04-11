@@ -13,13 +13,11 @@ This audio file must already exist.
 ```json
 {
     "id" : "AUDIO_ID",
-    "caption" : "CAPTION"
 }
 ```
 
 ### Properties
 1. `id` : string — the audio file Id. This Id is returned in the response body when the audio file was first uploaded.
-2. `caption` : string (optional) — text to be displayed with the audio to describe the audio.
 
 ## Self Hosted
 The audio file must be readily accessible by public addresses.
@@ -28,10 +26,8 @@ The audio file must be readily accessible by public addresses.
 ```js
 {
     "link" : new URL( "https://www.example.com" ).href,
-    "caption" : "CAPTION"
 }
 ```
 
 ### Properties
-1. `link` :  string — link to the publicly hosted audio. Must include HTTP/HTTPS protocol prefix.
-2. `caption` : string (optional) — text to be displayed with the audio to describe the audio.
+1. `link` :  string — link to the publicly hosted audio.

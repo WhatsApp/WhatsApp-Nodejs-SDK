@@ -11,8 +11,8 @@ Change the request timeout period to 1.5 seconds:
 ```js
 import WhatsApp from 'whatsapp';
 
-const senderNumberId = 12345678901234567890;
-const wa = new WhatsApp( senderNumberId );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 const was_timeout_changed = wa.updateTimeout( 15000 );
 ```
 

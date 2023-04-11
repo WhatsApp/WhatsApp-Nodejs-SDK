@@ -27,9 +27,6 @@ export default class TwoStepVerificationAPI
 		pin: number,
 	): Promise<RequesterResponseInterface<tsv.SetPinResponseObject>> {
 		const body: tsv.TwoStepVerificationObject = { pin: pin.toString() };
-		LOGGER.log(
-			`Updating 2-step verificaiton pin for ${this.config.WA_PHONE_NUMBER_ID}`,
-		);
 		return this.client.sendCAPIRequest(
 			this.commonMethod,
 			this.commonEndpoint,

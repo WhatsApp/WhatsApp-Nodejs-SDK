@@ -16,12 +16,12 @@ Send an existing self-hosted or Meta hosted document. Supported document formats
 - ODS or FODS
 
 ## Example:
-Send a Meta-hosted message and then send an externally hosted document to the phone number `17815754340`.
+Send a Meta-hosted message and then send an externally hosted document to the phone number `12345678901`.
 ```js
 import WhatsApp from 'whatsapp';
 
-const senderNumberId = 12345678901234567890;
-const wa = new WhatsApp( senderNumberId );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
 const meta_hosted_document =
 {
@@ -37,8 +37,8 @@ const self_hosted_document =
     "filename" : "example.pdf"
 };
 
-await wa.messages.document( meta_hosted_document, 17815754340 );
-wa.messages.document( self_hosted_document, 17815754340 );
+await wa.messages.document( meta_hosted_document, 12345678901 );
+wa.messages.document( self_hosted_document, 12345678901 );
 ```
 
 ## Arguments
@@ -47,4 +47,4 @@ wa.messages.document( self_hosted_document, 17815754340 );
 3. `replyMessageId` : string (optional) — the received WhatsApp message Id to reply back to.
 
 ## Returns
-Promise — Server response object on success. A successful response body JSON will be of type [MessagesResponseObject](../types/MessagesResponseObject).
+Promise — Server response object on success.

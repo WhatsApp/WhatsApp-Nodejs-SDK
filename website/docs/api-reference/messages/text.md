@@ -7,12 +7,12 @@ title: .text
 Send a WhatsApp text message.
 
 ## Example:
-Send a text message to the phone number `17815754340`.
+Send a text message to the phone number `12345678901`.
 ```js
 import WhatsApp from 'whatsapp';
 
-const senderNumberId = 12345678901234567890;
-const wa = new WhatsApp( senderNumberId );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
 const message =
 {
@@ -20,7 +20,7 @@ const message =
     "preview_url": false
 };
 
-wa.messages.text( message, 17815754340 );
+wa.messages.text( message, 12345678901 );
 ```
 
 ## Arguments
@@ -29,4 +29,4 @@ wa.messages.text( message, 17815754340 );
 3. `replyMessageId` : string (optional) — the received WhatsApp message Id to reply back to.
 
 ## Returns
-Promise — Server response object on success. A successful response body JSON will be of type [MessagesResponseObject](../types/MessagesResponseObject).
+Promise — Server response object on success.

@@ -1,9 +1,9 @@
 ---
-id: AddressObject
-title: AddressObject
+id: addresses_object
+title: AddressesObject
 ---
 
-# Address Object
+# Addresses Object
 The object describing an address of a contact.
 
 ## Example

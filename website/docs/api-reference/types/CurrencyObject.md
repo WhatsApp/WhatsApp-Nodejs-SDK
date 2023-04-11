@@ -1,5 +1,5 @@
 ---
-id: currency_object
+id: CurrencyObject
 title: CurrencyObject
 ---
 

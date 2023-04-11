@@ -12,8 +12,8 @@ Start the web server and then stop it if it's running.
 ```js
 import WhatsApp from 'whatsapp';
 
-const senderNumber = 12345678901234567890;
-const wa = new WhatsApp( senderNumber );
+const senderNumberId = 12345678901234567890;
+const wa = new WhatsApp( senderNumberId );
 
 async function webhook_callback_function( statusCode, reqHeaders, body, resp, err )
 {

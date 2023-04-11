@@ -7,12 +7,12 @@ title: .location
 Send a location message.
 
 ## Example:
-Send the Meta headquarter location to the phone number `12345678901`.
+Send the Meta headquarter location to the phone number `17815754340`.
 ```js
 import WhatsApp from 'whatsapp';
 
-const senderNumber = 12345678901234567890;
-const wa = new WhatsApp( senderNumber );
+const senderNumberId = 12345678901234567890;
+const wa = new WhatsApp( senderNumberId );
 
 const meta_hq_location =
 {
@@ -22,7 +22,7 @@ const meta_hq_location =
     "address": "1 Hacker Way, Menlo Park, CA 94025, USA"
 };
 
-wa.messages.location( meta_hq_location, 12345678901 );
+wa.messages.location( meta_hq_location, 17815754340 );
 ```
 
 ## Arguments
@@ -31,4 +31,4 @@ wa.messages.location( meta_hq_location, 12345678901 );
 3. `replyMessageId` : string (optional) — the received WhatsApp message Id to reply back to.
 
 ## Returns
-Promise — Server response object on success.
+Promise — Server response object on success. A successful response body JSON will be of type [MessagesResponseObject](../types/MessagesResponseObject).

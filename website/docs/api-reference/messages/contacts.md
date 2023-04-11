@@ -7,12 +7,12 @@ title: .contacts
 Send a message with contact(s) information.
 
 ## Example:
-Send a contact to the phone number `12345678901`.
+Send a contact to the phone number `17815754340`.
 ```js
 import WhatsApp from 'whatsapp';
 
-const senderNumber = 12345678901234567890;
-const wa = new WhatsApp( senderNumber );
+const senderNumberId = 12345678901234567890;
+const wa = new WhatsApp( senderNumberId );
 
 const contact =
 [ {
@@ -68,7 +68,7 @@ const contact =
     } ]
 } ];
 
-wa.messages.contacts( contact, 12345678901 );
+wa.messages.contacts( contact, 17815754340 );
 ```
 
 ## Arguments
@@ -77,4 +77,4 @@ wa.messages.contacts( contact, 12345678901 );
 3. `replyMessageId` : string (optional) — the received WhatsApp message Id to reply back to.
 
 ## Returns
-Promise — Server response object on success.
+Promise — Server response object on success. A successful response body JSON will be of type [MessagesResponseObject](../types/MessagesResponseObject).

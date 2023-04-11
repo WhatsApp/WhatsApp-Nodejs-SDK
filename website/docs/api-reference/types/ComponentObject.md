@@ -1,5 +1,5 @@
 ---
-id: component_object
+id: ComponentObject
 title: ComponentObject
 ---
 

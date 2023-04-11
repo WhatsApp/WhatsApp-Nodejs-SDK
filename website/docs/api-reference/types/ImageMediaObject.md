@@ -33,5 +33,5 @@ The image must be readily accessible by public addresses and in PNG or JPG forma
 ```
 
 ### Properties
-1. `link` :  string — link to the publicly hosted image.
+1. `link` :  string — link to the publicly hosted image. Must include HTTP/HTTPS protocol prefix.
 2. `caption` : string (optional) — text to be displayed with the image to describe the image.

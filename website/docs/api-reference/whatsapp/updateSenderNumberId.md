@@ -11,9 +11,9 @@ Change the sender number Id to `09876543210987654321`:
 ```js
 import WhatsApp from 'whatsapp';
 
-const senderNumber = 12345678901234567890;
+const senderNumberId = 12345678901234567890;
 const sender_number_2 = 09876543210987654321;
-const wa = new WhatsApp( senderNumber );
+const wa = new WhatsApp( senderNumberId );
 const was_sender_changed = wa.updateSenderNumberId( sender_number_2 );
 ```
 

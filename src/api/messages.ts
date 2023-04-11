@@ -57,7 +57,7 @@ export default class MessagesAPI extends BaseAPI implements m.MessagesClass {
 
 	send(
 		body: RequestData,
-	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+	): Promise<RequesterResponseInterface<m.MessagesResponseObject>> {
 		return this.client.sendCAPIRequest(
 			this.commonMethod,
 			this.commonEndpoint,
@@ -70,7 +70,7 @@ export default class MessagesAPI extends BaseAPI implements m.MessagesClass {
 		body: m.AudioMediaObject,
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+	): Promise<RequesterResponseInterface<m.MessagesResponseObject>> {
 		return this.send(
 			JSON.stringify(
 				this.bodyBuilder(
@@ -87,7 +87,7 @@ export default class MessagesAPI extends BaseAPI implements m.MessagesClass {
 		body: [m.ContactObject],
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+	): Promise<RequesterResponseInterface<m.MessagesResponseObject>> {
 		return this.send(
 			JSON.stringify(
 				this.bodyBuilder(
@@ -104,7 +104,7 @@ export default class MessagesAPI extends BaseAPI implements m.MessagesClass {
 		body: m.DocumentMediaObject,
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+	): Promise<RequesterResponseInterface<m.MessagesResponseObject>> {
 		return this.send(
 			JSON.stringify(
 				this.bodyBuilder(
@@ -121,7 +121,7 @@ export default class MessagesAPI extends BaseAPI implements m.MessagesClass {
 		body: m.ImageMediaObject,
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+	): Promise<RequesterResponseInterface<m.MessagesResponseObject>> {
 		return this.send(
 			JSON.stringify(
 				this.bodyBuilder(
@@ -138,7 +138,7 @@ export default class MessagesAPI extends BaseAPI implements m.MessagesClass {
 		body: m.InteractiveObject,
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+	): Promise<RequesterResponseInterface<m.MessagesResponseObject>> {
 		return this.send(
 			JSON.stringify(
 				this.bodyBuilder(
@@ -155,7 +155,7 @@ export default class MessagesAPI extends BaseAPI implements m.MessagesClass {
 		body: m.LocationObject,
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+	): Promise<RequesterResponseInterface<m.MessagesResponseObject>> {
 		return this.send(
 			JSON.stringify(
 				this.bodyBuilder(
@@ -172,7 +172,7 @@ export default class MessagesAPI extends BaseAPI implements m.MessagesClass {
 		body: m.StickerMediaObject,
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+	): Promise<RequesterResponseInterface<m.MessagesResponseObject>> {
 		return this.send(
 			JSON.stringify(
 				this.bodyBuilder(
@@ -189,7 +189,7 @@ export default class MessagesAPI extends BaseAPI implements m.MessagesClass {
 		body: m.MessageTemplateObject<ComponentTypesEnum>,
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+	): Promise<RequesterResponseInterface<m.MessagesResponseObject>> {
 		return this.send(
 			JSON.stringify(
 				this.bodyBuilder(
@@ -206,7 +206,7 @@ export default class MessagesAPI extends BaseAPI implements m.MessagesClass {
 		body: m.TextObject,
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+	): Promise<RequesterResponseInterface<m.MessagesResponseObject>> {
 		LOGGER.log(body);
 		return this.send(
 			JSON.stringify(
@@ -224,7 +224,7 @@ export default class MessagesAPI extends BaseAPI implements m.MessagesClass {
 		body: m.VideoMediaObject,
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+	): Promise<RequesterResponseInterface<m.MessagesResponseObject>> {
 		return this.send(
 			JSON.stringify(
 				this.bodyBuilder(
@@ -239,7 +239,7 @@ export default class MessagesAPI extends BaseAPI implements m.MessagesClass {
 
 	async status(
 		body: m.StatusObject,
-	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
+	): Promise<RequesterResponseInterface<m.MessagesResponseObject>> {
 		const mp: m.GeneralMessageBody = { messaging_product: 'whatsapp' };
 		const bodyToSend: m.StatusRequestBody = Object.assign(mp, body);
 

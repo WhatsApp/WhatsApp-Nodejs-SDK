@@ -15,7 +15,7 @@ import WhatsApp from 'whatsapp';
 const senderNumberId = 12345678901234567890;
 const wa = new WhatsApp( senderNumberId );
 
-async function webhookCallbackFunction( statusCode, reqHeaders, body, resp, err )
+async function webhook_callback_function( statusCode, reqHeaders, body, resp, err )
 {
     console.log(
         `Incoming webhook response status code: ${ statusCode }\n\nHeaders:
@@ -31,7 +31,7 @@ async function check_status()
     }, 5000 );
 }
 
-wa.webhooks.start( webhookCallbackFunction )
+wa.webhooks.start( webhook_callback_function )
 check_status();
 ```
 

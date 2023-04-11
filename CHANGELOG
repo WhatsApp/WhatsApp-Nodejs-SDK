@@ -5,6 +5,18 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.0.5-Alpha] - 2023-04-11
+### Added
+- Two-step verification API.
+- Docs file names match pascal/camel case for each of the APIs.
+- Docs for missing types.
+- Fix for incorrect parameter name for language object.
+
+### Removed
+- Dotenv to be a dev only dependency.
+- Typos from docs.
+- Unnecessary extra nesting for interactive messages requests.
+
 ## [0.0.4-Alpha] - 2023-04-05
 
 ### Added

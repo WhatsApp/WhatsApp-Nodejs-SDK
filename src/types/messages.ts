@@ -317,7 +317,7 @@ export type VideoMessageRequestBody =
 	};
 
 type LanguageObject = {
-	policystring: 'deterministic';
+	policystring?: 'deterministic';
 	code: LanguagesEnum;
 };
 

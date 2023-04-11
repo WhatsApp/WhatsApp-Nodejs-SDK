@@ -247,16 +247,16 @@ type ProductListInteractiveObject = {
 	action: ActionObject;
 };
 
-export type InteractiveObject = {
-	[MessageTypesEnum.Interactive]:
-		| ButtonInteractiveObject
-		| ListInteractiveObject
-		| ProductInteractiveObject
-		| ProductListInteractiveObject;
-};
+export type InteractiveObject =
+	| ButtonInteractiveObject
+	| ListInteractiveObject
+	| ProductInteractiveObject
+	| ProductListInteractiveObject;
 
 export type InteractiveMessageRequestBody =
-	MessageRequestBody<MessageTypesEnum.Interactive> & InteractiveObject;
+	MessageRequestBody<MessageTypesEnum.Interactive> & {
+		[MessageTypesEnum.Interactive]: InteractiveObject;
+	};
 
 type MetaStickerMediaObject = {
 	id: string;

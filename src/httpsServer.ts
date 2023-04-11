@@ -37,7 +37,7 @@ export default class Httpserver implements h.HttpserverClass {
 		return this.listening;
 	}
 
-	public close(cb?: (err?: Error) => any) {
+	public close(cb?: ((err?: Error | undefined) => void) | undefined) {
 		for (const socket of this.sockets) {
 			socket.destroy();
 			this.sockets.delete(socket);

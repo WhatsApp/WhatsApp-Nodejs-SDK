@@ -11,8 +11,8 @@ Get the SDK version:
 ```js
 import WhatsApp from 'whatsapp';
 
-const senderNumber = 12345678901;
-const wa = new WhatsApp( senderNumber );
+const senderNumberId = 17815754340;
+const wa = new WhatsApp( senderNumberId );
 const sdk_version = wa.version();
 ```
 

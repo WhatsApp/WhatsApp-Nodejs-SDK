@@ -3,8 +3,8 @@ id: ButtonObject
 title: ButtonObject
 ---
 
-# Reply Buttons Object
-The object describing a reply button's properties.
+# Button Object
+The object describing the properties of a reply button.
 
 ## Example
 ```json

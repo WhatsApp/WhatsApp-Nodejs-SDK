@@ -15,5 +15,5 @@ The object describing the status of a message.
 ```
 
 ## Properties
-1. `status` : "read" — mark message as "read".
+1. `status` : "read" — mark the specified message status as read.
 2. `message_id` : string — WhatsApp Message Id (wamid) of the message on which the status update should appear.

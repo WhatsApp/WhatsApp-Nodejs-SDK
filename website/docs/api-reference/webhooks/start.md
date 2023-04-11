@@ -16,8 +16,8 @@ Start the web server and print out valid message webhook event bodies.
 ```js
 import WhatsApp from 'whatsapp';
 
-const senderNumber = 12345678901234567890;
-const wa = new WhatsApp( senderNumber );
+const senderNumberId = 12345678901234567890;
+const wa = new WhatsApp( senderNumberId );
 
 async function webhook_callback_function( statusCode, reqHeaders, body, resp, err )
 {

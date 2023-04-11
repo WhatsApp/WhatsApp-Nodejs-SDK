@@ -3,7 +3,7 @@ id: PhoneObject
 title: PhoneObject
 ---
 
-# Phones Object
+# Phone Object
 The object describing a contact's phone number.
 
 ## Example

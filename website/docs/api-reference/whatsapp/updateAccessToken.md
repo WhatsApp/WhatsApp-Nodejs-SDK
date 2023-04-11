@@ -11,9 +11,9 @@ Change the access token to `1234abcd`:
 ```js
 import WhatsApp from 'whatsapp';
 
-const senderNumber = 12345678901234567890;
+const senderNumberId = 12345678901234567890;
 const updated_accessToken = "1234abcd";
-const wa = new WhatsApp( senderNumber );
+const wa = new WhatsApp( senderNumberId );
 const was_token_changed = wa.updateAccessToken( updated_accessToken );
 ```
 

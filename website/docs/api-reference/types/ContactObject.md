@@ -53,7 +53,7 @@ The object required for sharing contact(s) information.
 ```
 
 ## Properties
-1. `addresses` : [AddressesObject](addresses_object)[] (optional) — array of the contact's addresses.
+1. `addresses` : [AddressObject](AddressObject)[] (optional) — array of the contact's addresses.
 2. `birthday` : string (optional) — birthday in YYYY-MM-DD format.
 3. `emails` : [EmailObject](EmailObject)[] (optional) — array of the contact's emails.
 4. `name` : [NameObject](NameObject) — contact's name.

@@ -1,5 +1,5 @@
 ---
-id: ButtonParameterObject
+id: button_parameter_object
 title: ButtonParameterObject
 ---
 

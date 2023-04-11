@@ -1,5 +1,5 @@
 ---
-id: DateTimeObject
+id: date_time_object
 title: DateTimeObject
 ---
 

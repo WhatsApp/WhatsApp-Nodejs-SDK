@@ -9,13 +9,14 @@
 import nock from 'nock';
 import { WAConfigType } from '../types/config';
 import { HttpMethodsEnum } from '../types/enums';
+
 import HttpsClient from '../httpsClient';
-import { RequestHeaders } from '../types/httpsClient';
+import { NoParamCallback } from 'fs';
 
 describe('HTTPS client tests', () => {
 	const sdkConfig: WAConfigType = (global as any).sdkConfig;
 	const basePath = `/${sdkConfig.CLOUD_API_VERSION}/${sdkConfig.WA_PHONE_NUMBER_ID}`;
-	const reqHeaders: RequestHeaders = {
+	const reqHeaders = {
 		'Content-Type': 'application/json',
 		'Authorization': `Bearer ${sdkConfig.CLOUD_API_ACCESS_TOKEN}`,
 	};

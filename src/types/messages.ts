@@ -49,13 +49,11 @@ export type MessageRequestBody<T extends MessageTypesEnum> =
 type MetaAudioMediaObject = {
 	id: string;
 	link?: never;
-	caption?: string;
 };
 
 type HostedAudioMediaObject = {
 	id?: never;
 	link: string;
-	caption?: string;
 };
 
 export type AudioMediaObject = MetaAudioMediaObject | HostedAudioMediaObject;
@@ -65,7 +63,7 @@ export type AudioMessageRequestBody =
 		[MessageTypesEnum.Audio]: [AudioMediaObject];
 	};
 
-type AddressObject = {
+type AddressesObject = {
 	street?: string;
 	city?: string;
 	state?: string;
@@ -107,7 +105,7 @@ type URLObject = {
 };
 
 export type ContactObject = {
-	addresses?: AddressObject[];
+	addresses?: AddressesObject[];
 	birthday?: `${number}${number}${number}${number}-${number}${number}-${number}${number}`;
 	emails?: EmailObject[];
 	name: NameObject;
@@ -347,7 +345,7 @@ type DateTimeObject = {
 
 type DateTimeParametersObject =
 	ParametersObject<ParametersTypesEnum.Currency> & {
-		date_time: DateTimeObject;
+		date_time: CurrencyObject;
 	};
 
 type DocumentParametersObject = ParametersObject<ParametersTypesEnum.Document> &
@@ -411,7 +409,7 @@ export type LocationMessageRequestBody =
 		[MessageTypesEnum.Location]: [LocationObject];
 	};
 
-export type MessagesResponseObject = GeneralMessageBody & {
+export type MessagesResponse = GeneralMessageBody & {
 	contacts: [
 		{
 			input: string;
@@ -430,53 +428,53 @@ export declare class MessagesClass extends BaseClass {
 		body: AudioMediaObject,
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<MessagesResponseObject>>;
+	): Promise<RequesterResponseInterface<MessagesResponse>>;
 	contacts(
 		body: [ContactObject],
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<MessagesResponseObject>>;
+	): Promise<RequesterResponseInterface<MessagesResponse>>;
 	document(
 		body: DocumentMediaObject,
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<MessagesResponseObject>>;
+	): Promise<RequesterResponseInterface<MessagesResponse>>;
 	image(
 		body: ImageMediaObject,
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<MessagesResponseObject>>;
+	): Promise<RequesterResponseInterface<MessagesResponse>>;
 	interactive(
 		body: InteractiveObject,
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<MessagesResponseObject>>;
+	): Promise<RequesterResponseInterface<MessagesResponse>>;
 	location(
 		body: LocationObject,
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<MessagesResponseObject>>;
+	): Promise<RequesterResponseInterface<MessagesResponse>>;
 	status(
 		body: StatusObject,
-	): Promise<RequesterResponseInterface<MessagesResponseObject>>;
+	): Promise<RequesterResponseInterface<MessagesResponse>>;
 	sticker(
 		body: StickerMediaObject,
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<MessagesResponseObject>>;
+	): Promise<RequesterResponseInterface<MessagesResponse>>;
 	template(
 		body: MessageTemplateObject<ComponentTypesEnum>,
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<MessagesResponseObject>>;
+	): Promise<RequesterResponseInterface<MessagesResponse>>;
 	text(
 		body: TextObject,
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<MessagesResponseObject>>;
+	): Promise<RequesterResponseInterface<MessagesResponse>>;
 	video(
 		body: VideoMediaObject,
 		recipient: number,
 		replyMessageId?: string,
-	): Promise<RequesterResponseInterface<MessagesResponseObject>>;
+	): Promise<RequesterResponseInterface<MessagesResponse>>;
 }

@@ -13,12 +13,12 @@ Send an interactive message to prompt a recipient to select from provided option
 ## Examples:
 
 ### Reply button
-Send a message with two buttons to the phone number `17815754340`.
+Send a message with two buttons to the phone number `12345678901`.
 ```js
 import WhatsApp from 'whatsapp';
 
-const senderNumberId = 12345678901234567890;
-const wa = new WhatsApp( senderNumberId );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
 const reply_btn_message =
 {
@@ -46,17 +46,17 @@ const reply_btn_message =
     }
 }
 
-wa.messages.interactive( reply_btn_message, 17815754340 );
+wa.messages.interactive( reply_btn_message, 12345678901 );
 ```
 
 ### List
-Send a list message with two sections and two products per section to the phone number `17815754340`.
+Send a list message with two sections and two products per section to the phone number `12345678901`.
 
 ```js
 import WhatsApp from 'whatsapp';
 
-const senderNumberId = 12345678901234567890;
-const wa = new WhatsApp( senderNumberId );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
 const list_message =
 {
@@ -108,17 +108,17 @@ const list_message =
     }
 }
 
-wa.messages.interactive( list_message, 17815754340 );
+wa.messages.interactive( list_message, 12345678901 );
 ```
 
 ### Single product
-Send a single product message to the phone number `17815754340`.
+Send a single product message to the phone number `12345678901`.
 
 ```js
 import WhatsApp from 'whatsapp';
 
-const senderNumberId = 12345678901234567890;
-const wa = new WhatsApp( senderNumberId );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
 const prod_message =
 {
@@ -135,18 +135,18 @@ const prod_message =
     }
 }
 
-wa.messages.interactive( prod_message, 17815754340 );
+wa.messages.interactive( prod_message, 12345678901 );
 ```
 
 
 ### Mutli-product
-Send a multi-product message with two sections and two products per section to the phone number `17815754340`.
+Send a multi-product message with two sections and two products per section to the phone number `12345678901`.
 
 ```js
 import WhatsApp from 'whatsapp';
 
-const senderNumberId = 12345678901234567890;
-const wa = new WhatsApp( senderNumberId );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
 const multi_prod_message =
 {
@@ -184,7 +184,7 @@ const multi_prod_message =
     }
 }
 
-wa.messages.interactive( multi_prod_message, 17815754340 );
+wa.messages.interactive( multi_prod_message, 12345678901 );
 ```
 
 ## Arguments
@@ -193,4 +193,4 @@ wa.messages.interactive( multi_prod_message, 17815754340 );
 3. `replyMessageId` : string (optional) — the received WhatsApp message Id to reply back to.
 
 ## Returns
-Promise — Server response object on success. A successful response body JSON will be of type [MessagesResponseObject](../types/MessagesResponseObject).
+Promise — Server response object on success.

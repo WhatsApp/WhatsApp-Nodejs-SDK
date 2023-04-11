@@ -1,6 +1,6 @@
 ---
-id: webhookCallbackFunction
-title: webhookCallbackFunction
+id: webhook_callback_function
+title: WebhookCallbackFunction
 ---
 
 # Webhook Callback Function

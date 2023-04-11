@@ -9,12 +9,12 @@ Send an existing self-hosted or Meta hosted sticker. Static and animated third-p
 - WEBP
 
 ## Example:
-Send a Meta-hosted message and then send an externally hosted sticker to the phone number `17815754340`.
+Send a Meta-hosted message and then send an externally hosted sticker to the phone number `12345678901`.
 ```js
 import WhatsApp from 'whatsapp';
 
-const senderNumberId = 12345678901234567890;
-const wa = new WhatsApp( senderNumberId );
+const senderNumber = 12345678901234567890;
+const wa = new WhatsApp( senderNumber );
 
 const meta_hosted_sticker =
 {
@@ -26,8 +26,8 @@ const self_hosted_sticker =
     "link" : new URL( "https://example.com/example_1234.webp" ).href,
 };
 
-await wa.messages.sticker( meta_hosted_sticker, 17815754340 );
-wa.messages.sticker( self_hosted_sticker, 17815754340 );
+await wa.messages.sticker( meta_hosted_sticker, 12345678901 );
+wa.messages.sticker( self_hosted_sticker, 12345678901 );
 ```
 
 ## Arguments
@@ -36,4 +36,4 @@ wa.messages.sticker( self_hosted_sticker, 17815754340 );
 3. `replyMessageId` : string (optional) — the received WhatsApp message Id to reply back to.
 
 ## Returns
-Promise — Server response object on success. A successful response body JSON will be of type [MessagesResponseObject](../types/MessagesResponseObject).
+Promise — Server response object on success.

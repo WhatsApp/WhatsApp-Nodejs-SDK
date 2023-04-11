@@ -185,7 +185,6 @@ export type MessagesObject = {
 	interactive?: InteractiveObject;
 	order?: Order_Object;
 	referral: ReferralObject;
-	sticker?: StickerObject;
 	system?: SystemObject;
 	text?: TextObject;
 	timestamp: string;

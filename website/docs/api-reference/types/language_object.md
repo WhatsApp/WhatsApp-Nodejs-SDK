@@ -1,5 +1,5 @@
 ---
-id: LanguageObject
+id: language_object
 title: LanguageObject
 ---
 

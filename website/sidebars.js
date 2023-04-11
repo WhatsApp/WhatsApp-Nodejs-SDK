@@ -56,8 +56,8 @@ const sidebars = {
 					type: 'category',
 					label: 'Two-step verification',
 					items: [
-						'api-reference/twostepverification/this',
-						`api-reference/twostepverification/setPin`,
+						'api-reference/twoStepVerification/this',
+						`api-reference/twoStepVerification/setPin`,
 					],
 				},
 				{

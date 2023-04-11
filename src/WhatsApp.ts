@@ -14,6 +14,9 @@ if (
 }
 
 import { WAConfigType } from './types/config';
+import { WhatsAppClass } from './types/WhatsApp';
+import { WAConfigEnum } from './types/enums';
+import { semanticVersionString } from './types/version';
 import { importConfig } from './utils';
 import { SDKVersion } from './version';
 import Logger from './logger';
@@ -21,8 +24,6 @@ import Requester from './requester';
 import MessagesAPI from './api/messages';
 import TwoStepVerificationAPI from './api/twoStepVerification';
 import WebhooksAPI from './api/webhooks';
-import { WhatsAppClass } from './types/WhatsApp';
-import { WAConfigEnum } from './types/enums';
 
 const LIB_NAME = 'WHATSAPP';
 const LOG_LOCAL = false;
@@ -32,7 +33,7 @@ const headerPrefix = 'WA_SDK';
 
 export default class WhatsApp implements WhatsAppClass {
 	config: WAConfigType;
-	sdkVersion: Readonly<string>;
+	sdkVersion: Readonly<semanticVersionString>;
 	requester: Readonly<Requester>;
 
 	readonly messages: MessagesAPI;
@@ -65,7 +66,7 @@ export default class WhatsApp implements WhatsAppClass {
 		LOGGER.log('WhatsApp Node.js SDK instantiated!');
 	}
 
-	version(): string {
+	version(): semanticVersionString {
 		return this.sdkVersion;
 	}
 

@@ -16,6 +16,8 @@ const contents = `/**
  * LICENSE file in the root directory of this source tree.
  */
 
-export const SDKVersion = '${process.env.npm_package_version}';
+import { semanticVersionString } from "./types/version";
+
+export const SDKVersion: semanticVersionString = '${process.env.npm_package_version}';
 `;
 fs.writeFile('./src/version.ts', contents);

@@ -77,5 +77,5 @@ The object describing a WhatsApp message template to use and the components to d
 
 ## Properties
 1. `name` : string — name of the template.
-2. `language` : [LanguageObject](LanguageObject) — specifies the language the template may be rendered in.
-3. `components` : [ComponentObject](ComponentObject)[] (optional) — array of components objects containing the parameters of the message.
+2. `language` : [LanguageObject](language_object) — specifies the language the template may be rendered in.
+3. `components` : [ComponentObject](component_object)[] (optional) — array of components objects containing the parameters of the message.

@@ -54,6 +54,14 @@ const sidebars = {
 				},
 				{
 					type: 'category',
+					label: 'Two-step verification',
+					items: [
+						'api-reference/twoStepVerification/this',
+						`api-reference/twoStepVerification/setPin`,
+					],
+				},
+				{
+					type: 'category',
 					label: 'Webhooks',
 					items: [
 						'api-reference/webhooks/this',
@@ -88,6 +96,7 @@ const sidebars = {
 						'api-reference/types/ReplyButtonObject',
 						'api-reference/types/RowObject',
 						'api-reference/types/SectionObject',
+						'api-reference/types/SetPinResponseObject',
 						'api-reference/types/SimpleTextObject',
 						'api-reference/types/StatusObject',
 						'api-reference/types/StickerMediaObject',

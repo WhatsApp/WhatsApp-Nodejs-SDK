@@ -19,8 +19,9 @@ import { SDKVersion } from './version';
 import Logger from './logger';
 import Requester from './requester';
 import MessagesAPI from './api/messages';
-import { WhatsAppClass } from './types/WhatsApp';
+import TwoStepVerificationAPI from './api/twoStepVerification';
 import WebhooksAPI from './api/webhooks';
+import { WhatsAppClass } from './types/WhatsApp';
 import { WAConfigEnum } from './types/enums';
 
 const LIB_NAME = 'WHATSAPP';
@@ -35,6 +36,7 @@ export default class WhatsApp implements WhatsAppClass {
 	requester: Readonly<Requester>;
 
 	readonly messages: MessagesAPI;
+	readonly twoStepVerification: TwoStepVerificationAPI;
 	readonly webhooks: WebhooksAPI;
 
 	constructor(senderNumberId?: number) {
@@ -50,6 +52,10 @@ export default class WhatsApp implements WhatsAppClass {
 		);
 
 		this.messages = new MessagesAPI(this.config, this.requester);
+		this.twoStepVerification = new TwoStepVerificationAPI(
+			this.config,
+			this.requester,
+		);
 		this.webhooks = new WebhooksAPI(
 			this.config,
 			this.requester,

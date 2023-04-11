@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwhatsapp_sdk_docs=self.webpackChunkwhatsapp_sdk_docs||[]).push([[4121],{8070:s=>{s.exports=JSON.parse('[{"label":"Getting started","permalink":"/WhatsApp-Nodejs-SDK/tags/getting-started","count":1}]')}}]);

@@ -9,9 +9,7 @@
 import nock from 'nock';
 import { WAConfigType } from '../types/config';
 import { HttpMethodsEnum } from '../types/enums';
-
 import HttpsClient from '../httpsClient';
-import { NoParamCallback } from 'fs';
 
 describe('HTTPS client tests', () => {
 	const sdkConfig: WAConfigType = (global as any).sdkConfig;

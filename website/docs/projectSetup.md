@@ -1,5 +1,5 @@
 ---
-id: project_setup
+id: projectSetup
 title: Project setup
 ---
 

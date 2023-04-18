@@ -41,7 +41,7 @@ export default class WhatsApp implements WhatsAppClass {
 	readonly phoneNumbers: PhoneNumbersAPI;
 	readonly twoStepVerification: TwoStepVerificationAPI;
 	readonly webhooks: WebhooksAPI;
-	static readonly enums = SDKEnums;
+	static readonly Enums = SDKEnums;
 
 	constructor(senderNumberId?: number) {
 		this.sdkVersion = SDKVersion;

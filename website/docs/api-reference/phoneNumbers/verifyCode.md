@@ -8,6 +8,22 @@ Verify a phone number using the code that was received earlier from a verificati
 
 ## Example:
 Use the verification code "00000" that was received earlier to verify the number.
+
+### Typescript
+```js
+import WhatsApp from 'whatsapp';
+
+const senderNumberId = 12345678901234567890;
+const wa = new WhatsApp( senderNumberId );
+
+const body : VerifyCodeObject = {
+    "code" : "00000"
+}
+
+wa.phoneNumbers.verifyCode( body );
+```
+
+### Javascript
 ```js
 import WhatsApp from 'whatsapp';
 
@@ -18,7 +34,7 @@ const body = {
     "code" : "00000"
 }
 
-wa.phoneNumbers.verifyCode(body);
+wa.phoneNumbers.verifyCode( body );
 ```
 
 ## Arguments

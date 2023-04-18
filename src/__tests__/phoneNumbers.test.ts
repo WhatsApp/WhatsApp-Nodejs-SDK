@@ -58,8 +58,8 @@ describe('WhatsApp phone numbers API', () => {
 			.reply(200, defaultPhoneNumbersResponseObjectBody);
 
 		const body: RequestCodeObject = {
-			code_method: WhatsApp.enums.RequestCodeMethodsEnum.Sms,
-			language: WhatsApp.enums.LanguagesEnum.English,
+			code_method: WhatsApp.Enums.RequestCodeMethodsEnum.Sms,
+			language: WhatsApp.Enums.LanguagesEnum.English,
 		};
 		const response = await wa.phoneNumbers.requestCode(body);
 

@@ -8,6 +8,23 @@ Requests a verification code to be sent to number configured in the current What
 
 ## Example:
 Request a phone number verification code to be sent via SMS in the english language.
+
+### Typescript
+```ts
+import WhatsApp from 'whatsapp';
+
+const senderNumberId = 12345678901234567890;
+const wa = new WhatsApp( senderNumberId );
+
+const body : RequestCodeObject = {
+    "code_method" : WhatsApp.Enum.RequestCodeMethodsEnum.Sms,
+    "language" : WhatsApp.Enum.English
+}
+
+wa.phoneNumbers.requestCode( body );
+```
+
+### Javascript
 ```js
 import WhatsApp from 'whatsapp';
 
@@ -19,7 +36,7 @@ const body = {
     "language" : "en"
 }
 
-wa.phoneNumbers.requestCode(body);
+wa.phoneNumbers.requestCode( body );
 ```
 
 ## Arguments

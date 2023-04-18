@@ -1,5 +1,5 @@
 ---
-id: receiving_messages
+id: receivingMessages
 title: Receiving Messages
 ---
 
@@ -8,7 +8,7 @@ The SDK provides a convenience method for creating a web server to receive incom
 
 ## Prerequisites
 1. Install [Node.js](https://nodejs.org/) version 16 or later.
-2. A publicly accessible HTTPS (not HTTP) URL.
+2. A publicly accessible HTTPS (not HTTP) URL. For development, you can use tools such as [Ngrok](https://ngrok.io/) or [localtunnel](https://github.com/localtunnel/localtunnel) to route a tunnel to the listener port.
 3. Have a working [quickstart](/) application.
 
 ## Configure
@@ -87,9 +87,9 @@ npm listen.js
 The application will start the HTTP server. It's ready to verify subscription from the Cloud API, and then receive incoming messages and call the callback function.
 
 ## Setup
-A valid publicly accessible HTTPS URL as required for this example and a way to proxy requests from port 443 to the server listening port on 3000. You'll need to use this URL to register with the Cloud API to register your webhooks.
+To have a valid HTTPS URL as required for this example, you can use a tool such as [ngrok](https://ngrok.io/) and tunnel requests from port 443 to the server listening port on 3000. To do this with ngrok, use the command `ngrok http 3000`. You'll receive a URL that you can register with the Cloud API to register your webhooks.
 
-To finish webhook registration, follow the official docs using the **WEBHOOK_VERIFICATION_TOKEN** string that you set in your *.env* file and the URL for your webhook. The listener address will be similar to `https://<<YOUR_DOMAIN>>/webhook` (no trailing slash if set to just `webhook`). The server listens for the path set in the **WEBHOOK_ENDPOINT** environmental variable.
+To finish webhook registration, follow the official docs using the **WEBHOOK_VERIFICATION_TOKEN** string that you set in your *.env* file and the URL for your webhook. The listener address will be similar to `https://<<YOUR_SUBDOMAIN>>.ngrok.io/webhook` (no trailing slash if set to just `webhook`). The server listens for the path set in the **WEBHOOK_ENDPOINT** environmental variable.
 
 ## Receive
 Use your WhatsApp app (e.g. mobile, desktop, web, etc.) and send a message to the test number. Shortly after the message is sent, you should see the details of the incoming webhook request printed in terminal.

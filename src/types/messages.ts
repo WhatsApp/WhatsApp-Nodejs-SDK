@@ -345,7 +345,7 @@ type DateTimeObject = {
 
 type DateTimeParametersObject =
 	ParametersObject<ParametersTypesEnum.Currency> & {
-		date_time: CurrencyObject;
+		date_time: DateTimeObject;
 	};
 
 type DocumentParametersObject = ParametersObject<ParametersTypesEnum.Document> &

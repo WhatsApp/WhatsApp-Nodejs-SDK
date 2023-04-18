@@ -22,4 +22,4 @@ wa.twoStepVerification.setPin( 123456 );
 
 
 ## Returns
-Promise — Server response object on success. A successful response body JSON will be of type [SetPinResponseObject](../types/setPinResponseObject).
+Promise — Server response object on success. A successful response body JSON will be of type [SetPinResponseObject](../types/SetPinResponseObject).

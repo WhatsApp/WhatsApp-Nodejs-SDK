@@ -9,10 +9,14 @@
 import nock from 'nock';
 import { WAConfigType } from '../types/config';
 import WhatsApp from '../WhatsApp';
-import { SetPinResponseObject } from '../types/twoStepVerification';
-import TwoStepVerificationAPI from '../api/twoStepVerification';
+import {
+	PhoneNumbersResponseObject,
+	RequestCodeObject,
+	VerifyCodeObject,
+} from '../types/phoneNumbers';
+import PhoneNumbersAPI from '../api/phoneNumbers';
 
-describe('WhatsApp Two-Step Verification API', () => {
+describe('WhatsApp phone numbers API', () => {
 	const sdkConfig: WAConfigType = (global as any).sdkConfig;
 	process.env.WA_BASE_URL = sdkConfig.WA_BASE_URL;
 	process.env.M4D_APP_ID = sdkConfig.M4D_APP_ID;
@@ -29,7 +33,7 @@ describe('WhatsApp Two-Step Verification API', () => {
 
 	const wa = new WhatsApp();
 	const basePath = `/${sdkConfig.CLOUD_API_VERSION}/${sdkConfig.WA_PHONE_NUMBER_ID}`;
-	const defaultTwoStepVerificationResponseObjectBody: SetPinResponseObject = {
+	const defaultPhoneNumbersResponseObjectBody: PhoneNumbersResponseObject = {
 		success: true,
 	};
 
@@ -41,23 +45,45 @@ describe('WhatsApp Two-Step Verification API', () => {
 		nock.activate();
 	});
 
-	it('Is two-step verificaiton class instance', () => {
-		expect(wa.twoStepVerification).toBeInstanceOf(TwoStepVerificationAPI);
+	it('Is phone numbers API class instance', () => {
+		expect(wa.phoneNumbers).toBeInstanceOf(PhoneNumbersAPI);
 	});
 
-	it('Set the two-step verification pin to 123456', async () => {
+	it('Request a verification code sent via SMS in english', async () => {
 		scope = nock(`https://${sdkConfig.WA_BASE_URL}`)
-			.post(`${basePath}/`)
+			.post(`${basePath}/request_code`)
 			.delay(200)
 			.delayBody(200)
 			.delayConnection(200)
-			.reply(200, defaultTwoStepVerificationResponseObjectBody);
+			.reply(200, defaultPhoneNumbersResponseObjectBody);
 
-		const newPin = 123456;
-		const response = await wa.twoStepVerification.setPin(newPin);
+		const body: RequestCodeObject = {
+			code_method: WhatsApp.Enums.RequestCodeMethodsEnum.Sms,
+			language: WhatsApp.Enums.LanguagesEnum.English,
+		};
+		const response = await wa.phoneNumbers.requestCode(body);
 
 		expect(await response.responseBodyToJSON()).toStrictEqual(
-			defaultTwoStepVerificationResponseObjectBody,
+			defaultPhoneNumbersResponseObjectBody,
+		);
+		scope.isDone();
+	});
+
+	it('Send verification code of "00000" to verify phone number', async () => {
+		scope = nock(`https://${sdkConfig.WA_BASE_URL}`)
+			.post(`${basePath}/verify_code`)
+			.delay(200)
+			.delayBody(200)
+			.delayConnection(200)
+			.reply(200, defaultPhoneNumbersResponseObjectBody);
+
+		const body: VerifyCodeObject = {
+			code: '00000',
+		};
+		const response = await wa.phoneNumbers.verifyCode(body);
+
+		expect(await response.responseBodyToJSON()).toStrictEqual(
+			defaultPhoneNumbersResponseObjectBody,
 		);
 		scope.isDone();
 	});

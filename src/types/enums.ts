@@ -151,6 +151,11 @@ export const enum ReferralSourceTypesEnum {
 	Post = 'post',
 }
 
+export const enum RequestCodeMethodsEnum {
+	Sms = 'SMS',
+	Voice = 'VOICE',
+}
+
 export const enum LanguagesEnum {
 	Afrikaans = 'af',
 	Albanian = 'sq',

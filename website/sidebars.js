@@ -17,8 +17,8 @@ const sidebars = {
 	// /*
 	mainSidebar: [
 		'quickstart',
-		'receiving_messages',
-		'project_setup',
+		'receivingMessages',
+		'projectSetup',
 		{
 			type: 'category',
 			label: 'API reference',
@@ -50,6 +50,15 @@ const sidebars = {
 						`api-reference/messages/template`,
 						`api-reference/messages/text`,
 						`api-reference/messages/video`,
+					],
+				},
+				{
+					type: 'category',
+					label: 'Phone numbers',
+					items: [
+						'api-reference/phoneNumbers/this',
+						`api-reference/phoneNumbers/requestCode`,
+						`api-reference/phoneNumbers/verifyCode`,
 					],
 				},
 				{
@@ -94,6 +103,7 @@ const sidebars = {
 						'api-reference/types/PhoneObject',
 						'api-reference/types/ProductObject',
 						'api-reference/types/ReplyButtonObject',
+						'api-reference/types/RequestCodeObject',
 						'api-reference/types/RowObject',
 						'api-reference/types/SectionObject',
 						'api-reference/types/SetPinResponseObject',
@@ -103,9 +113,10 @@ const sidebars = {
 						'api-reference/types/TemplateObject',
 						'api-reference/types/TextObject',
 						'api-reference/types/URLObject',
+						'api-reference/types/VerifyCodeObject',
 						'api-reference/types/VideoMediaObject',
 						'api-reference/types/WAConfigType',
-						'api-reference/types/webhook_callback_function',
+						'api-reference/types/webhookCallbackFunction',
 					],
 				},
 			],

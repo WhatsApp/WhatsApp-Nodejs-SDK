@@ -88,6 +88,14 @@ const config = {
 					},
 				],
 			},
+			announcementBar: {
+				id: 'archived',
+				content:
+				  'The project is archived - go <a target="_blank" rel="noopener noreferrer" href="https://github.com/WhatsApp/WhatsApp-Nodejs-SDK/issues/31">this GitHub issue</a> to learn more.',
+				backgroundColor: '#fafbfc',
+				textColor: '#091E42',
+				isCloseable: false,
+			},
 			footer: {
 				style: 'dark',
 				links: [
